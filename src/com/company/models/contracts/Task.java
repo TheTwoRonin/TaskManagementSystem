@@ -14,7 +14,13 @@ public interface Task extends Identifiable {
 
     List<Comment> getComments();
 
-    List<String> getChanges();
+    List<Activity> getChanges();
 
+    void addComment(Comment comment);
 
+    void removeComment(Comment comment);
+
+    void advanceStatus();
+
+    void revertStatus();
 }

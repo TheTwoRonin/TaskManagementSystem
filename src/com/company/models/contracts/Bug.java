@@ -9,4 +9,6 @@ public interface Bug extends IntermediateTask {
     List<String> getSteps();
 
     Severity getSeverity();
+
+    void addStep(String step);
 }

@@ -1,5 +1,8 @@
-package com.company.models.contracts;
+package com.company.models;
 
+import com.company.models.contracts.Activity;
+import com.company.models.contracts.Board;
+import com.company.models.contracts.Task;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
