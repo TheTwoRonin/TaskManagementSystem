@@ -3,6 +3,7 @@ package com.company.models;
 import com.company.models.contracts.Activity;
 import com.company.models.contracts.Comment;
 import com.company.models.contracts.Task;
+import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
 import com.company.utils.ValidationHelpers;
 
@@ -15,8 +16,8 @@ public abstract class BaseTask implements Task {
     private static final String TITLE = "Title";
     private static final int[] DESCRIPTION_MIN_MAX_LENGTH = {10, 500};
     private static final String DESCRIPTION = "Description";
-    public static final String CANNOT_ADVANCE_STATUS_ERR = "Cannot advance status, already at Done.";
-    private final String CANNOT_REVERT_STATUS_ERR = "Cannot revert status, already at %s.";
+//    public static final String CANNOT_ADVANCE_STATUS_ERR = "Cannot advance status, already at Done.";
+//    private final String CANNOT_REVERT_STATUS_ERR = "Cannot revert status, already at %s.";
 
     private final int id;
     private String title;
@@ -88,39 +89,7 @@ public abstract class BaseTask implements Task {
     }
 
     @Override
-    public void advanceStatus() {
-        if (status.equals(Status.DONE)) {
-            throw new IllegalArgumentException(CANNOT_ADVANCE_STATUS_ERR);
-        }
-        switch (status) {
-            case NEW -> status = Status.UNSCHEDULED;
-            case UNSCHEDULED -> status = Status.SCHEDULED;
-            case NOT_DONE -> status = Status.IN_PROGRESS;
-            case SCHEDULED, ACTIVE, IN_PROGRESS -> status = Status.DONE;
-        }
-    }
-
-    @Override
-    public void revertStatus() {
-        if (status.equals(Status.ACTIVE) || status.equals(Status.NEW) || status.equals(Status.NOT_DONE))
-            throw new IllegalArgumentException(String.format(CANNOT_REVERT_STATUS_ERR, status));
-        switch (this.getClass().getSimpleName()) {
-            case "BugImpl" -> status = Status.ACTIVE;
-            case "StoryImpl" -> {
-                if (status == Status.DONE) {
-                    status = Status.IN_PROGRESS;
-                } else {
-                    status = Status.NOT_DONE;
-                }
-            }
-            case "FeedbackImpl" -> {
-                switch (status) {
-                    case DONE -> status = Status.SCHEDULED;
-                    case SCHEDULED -> status = Status.UNSCHEDULED;
-                    default -> status = Status.NEW;
-                }
-            }
-        }
-
+    public void changeStatus(Status status) {
+        this.status = status;
     }
 }

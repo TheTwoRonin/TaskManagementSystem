@@ -11,6 +11,8 @@ import java.util.List;
 
 public class BugImpl extends BaseIntermediateTask implements Bug {
 
+    private static final String INVALID_STATUS_ERR = "Invalid status, can be Active or Done";
+
     private List<String> steps;
     private Severity severity;
 
@@ -35,5 +37,15 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
         steps.add(step);
     }
 
+    @Override
+    public void changeStatus(Status status) {
+        if (!status.equals(Status.ACTIVE) && !status.equals(Status.DONE))
+            throw new IllegalArgumentException(INVALID_STATUS_ERR);
+        super.changeStatus(status);
+    }
 
+    @Override
+    public void changeSeverity(Severity severity) {
+        this.severity = severity;
+    }
 }

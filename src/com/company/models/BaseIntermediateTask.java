@@ -26,4 +26,9 @@ public abstract class BaseIntermediateTask extends BaseTask implements Intermedi
     public Priority getPriority() {
         return priority;
     }
+
+    @Override
+    public void changePriority(Priority priority) {
+        this.priority = priority;
+    }
 }

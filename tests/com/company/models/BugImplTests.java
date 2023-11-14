@@ -49,26 +49,13 @@ public class BugImplTests {
     }
 
     @Test
-    public void status_Should_AdvanceToDone_When_StatusAtActive() {
-        bug.advanceStatus();
+    public void status_Should_ChangeStatus_When_ValidStatus() {
+        bug.changeStatus(Status.DONE);
         Assertions.assertEquals(Status.DONE, bug.getStatus());
     }
 
     @Test
-    public void status_Should_ThrowException_When_StatusAlreadyAtDone() {
-        bug.advanceStatus();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> bug.advanceStatus());
-    }
-
-    @Test
-    public void status_Should_RevertToActive_When_StatusAtDone() {
-        bug.advanceStatus();
-        bug.revertStatus();
-        Assertions.assertEquals(Status.ACTIVE, bug.getStatus());
-    }
-
-    @Test
-    public void status_Should_ThrowException_When_StatusAlreadyAtActive() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> bug.revertStatus());
+    public void status_Should_ThrowException_When_InvalidStatus() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> bug.changeStatus(Status.UNSCHEDULED));
     }
 }

@@ -1,5 +1,6 @@
 package com.company.models.contracts;
 
+import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
 
 import java.util.List;
@@ -20,7 +21,10 @@ public interface Task extends Identifiable {
 
     void removeComment(Comment comment);
 
-    void advanceStatus();
+    void changeStatus(Status status);
 
-    void revertStatus();
+
+//    void advanceStatus();
+//
+//    void revertStatus();
 }

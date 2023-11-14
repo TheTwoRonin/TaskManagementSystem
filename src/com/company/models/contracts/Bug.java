@@ -11,4 +11,6 @@ public interface Bug extends IntermediateTask {
     Severity getSeverity();
 
     void addStep(String step);
+
+    void changeSeverity(Severity severity);
 }
