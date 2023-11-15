@@ -1,6 +1,7 @@
 package com.company.models;
 
 import com.company.models.contracts.Bug;
+import com.company.models.contracts.Comment;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
@@ -16,8 +17,9 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
     private List<String> steps;
     private Severity severity;
 
-    public BugImpl(int id, String title, String description, User assignee, Priority priority, Severity severity) {
-        super(id, title, description, Status.ACTIVE, assignee, priority);
+    public BugImpl(int id, String title, String description, List<Comment> comments,
+                   User assignee, Priority priority, Severity severity) {
+        super(id, title, description, Status.ACTIVE, comments, assignee, priority);
         steps = new ArrayList<>();
         this.severity = severity;
     }

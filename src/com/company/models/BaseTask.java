@@ -3,7 +3,6 @@ package com.company.models;
 import com.company.models.contracts.Activity;
 import com.company.models.contracts.Comment;
 import com.company.models.contracts.Task;
-import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
 import com.company.utils.ValidationHelpers;
 
@@ -27,12 +26,12 @@ public abstract class BaseTask implements Task {
     private final List<Activity> changes;
 
 
-    public BaseTask(int id, String title, String description, Status status) {
+    public BaseTask(int id, String title, String description, Status status, List<Comment> comments) {
         this.id = id;
         setTitle(title);
         setDescription(description);
         this.status = status;
-        comments = new ArrayList<>();
+        this.comments = comments;
         changes = new ArrayList<>();
     }
 
