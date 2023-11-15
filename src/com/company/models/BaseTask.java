@@ -15,8 +15,6 @@ public abstract class BaseTask implements Task {
     private static final String TITLE = "Title";
     private static final int[] DESCRIPTION_MIN_MAX_LENGTH = {10, 500};
     private static final String DESCRIPTION = "Description";
-//    public static final String CANNOT_ADVANCE_STATUS_ERR = "Cannot advance status, already at Done.";
-//    private final String CANNOT_REVERT_STATUS_ERR = "Cannot revert status, already at %s.";
 
     private final int id;
     private String title;
@@ -80,11 +78,6 @@ public abstract class BaseTask implements Task {
     @Override
     public void addComment(Comment comment) {
         comments.add(comment);
-    }
-
-    @Override
-    public void removeComment(Comment comment) {
-        comments.remove(comment);
     }
 
     @Override
