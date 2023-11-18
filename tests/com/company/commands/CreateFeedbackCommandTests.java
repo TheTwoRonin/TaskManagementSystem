@@ -23,7 +23,7 @@ public class CreateFeedbackCommandTests {
     @BeforeEach
     public void before() {
         this.repository = new TaskManagementSystemRepositoryImpl();
-        this.command = new CreateBugCommand(repository);
+        this.command = new CreateFeedbackCommand(repository);
     }
 
     @Test
