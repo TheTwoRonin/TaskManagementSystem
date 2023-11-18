@@ -4,7 +4,7 @@ import com.company.commands.contracts.Command;
 
 import java.util.List;
 
-public class CreateStoryCommand implements Command {
+public class AddUserToTeamCommand implements Command {
     @Override
     public String execute(List<String> parameters) {
         return null;

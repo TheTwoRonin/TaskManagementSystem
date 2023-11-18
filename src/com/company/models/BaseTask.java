@@ -24,13 +24,13 @@ public abstract class BaseTask implements Task {
     private final List<Activity> changes;
 
 
-    public BaseTask(int id, String title, String description, Status status, List<Comment> comments) {
+    public BaseTask(int id, String title, String description, Status status) {
         this.id = id;
         setTitle(title);
         setDescription(description);
         this.status = status;
-        this.comments = comments;
-        changes = new ArrayList<>();
+        this.comments = new ArrayList<>();
+        this.changes = new ArrayList<>();
     }
 
     private void setTitle(String title) {

@@ -1,10 +1,7 @@
 package com.company.models;
 
-import com.company.models.contracts.Comment;
 import com.company.models.contracts.Feedback;
 import com.company.models.enums.Status;
-
-import java.util.List;
 
 public class FeedbackImpl extends BaseTask implements Feedback {
 
@@ -12,8 +9,8 @@ public class FeedbackImpl extends BaseTask implements Feedback {
 
     private int rating;
 
-    public FeedbackImpl(int id, String title, String description, List<Comment> comments, int rating) {
-        super(id, title, description, Status.NEW, comments);
+    public FeedbackImpl(int id, String title, String description, int rating) {
+        super(id, title, description, Status.NEW);
         this.rating = rating;
     }
 

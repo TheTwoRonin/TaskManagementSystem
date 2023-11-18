@@ -19,6 +19,8 @@ public class UserImpl implements User {
     public UserImpl(int id, String name) {
         this.id = id;
         //TODO Check if name unique, should be done in the Repository
+        //no need for id since name is unique?
+
         setName(name);
         this.tasks = new ArrayList<>();
         this.activityHistory = new ArrayList<>();
