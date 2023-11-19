@@ -35,7 +35,7 @@ public class ChangePriorityCommand implements Command {
         if (!(task instanceof IntermediateTask))
             throw new IllegalArgumentException(String.format(CommandConstants.TASK_PRIORITY_ERR, id));
         ((IntermediateTask) task).changePriority(priority);
-        return String.format(CommandConstants.PRIORITY_CHANGED_MESSAGE, id);
+        return String.format(CommandConstants.ENUM_CHANGED_MESSAGE, CommandConstants.PRIORITY, id);
     }
 
     private void parseParameters(List<String> parameters) {

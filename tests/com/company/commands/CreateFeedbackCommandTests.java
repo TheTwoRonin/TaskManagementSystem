@@ -27,6 +27,15 @@ public class CreateFeedbackCommandTests {
         this.command = new CreateFeedbackCommand(repository);
     }
 
+//    @Test
+//    public void execute_Should_CreateFeedback_When_ArgumentsAreValid() {
+//               // TODO: 18.11.2023 г. add user to repo when implemented
+//        List<String> params = List.of(TaskBaseConstraints.VALID_TITLE, TaskBaseConstraints.VALID_DESCRIPTION,
+//                VALID_ASSIGNEE_STR, VALID_PRIORITY_STR, VALID_SEVERITY_STR, VALID_STEPS);
+//        command.execute(params);
+//        assertEquals(1, repository.getTasks().size());
+//    }
+
     @Test
     public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
         List<String> params = TestUtilities.getList(EXPECTED_NUMBER_OF_ARGUMENTS - 1);
