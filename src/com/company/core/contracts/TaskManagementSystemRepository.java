@@ -27,7 +27,7 @@ public interface TaskManagementSystemRepository {
 
     Team createTeam(String name);
 
-    Board createBoard(String name);
+    Board createBoard(String name, Team team);
 
     User findUserByName(String name);
 
@@ -38,7 +38,7 @@ public interface TaskManagementSystemRepository {
     void userIsUnique(String name);
     void teamIsUnique(String name);
     //void boardIsUniqueInTeam(String name);
-
+    void boardIsUniqueInTeam(String name, Team team);
     //TODO Implement generics
     //<T> T findByName(String name);
     // <T> void isUnique(List<T> elements, String name);

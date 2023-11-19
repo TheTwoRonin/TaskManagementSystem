@@ -25,7 +25,6 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
         this.nextId = 0;
     }
 
-
     @Override
     public List<Task> getTasks() {
         return new ArrayList<>(tasks);
@@ -82,8 +81,9 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     }
 
     @Override
-    public Board createBoard(String name) {
+    public Board createBoard(String name, Team team) {
         Board board = new BoardImpl(name);
+        team.addBoard(board);
         this.boards.add(board);
         return board;
     }
@@ -109,21 +109,24 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
 
     @Override
     public void userIsUnique(String name) {
-        try{
-            if(findUserByName(name).getName().equals(name))
-           throw new IllegalArgumentException("User with this name has been already created.");
+        if(users.stream().anyMatch(u -> u.getName().equals(name))){
+            throw new IllegalArgumentException("User with this name has been already created.");
         }
-        catch (ElementNotFoundException ignored){}
-    }
-    @Override
-    public void teamIsUnique(String name) {
-        try{
-            if(findTeamByName(name).getName().equals(name))
-                throw new IllegalArgumentException("Team with this name has been already created.");
-        }
-        catch (ElementNotFoundException ignored){}
     }
 
+    @Override
+    public void teamIsUnique(String name) {
+        if(teams.stream().anyMatch(t -> t.getName().equals(name))){
+            throw new IllegalArgumentException("Team with this name has been already created.");
+        }
+    }
+    @Override
+    public void boardIsUniqueInTeam(String name, Team team){
+        List<Board> teamBoards = team.getBoards();
+            if(teamBoards.stream().anyMatch(b -> b.getName().equals(name))){
+                throw new IllegalArgumentException("Board with this name has been already created.");
+            }
+    }
     @Override
     public Task findTaskById(int id) {
         return tasks.stream().filter(t -> t.getId() == id).findAny()
