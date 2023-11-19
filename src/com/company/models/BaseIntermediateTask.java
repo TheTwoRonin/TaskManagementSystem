@@ -7,6 +7,10 @@ import com.company.models.enums.Status;
 
 // TODO: 13.11.2023 г. fix stupid name
 public abstract class BaseIntermediateTask extends BaseTask implements IntermediateTask {
+
+    private static final String ASSIGNEE_ASSIGNED_ERR = "%s already assigned to task.";
+    private static final String NO_ASSIGNEE_ASSIGNED_ERR = "No assignee assigned!";
+
     private User assignee;
     private Priority priority;
 
@@ -17,8 +21,22 @@ public abstract class BaseIntermediateTask extends BaseTask implements Intermedi
         this.priority = priority;
     }
 
+    public void assignAssignee(User assignee) {
+        if (this.assignee.equals(assignee)) {
+            throw new IllegalArgumentException(String.format(ASSIGNEE_ASSIGNED_ERR, assignee.getName()));
+        }
+        this.assignee = assignee;
+
+    }
+
+    public void unassignAssignee() {
+        checkifAssigneeAssigned();
+        assignee = null;
+    }
+
     @Override
     public User getAssignee() {
+        checkifAssigneeAssigned();
         return assignee;
     }
 
@@ -30,5 +48,10 @@ public abstract class BaseIntermediateTask extends BaseTask implements Intermedi
     @Override
     public void changePriority(Priority priority) {
         this.priority = priority;
+    }
+
+    private void checkifAssigneeAssigned() {
+        if (assignee == null)
+            throw new IllegalArgumentException(NO_ASSIGNEE_ASSIGNED_ERR);
     }
 }

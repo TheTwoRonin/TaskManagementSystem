@@ -1,16 +1,15 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
+import com.company.commands.operations.CreateStoryCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.utils.TaskBaseConstraints;
 import com.company.utils.TestUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.company.utils.CommandConstraints.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CreateStoryCommandTests {

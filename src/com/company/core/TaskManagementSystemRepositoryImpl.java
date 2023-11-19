@@ -29,6 +29,26 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
 
 
     @Override
+    public List<Task> getTasks() {
+        return new ArrayList<>(tasks);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return new ArrayList<>(users);
+    }
+
+    @Override
+    public List<Board> getBoards() {
+        return new ArrayList<>(boards);
+    }
+
+    @Override
+    public List<Team> getTeams() {
+        return new ArrayList<>(teams);
+    }
+
+    @Override
     public Bug createBug(String title, String description, User assignee, Priority priority, Severity severity, List<String> steps) {
         Bug bug = new BugImpl(++nextId, title, description, assignee, priority, severity, steps);
         this.tasks.add(bug);

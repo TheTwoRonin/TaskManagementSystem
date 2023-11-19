@@ -1,6 +1,7 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
+import com.company.commands.operations.AddCommentCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;

@@ -1,9 +1,9 @@
 package com.company.core;
 
-import com.company.commands.AddCommentCommand;
-import com.company.commands.CreateBugCommand;
-import com.company.commands.CreateFeedbackCommand;
-import com.company.commands.CreateStoryCommand;
+import com.company.commands.operations.AddCommentCommand;
+import com.company.commands.operations.CreateBugCommand;
+import com.company.commands.operations.CreateFeedbackCommand;
+import com.company.commands.operations.CreateStoryCommand;
 import com.company.commands.contracts.Command;
 import com.company.commands.enums.CommandType;
 import com.company.core.contracts.CommandFactory;

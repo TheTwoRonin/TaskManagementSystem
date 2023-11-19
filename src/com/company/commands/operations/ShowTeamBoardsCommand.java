@@ -1,10 +1,10 @@
-package com.company.commands;
+package com.company.commands.operations;
 
 import com.company.commands.contracts.Command;
 
 import java.util.List;
 
-public class ShowUsersCommand implements Command {
+public class ShowTeamBoardsCommand implements Command {
     @Override
     public String execute(List<String> parameters) {
         return null;

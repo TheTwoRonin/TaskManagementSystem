@@ -9,6 +9,14 @@ import java.util.List;
 
 public interface TaskManagementSystemRepository {
 
+    List<Task> getTasks();
+
+    List<User> getUsers();
+
+    List<Board> getBoards();
+
+    List<Team> getTeams();
+
     Bug createBug(String title, String description, User assignee, Priority priority, Severity severity, List<String> steps);
 
     Feedback createFeedback(String title, String description, int rating);

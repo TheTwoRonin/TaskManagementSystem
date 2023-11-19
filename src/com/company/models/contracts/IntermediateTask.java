@@ -6,6 +6,10 @@ public interface IntermediateTask extends Task {
 
     User getAssignee();
 
+    void assignAssignee(User assignee);
+
+    void unassignAssignee();
+
     Priority getPriority();
 
     void changePriority(Priority priority);
