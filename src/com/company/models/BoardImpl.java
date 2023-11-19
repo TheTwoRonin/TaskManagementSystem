@@ -11,13 +11,11 @@ import java.util.List;
 public class BoardImpl implements Board {
 
         private static final int[] NAME_MIN_MAX_LENGTH = {5, 10};
-        private final int id;
         private String name;
         private final List<Task> tasks;
         private final List<Activity> activityHistory;
 
-        BoardImpl(int id, String name) {
-            this.id = id;
+        public BoardImpl(String name) {
             //TODO Check if name unique, should be done in the Repository
             setName(name);
             this.tasks = new ArrayList<>();
@@ -35,12 +33,6 @@ public class BoardImpl implements Board {
 
         private void addActivity(Activity activity) {
             activityHistory.add(activity);
-        }
-
-
-        @Override
-        public int getId() {
-            return this.id;
         }
 
         @Override
