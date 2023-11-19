@@ -3,9 +3,7 @@ package com.company.core;
 import com.company.commands.constants.CommandConstants;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;
-import com.company.models.BugImpl;
-import com.company.models.FeedbackImpl;
-import com.company.models.StoryImpl;
+import com.company.models.*;
 import com.company.models.contracts.*;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
@@ -70,9 +68,60 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     }
 
     @Override
+    public User createUser(String name) {
+        User user = new UserImpl(name);
+        this.users.add(user);
+        return user;
+    }
+
+    @Override
+    public Team createTeam(String name) {
+        Team team = new TeamImpl(name);
+        this.teams.add(team);
+        return team;
+    }
+
+    @Override
+    public Board createBoard(String name) {
+        Board board = new BoardImpl(name);
+        this.boards.add(board);
+        return board;
+    }
+
+    @Override
     public User findUserByName(String name) {
         return users.stream().filter(u -> u.getName().equals(name)).findAny()
                 .orElseThrow(() -> new ElementNotFoundException(String.format(CommandConstants.USER_NOT_FOUND_ERR, name)));
+    }
+
+    @Override
+    public Team findTeamByName(String name) {
+        return teams.stream().filter(t -> t.getName().equals(name)).findAny()
+                .orElseThrow(() -> new ElementNotFoundException(String.format(CommandConstants.TEAM_NOT_FOUND_ERR, name)));
+    }
+
+    @Override
+    public Board findBoardByName(String name) {
+        return boards.stream().filter(b -> b.getName().equals(name)).findAny()
+                .orElseThrow(() -> new ElementNotFoundException(String.format(CommandConstants.BOARD_NOT_FOUND_ERR, name)));
+    }
+
+
+    @Override
+    public void userIsUnique(String name) {
+        try{
+            if(findUserByName(name).getName().equals(name))
+           throw new IllegalArgumentException("User with this name has been already created.");
+        }
+        catch (ElementNotFoundException ignored){}
+    }
+    @Override
+    public void teamIsUnique(String name) {
+        try{
+            if(findTeamByName(name).getName().equals(name))
+                throw new IllegalArgumentException("Team with this name has been already created.");
+        }
+        catch (ElementNotFoundException ignored){}
     }
 
     @Override
@@ -80,6 +129,4 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
         return tasks.stream().filter(t -> t.getId() == id).findAny()
                 .orElseThrow(() -> new ElementNotFoundException(String.format(CommandConstants.TASK_NOT_FOUND_ERR, id)));
     }
-
-
 }

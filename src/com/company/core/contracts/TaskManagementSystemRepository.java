@@ -23,7 +23,25 @@ public interface TaskManagementSystemRepository {
 
     Story createStory(String title, String description, User assignee, Priority priority, Size size);
 
+    User createUser(String name);
+
+    Team createTeam(String name);
+
+    Board createBoard(String name);
+
     User findUserByName(String name);
+
+    Team findTeamByName(String name);
+
+    Board findBoardByName(String name);
+
+    void userIsUnique(String name);
+    void teamIsUnique(String name);
+    //void boardIsUniqueInTeam(String name);
+
+    //TODO Implement generics
+    //<T> T findByName(String name);
+    // <T> void isUnique(List<T> elements, String name);
 
     Task findTaskById(int id);
 }
