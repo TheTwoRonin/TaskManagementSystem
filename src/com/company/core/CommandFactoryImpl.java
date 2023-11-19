@@ -1,9 +1,6 @@
 package com.company.core;
 
-import com.company.commands.operations.AddCommentCommand;
-import com.company.commands.operations.CreateBugCommand;
-import com.company.commands.operations.CreateFeedbackCommand;
-import com.company.commands.operations.CreateStoryCommand;
+import com.company.commands.operations.*;
 import com.company.commands.contracts.Command;
 import com.company.commands.enums.CommandType;
 import com.company.core.contracts.CommandFactory;
@@ -19,7 +16,7 @@ public class CommandFactoryImpl implements CommandFactory {
             case ADDCOMMENT -> new AddCommentCommand(taskManagementSystemRepository);
 //            case ADDUSERTOTEAM -> new AddUserToTeamCommand(taskManagementSystemRepository);
 //            case ASSIGNTASKTOUSER -> new AssignTaskToUserCommand(taskManagementSystemRepository);
-//            case CHANGEPRIORITY -> new ChangePriorityCommand(taskManagementSystemRepository);
+            case CHANGEPRIORITY -> new ChangePriorityCommand(taskManagementSystemRepository);
 //            case CHANGERATING -> new ChangeRatingCommand(taskManagementSystemRepository);
 //            case CHANGESEVERITY -> new ChangeSeverityCommand(taskManagementSystemRepository);
 //            case CHANGESIZE -> new ChangeSizeCommand(taskManagementSystemRepository);

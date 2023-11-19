@@ -12,7 +12,6 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.CommandConstants.BUG;
 import static com.company.commands.constants.CommandConstants.STORY;
 
 public class CreateStoryCommand implements Command {
@@ -38,7 +37,8 @@ public class CreateStoryCommand implements Command {
         parseParameters(parameters);
 
         Story createdStory = taskManagementSystemRepository.createStory(title, description, assignee, priority, size);
-
+        // TODO: 19.11.2023 г. add task to user
+//        assignee.addTask(createdStory);
         return String.format(CommandConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());
     }
 
