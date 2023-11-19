@@ -1,5 +1,6 @@
 package com.company.core;
 
+import com.company.commands.constants.CommandConstants;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;
 import com.company.models.BugImpl;
@@ -14,8 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemRepository {
-
-    private static final String USER_NOT_FOUND_ERR = "No user with name %s";
 
     private int nextId;
 
@@ -53,7 +52,13 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     @Override
     public User findUserByName(String name) {
         return users.stream().filter(u -> u.getName().equals(name)).findAny()
-                .orElseThrow(() -> new ElementNotFoundException(String.format(USER_NOT_FOUND_ERR, name)));
+                .orElseThrow(() -> new ElementNotFoundException(String.format(CommandConstants.USER_NOT_FOUND_ERR, name)));
+    }
+
+    @Override
+    public Task findTaskById(int id) {
+        return tasks.stream().filter(t -> t.getId() == id).findAny()
+                .orElseThrow(() -> new ElementNotFoundException(String.format(CommandConstants.TASK_NOT_FOUND_ERR, id)));
     }
 
 

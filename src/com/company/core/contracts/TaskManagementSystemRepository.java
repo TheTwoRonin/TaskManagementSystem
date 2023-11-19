@@ -1,9 +1,6 @@
 package com.company.core.contracts;
 
-import com.company.models.contracts.Bug;
-import com.company.models.contracts.Feedback;
-import com.company.models.contracts.Story;
-import com.company.models.contracts.User;
+import com.company.models.contracts.*;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Size;
@@ -19,4 +16,6 @@ public interface TaskManagementSystemRepository {
     Story createStory(String title, String description, User assignee, Priority priority, Size size);
 
     User findUserByName(String name);
+
+    Task findTaskById(int id);
 }

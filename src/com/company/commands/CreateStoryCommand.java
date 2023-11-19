@@ -13,10 +13,11 @@ import com.company.utils.ValidationHelpers;
 import java.util.List;
 
 import static com.company.commands.constants.CommandConstants.BUG;
+import static com.company.commands.constants.CommandConstants.STORY;
 
 public class CreateStoryCommand implements Command {
 
-    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 6;
+    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 5;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
@@ -38,7 +39,7 @@ public class CreateStoryCommand implements Command {
 
         Story createdStory = taskManagementSystemRepository.createStory(title, description, assignee, priority, size);
 
-        return String.format(CommandConstants.TASK_CREATED_MESSAGE, BUG, createdStory.getId());
+        return String.format(CommandConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());
     }
 
     private void parseParameters(List<String> parameters) {

@@ -35,7 +35,7 @@ public class CreateFeedbackCommandTests {
     @Test
     public void execute_Should_ThrowException_When_RatingNonNumber() {
         List<String> params = List.of(TaskBaseConstraints.VALID_TITLE, TaskBaseConstraints.VALID_DESCRIPTION,
-                CommandConstraints.INVALID_RATING_STR);
+                CommandConstraints.INVALID_NUM_STR);
         assertThrows(IllegalArgumentException.class, () -> command.execute(params));
     }
 }

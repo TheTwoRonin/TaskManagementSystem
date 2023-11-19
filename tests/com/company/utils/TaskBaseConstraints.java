@@ -28,7 +28,6 @@ public class TaskBaseConstraints {
 
     public static final String INVALID_TITLE = TestUtilities.getString(TITLE_LEN_MIN - 1);
     public static final String INVALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_LEN_MIN - 1);
-    public static final String INVALID_RATING = TestUtilities.getString(5);
 
 
 }
