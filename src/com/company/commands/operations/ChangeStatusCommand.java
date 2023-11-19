@@ -29,7 +29,7 @@ public class ChangeStatusCommand implements Command {
 
         taskManagementSystemRepository.findTaskById(id).changeStatus(status);
 
-        return String.format(CommandConstants.STATUS_CHANGED_MESSAGE, id);
+        return String.format(CommandConstants.ENUM_CHANGED_MESSAGE, CommandConstants.STATUS, id);
     }
 
     private void parseParameters(List<String> parameters) {
