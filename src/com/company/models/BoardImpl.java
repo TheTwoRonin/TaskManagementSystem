@@ -16,7 +16,6 @@ public class BoardImpl implements Board {
         private final List<Activity> activityHistory;
 
         public BoardImpl(String name) {
-            //TODO Check if name unique, should be done in the Repository
             setName(name);
             this.tasks = new ArrayList<>();
             this.activityHistory = new ArrayList<>();

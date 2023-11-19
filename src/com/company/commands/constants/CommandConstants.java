@@ -22,6 +22,4 @@ public class CommandConstants {
     public static final String TASK_PRIORITY_ERR = "Task with ID %d cannot does not have priority attribute!";
     public static final String ENUM_CHANGED_MESSAGE = "%s of task with ID %d changed successfully.";
 
-
-
 }

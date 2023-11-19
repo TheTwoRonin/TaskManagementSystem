@@ -11,12 +11,15 @@ public class ActivityImpl implements Activity {
     private final LocalDateTime timestamp;
 
     public ActivityImpl(String description) {
+        checkDescription(description);
+        this.description = description;
+        this.timestamp = LocalDateTime.now();
+    }
+
+    private void checkDescription(String description){
         if (description.isEmpty()) {
             throw new IllegalArgumentException("Description cannot be empty");
         }
-
-        this.description = description;
-        this.timestamp = LocalDateTime.now();
     }
 
     @Override
