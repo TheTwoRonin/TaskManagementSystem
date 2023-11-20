@@ -32,7 +32,7 @@ public class CreateFeedbackCommand implements Command {
         parseParameters(parameters);
 
         Feedback createdFeedback = taskManagementSystemRepository.createFeedback(title, description, rating);
-
+// TODO: 20.11.2023 г. add task to board
         return String.format(CommandConstants.TASK_CREATED_MESSAGE, FEEDBACK, createdFeedback.getId());
     }
 

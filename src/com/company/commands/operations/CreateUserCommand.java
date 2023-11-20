@@ -3,14 +3,11 @@ package com.company.commands.operations;
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.Feedback;
 import com.company.models.contracts.User;
-import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.CommandConstants.FEEDBACK;
 import static com.company.commands.constants.CommandConstants.USER;
 
 public class CreateUserCommand implements Command {
