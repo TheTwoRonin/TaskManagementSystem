@@ -19,6 +19,7 @@ public class AddCommentCommand implements Command {
     private String content;
     private String author;
 
+    // TODO: 20.11.2023 г. to fix, cant add more than 1 word for content
 
     public AddCommentCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
