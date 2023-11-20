@@ -1,6 +1,8 @@
-package com.company.models;
+package com.company.models.named;
 
-import com.company.models.contracts.*;
+import com.company.models.contracts.Board;
+import com.company.models.contracts.Team;
+import com.company.models.contracts.User;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;

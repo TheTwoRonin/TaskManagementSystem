@@ -1,12 +1,12 @@
 package com.company.utils;
 
-import com.company.models.CommentImpl;
 import com.company.models.UserImplTests;
 import com.company.models.contracts.Comment;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Size;
+import com.company.models.idd.CommentImpl;
 
 import java.util.List;
 

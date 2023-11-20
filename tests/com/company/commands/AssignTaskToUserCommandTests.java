@@ -21,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AssignTaskToUserCommandTests {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 2;
-
     private Command command;
     private TaskManagementSystemRepository repository;
     private Story story;

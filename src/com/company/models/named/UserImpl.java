@@ -1,6 +1,6 @@
-package com.company.models;
+package com.company.models.named;
 
-import com.company.models.contracts.Activity;
+import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
 import com.company.models.contracts.User;
 import com.company.utils.ValidationHelpers;
@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserImpl implements User {
-
+    //TODO Generate activities
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
     private String name;
     private final List<Task> tasks;
-    private final List<Activity> activityHistory;
+    private final List<Log> activityHistory;
 
     public UserImpl(String name) {
         setName(name);
@@ -26,28 +26,26 @@ public class UserImpl implements User {
         ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], "Name");
         this.name = name;
     }
-
-    public void assignTask(Task task) {
-        tasks.add(task);
-    }
-
-    public void addActivity(Activity activity) {
-        activityHistory.add(activity);
-    }
-
-
     @Override
     public String getName() {
         return this.name;
+    }
+
+    public void assignTask(Task task) {
+        tasks.add(task);
     }
 
     @Override
     public List<Task> getTasks() {
         return new ArrayList<>(tasks);
     }
+    @Override
+    public void addActivity(Log activity) {
+        activityHistory.add(activity);
+    }
 
     @Override
-    public List<Activity> getActivityHistory() {
+    public List<Log> getActivityHistory() {
         return new ArrayList<>(activityHistory);
     }
 }

@@ -3,11 +3,16 @@ package com.company.core;
 import com.company.commands.constants.CommandConstants;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;
-import com.company.models.*;
 import com.company.models.contracts.*;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Size;
+import com.company.models.idd.BugImpl;
+import com.company.models.idd.FeedbackImpl;
+import com.company.models.idd.StoryImpl;
+import com.company.models.named.BoardImpl;
+import com.company.models.named.TeamImpl;
+import com.company.models.named.UserImpl;
 
 import java.util.ArrayList;
 import java.util.List;

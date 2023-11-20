@@ -3,7 +3,9 @@ package com.company.models;
 import com.company.models.contracts.Bug;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
+import com.company.models.idd.BugImpl;
 import com.company.utils.TestUtilities;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -87,10 +89,12 @@ public class BugImplTests {
     }
 
     @Test
-    public void getChanges_Should_ReturnCopyOfTheCollection() {
-        // TODO: 18.11.2023 г. add activity when implemented
-//        bug.getChanges().add()
+    public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
+        Assertions.assertNotSame(bug.getActivityHistory(), bug.getActivityHistory());
+    }
 
-        assertEquals(0, bug.getChanges().size());
+    @Test
+    public void getActivityHistory_Should_Have_Item_After_Creation() {
+        Assertions.assertEquals(1, bug.getActivityHistory().size());
     }
 }

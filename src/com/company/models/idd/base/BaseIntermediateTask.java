@@ -1,4 +1,4 @@
-package com.company.models;
+package com.company.models.idd.base;
 
 import com.company.models.contracts.IntermediateTask;
 import com.company.models.contracts.User;

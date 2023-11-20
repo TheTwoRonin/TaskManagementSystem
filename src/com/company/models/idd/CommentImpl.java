@@ -1,4 +1,4 @@
-package com.company.models;
+package com.company.models.idd;
 
 import com.company.models.contracts.Comment;
 

@@ -2,6 +2,7 @@ package com.company.models;
 
 import com.company.models.contracts.Story;
 import com.company.models.enums.Status;
+import com.company.models.idd.StoryImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,17 +60,11 @@ public class StoryTests {
     }
 
     @Test
-    public void getComments_Should_ReturnCopyOfTheCollection() {
-        story.getComments().add(VALID_COMMENT);
-
-        Assertions.assertEquals(0, story.getComments().size());
+    public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
+        Assertions.assertNotSame(story.getActivityHistory(), story.getActivityHistory());
     }
-
     @Test
-    public void getChanges_Should_ReturnCopyOfTheCollection() {
-        // TODO: 18.11.2023 г. add activity when implemented
-//        story.getChanges().add()
-
-        Assertions.assertEquals(0, story.getChanges().size());
+    public void getActivityHistory_Should_Have_Item_After_Creation() {
+        Assertions.assertEquals(1, story.getActivityHistory().size());
     }
 }

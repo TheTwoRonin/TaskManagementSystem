@@ -1,7 +1,7 @@
-package com.company.models;
+package com.company.models.idd.base;
 
-import com.company.models.contracts.Activity;
 import com.company.models.contracts.Comment;
+import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
 import com.company.models.enums.Status;
 import com.company.utils.ValidationHelpers;
@@ -21,7 +21,7 @@ public abstract class BaseTask implements Task {
     private String description;
     private Status status;
     private final List<Comment> comments;
-    private final List<Activity> changes;
+    private final List<Log> activityHistory;
 
 
     public BaseTask(int id, String title, String description, Status status) {
@@ -30,7 +30,7 @@ public abstract class BaseTask implements Task {
         setDescription(description);
         this.status = status;
         this.comments = new ArrayList<>();
-        this.changes = new ArrayList<>();
+        this.activityHistory = new ArrayList<>();
     }
 
     private void setTitle(String title) {
@@ -71,11 +71,6 @@ public abstract class BaseTask implements Task {
     }
 
     @Override
-    public List<Activity> getChanges() {
-        return new ArrayList<>(changes);
-    }
-
-    @Override
     public void addComment(Comment comment) {
         comments.add(comment);
     }
@@ -86,7 +81,12 @@ public abstract class BaseTask implements Task {
     }
 
     @Override
-    public void addActivity(Activity change) {
-        this.changes.add(change);
+    public void addActivity(Log activity) {
+        this.activityHistory.add(activity);
+    }
+
+    @Override
+    public List<Log> getActivityHistory() {
+        return new ArrayList<>(activityHistory);
     }
 }

@@ -3,7 +3,7 @@ package com.company.commands.operations.modification;
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.CommentImpl;
+import com.company.models.idd.CommentImpl;
 import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
