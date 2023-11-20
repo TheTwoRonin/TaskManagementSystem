@@ -8,6 +8,7 @@ public class NamingConstraints {
 
     public static final String VALID_NAME = TestUtilities.getString(NAME_LEN_MIN_MAX[0] + 1);
 
+    public static final String VALID_NAME2 = TestUtilities.getString(NAME_LEN_MIN_MAX[0] + 2);
     public static final String VALID_BOARD_NAME = TestUtilities.getString(BOARD_NAME_LEN_MIN_MAX[0] + 1);
 
     public static final String INVALID_NAME_TOO_SHORT = TestUtilities.getString(NAME_LEN_MIN_MAX[0] - 1);

@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.company.utils.NamingConstraints.*;
+import static com.company.utils.NamingConstraints.VALID_NAME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -33,6 +33,12 @@ public class CreateUserCommandTests {
         command.execute(params);
 
         assertEquals(VALID_NAME, repository.getUsers().get(0).getName());
+    }
+
+    @Test
+    public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
+        List<String> params = TestUtilities.getList(EXPECTED_NUMBER_OF_ARGUMENTS - 1);
+        assertThrows(IllegalArgumentException.class, () -> command.execute(params));
     }
 
     @Test

@@ -4,6 +4,7 @@ import com.company.commands.contracts.Command;
 import com.company.commands.operations.CreateBoardCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
+import com.company.utils.TestUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +34,12 @@ public class CreateBoardCommandTests {
         command.execute(params);
 
         assertEquals(VALID_NAME, repository.findTeamByName(VALID_NAME).getBoards().get(0).getName());
+    }
+
+    @Test
+    public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
+        List<String> params = TestUtilities.getList(EXPECTED_NUMBER_OF_ARGUMENTS - 1);
+        assertThrows(IllegalArgumentException.class, () -> command.execute(params));
     }
 
     @Test
