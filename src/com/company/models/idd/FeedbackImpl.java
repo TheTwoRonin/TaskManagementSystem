@@ -41,6 +41,6 @@ public class FeedbackImpl extends BaseTask implements Feedback {
         int old_rating = getRating();
         this.rating = rating;
         addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
-                .formatted(FEEDBACK, getId(), RATING, old_rating, getRating())));
+                .formatted(FEEDBACK, getId(), RATING, Integer.toString(old_rating), Integer.toString(getRating()))));
     }
 }
