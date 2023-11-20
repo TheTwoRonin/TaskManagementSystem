@@ -29,4 +29,9 @@ public class StoryImpl extends BaseIntermediateTask implements Story {
             throw new IllegalArgumentException(INVALID_STATUS_ERR);
         super.changeStatus(status);
     }
+
+    @Override
+    public void changeSize(Size size) {
+        this.size = size;
+    }
 }

@@ -37,8 +37,8 @@ public class CreateStoryCommand implements Command {
         parseParameters(parameters);
 
         Story createdStory = taskManagementSystemRepository.createStory(title, description, assignee, priority, size);
-        // TODO: 19.11.2023 г. add task to user
-//        assignee.addTask(createdStory);
+
+        assignee.assignTask(createdStory);
         // TODO: 20.11.2023 г. add task to board
 
         return String.format(CommandConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());

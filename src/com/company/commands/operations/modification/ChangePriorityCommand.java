@@ -4,7 +4,6 @@ import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.IntermediateTask;
-import com.company.models.contracts.Task;
 import com.company.models.enums.Priority;
 import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
@@ -31,10 +30,9 @@ public class ChangePriorityCommand implements Command {
 
         parseParameters(parameters);
 
-        Task task = taskManagementSystemRepository.findTaskById(id);
-        if (!(task instanceof IntermediateTask))
-            throw new IllegalArgumentException(String.format(CommandConstants.TASK_PRIORITY_ERR, id));
-        ((IntermediateTask) task).changePriority(priority);
+        IntermediateTask task = taskManagementSystemRepository.findIntermediateTaskById(id);
+
+        task.changePriority(priority);
         return String.format(CommandConstants.ENUM_CHANGED_MESSAGE, CommandConstants.PRIORITY, id);
     }
 

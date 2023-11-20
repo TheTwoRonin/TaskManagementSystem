@@ -42,7 +42,7 @@ public class CreateBugCommand implements Command {
 
         Bug createdBug = taskManagementSystemRepository.createBug(title, description, assignee, priority,
                 severity, steps);
-        // TODO: 19.11.2023 г. add task to user
+
         assignee.assignTask(createdBug);
 // TODO: 20.11.2023 г. add task to board
 
