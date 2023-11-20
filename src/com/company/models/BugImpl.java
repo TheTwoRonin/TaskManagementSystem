@@ -14,13 +14,14 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
     private static final String INVALID_STATUS_ERR = "Invalid status, can be Active or Done";
 
     private Severity severity;
-    private List<String> steps;
+    private final List<String> steps;
 
     public BugImpl(int id, String title, String description,
                    User assignee, Priority priority, Severity severity, List<String> steps) {
         super(id, title, description, Status.ACTIVE, assignee, priority);
         this.severity = severity;
         this.steps = new ArrayList<>(steps);
+
     }
 
     @Override
@@ -45,3 +46,5 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
         this.severity = severity;
     }
 }
+// TODO: 20.11.2023 г. setters?
+// TODO: 20.11.2023 г. split commands to packages

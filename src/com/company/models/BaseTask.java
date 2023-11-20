@@ -84,4 +84,9 @@ public abstract class BaseTask implements Task {
     public void changeStatus(Status status) {
         this.status = status;
     }
+
+    @Override
+    public void addActivity(Activity change) {
+        this.changes.add(change);
+    }
 }

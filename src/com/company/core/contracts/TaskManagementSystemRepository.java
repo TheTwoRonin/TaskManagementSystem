@@ -36,7 +36,9 @@ public interface TaskManagementSystemRepository {
     Board findBoardByName(String name);
 
     void userIsUnique(String name);
+
     void teamIsUnique(String name);
+
     //void boardIsUniqueInTeam(String name);
     void boardIsUniqueInTeam(String name, Team team);
     //TODO Implement generics
@@ -44,4 +46,12 @@ public interface TaskManagementSystemRepository {
     // <T> void isUnique(List<T> elements, String name);
 
     Task findTaskById(int id);
+
+    Bug findBugById(int id);
+
+    Story findStoryById(int id);
+
+    Feedback findFeedbackById(int id);
+
+    IntermediateTask findIntermediateTaskById(int id);
 }
