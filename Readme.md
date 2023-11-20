@@ -20,7 +20,7 @@ createteam Otbor4eto
 createboard D1ska
 ```
 
-4.Create FEEDBACK:
+4. Create FEEDBACK:
 
 ```
 createfeedback Obratnavruzka primerendescription 5
@@ -49,6 +49,8 @@ createboard D1ska
 createfeedback Obratnavruzka primerendescription 5
 assigntasktouser 1 Glucimir
 addusertoteam Glucimir Otbor4eto
+exit
+
 
 ```
 
@@ -64,5 +66,7 @@ Invalid number of arguments. Expected: 2; received: 1.
 Feedback with ID 1 was created.
 ####################
 Task with ID 1 added to user Glucimir successfully.
+####################
+User Glucimir added to team Otbor4eto successfully.
 ####################
 ```

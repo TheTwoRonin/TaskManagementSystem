@@ -20,6 +20,7 @@ public class CommandConstants {
     public static final String TASK_NOT_FOUND_ERR = "No task with id %d found.";
     public final static String COMMENT_ADDED_MESSAGE = "%s added comment successfully.";
     public final static String USER_ADDED_TO_TEAM_MESSAGE = "User \033[3m%s\033[0m added to team \033[3m%s\033[0m successfully.";
+    public final static String TASK_ASSIGNED_TO_USER_MESSAGE = "Task with ID \033[3m%d\033[0m added to user \033[3m%s\033[0m successfully.";
     public static final String TASK_PRIORITY_ERR = "Task with ID %d cannot does not have priority attribute!";
     public static final String ENUM_CHANGED_MESSAGE = "%s of task with ID %d changed successfully.";
 
