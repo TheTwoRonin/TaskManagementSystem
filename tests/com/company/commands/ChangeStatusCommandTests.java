@@ -1,10 +1,10 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.CreateFeedbackCommand;
+import com.company.commands.operations.ChangeStatusCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.utils.CommandConstraints;
+import com.company.models.enums.Status;
 import com.company.utils.TaskBaseConstraints;
 import com.company.utils.TestUtilities;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,9 +12,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static com.company.utils.CommandConstraints.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CreateFeedbackCommandTests {
+public class ChangeStatusCommandTests {
+
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 3;
 
 
@@ -24,17 +27,19 @@ public class CreateFeedbackCommandTests {
     @BeforeEach
     public void before() {
         this.repository = new TaskManagementSystemRepositoryImpl();
-        this.command = new CreateFeedbackCommand(repository);
+        this.command = new ChangeStatusCommand(repository);
+        this.repository.createBug(TaskBaseConstraints.VALID_TITLE, TaskBaseConstraints.VALID_DESCRIPTION,
+                TaskBaseConstraints.VALID_ASSIGNEE, TaskBaseConstraints.VALID_PRIORITY,
+                TaskBaseConstraints.VALID_SEVERITY, TaskBaseConstraints.VALID_STEPS);
     }
 
-//    @Test
-//    public void execute_Should_CreateFeedback_When_ArgumentsAreValid() {
-//               // TODO: 18.11.2023 г. add user to repo when implemented
-//        List<String> params = List.of(TaskBaseConstraints.VALID_TITLE, TaskBaseConstraints.VALID_DESCRIPTION,
-//                VALID_ASSIGNEE_STR, VALID_PRIORITY_STR, VALID_SEVERITY_STR, VALID_STEPS);
-//        command.execute(params);
-//        assertEquals(1, repository.getTasks().size());
-//    }
+    @Test
+    public void execute_Should_ChangeStatus_When_ArgumentsAreValid() {
+
+        List<String> params = List.of(VALID_NUM_STR, VALID_STATUS_STR);
+        command.execute(params);
+        assertEquals(Status.DONE, repository.findTaskById(TaskBaseConstraints.VALID_ID).getStatus());
+    }
 
     @Test
     public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
@@ -43,9 +48,8 @@ public class CreateFeedbackCommandTests {
     }
 
     @Test
-    public void execute_Should_ThrowException_When_RatingNonNumber() {
-        List<String> params = List.of(TaskBaseConstraints.VALID_TITLE, TaskBaseConstraints.VALID_DESCRIPTION,
-                CommandConstraints.INVALID_NUM_STR);
+    public void should_ThrowException_When_StatusNotValid() {
+        List<String> params = List.of(VALID_NUM_STR, INVALID_ENUM);
         assertThrows(IllegalArgumentException.class, () -> command.execute(params));
     }
 }

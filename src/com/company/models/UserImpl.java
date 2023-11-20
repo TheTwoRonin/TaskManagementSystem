@@ -11,16 +11,11 @@ import java.util.List;
 public class UserImpl implements User {
 
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
-    private final int id;
     private String name;
     private final List<Task> tasks;
     private final List<Activity> activityHistory;
 
-    public UserImpl(int id, String name) {
-        this.id = id;
-        //TODO Check if name unique, should be done in the Repository
-        //no need for id since name is unique?
-
+    public UserImpl(String name) {
         setName(name);
         this.tasks = new ArrayList<>();
         this.activityHistory = new ArrayList<>();
@@ -32,19 +27,14 @@ public class UserImpl implements User {
         this.name = name;
     }
 
-    public void addTask(Task task) {
+    public void assignTask(Task task) {
         tasks.add(task);
     }
 
-    private void addActivity(Activity activity) {
+    public void addActivity(Activity activity) {
         activityHistory.add(activity);
     }
 
-
-    @Override
-    public int getId() {
-        return this.id;
-    }
 
     @Override
     public String getName() {

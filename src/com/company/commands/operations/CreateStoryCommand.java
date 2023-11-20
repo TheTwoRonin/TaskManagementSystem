@@ -1,4 +1,4 @@
-package com.company.commands;
+package com.company.commands.operations;
 
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
@@ -12,11 +12,11 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.CommandConstants.BUG;
+import static com.company.commands.constants.CommandConstants.STORY;
 
 public class CreateStoryCommand implements Command {
 
-    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 6;
+    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 5;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
@@ -37,8 +37,9 @@ public class CreateStoryCommand implements Command {
         parseParameters(parameters);
 
         Story createdStory = taskManagementSystemRepository.createStory(title, description, assignee, priority, size);
-
-        return String.format(CommandConstants.TASK_CREATED_MESSAGE, BUG, createdStory.getId());
+        // TODO: 19.11.2023 г. add task to user
+//        assignee.addTask(createdStory);
+        return String.format(CommandConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());
     }
 
     private void parseParameters(List<String> parameters) {

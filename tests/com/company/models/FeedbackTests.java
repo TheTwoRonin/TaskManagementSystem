@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.company.utils.TaskBaseConstraints.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FeedbackTests {
 
@@ -19,19 +21,18 @@ public class FeedbackTests {
     }
 
     @Test
-    public void constructor_Should_InitializeTitle_When_ArgumentsAreValid() {
-        Assertions.assertEquals(VALID_TITLE, feedback.getTitle());
+    public void should_CreateBug_When_ArgumentsAreValid() {
+        assertAll(
+                () -> assertEquals(VALID_ID, feedback.getId()),
+                () -> assertEquals(VALID_TITLE, feedback.getTitle()),
+                () -> assertEquals(VALID_DESCRIPTION, feedback.getDescription()),
+                () -> assertEquals(VALID_RATING, feedback.getRating()));
     }
 
     @Test
     public void constructor_Should_ThrowException_When_TitleIsShorterThanExpected() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new FeedbackImpl(VALID_ID, INVALID_TITLE,
                 VALID_DESCRIPTION, VALID_RATING));
-    }
-
-    @Test
-    public void constructor_Should_InitializeDescription_When_ArgumentsAreValid() {
-        Assertions.assertEquals(VALID_DESCRIPTION, feedback.getDescription());
     }
 
     @Test

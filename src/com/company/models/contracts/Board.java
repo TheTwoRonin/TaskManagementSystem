@@ -2,7 +2,7 @@ package com.company.models.contracts;
 
 import java.util.List;
 
-public interface Board extends Identifiable{
+public interface Board extends Nameable {
 
     String getName();
 

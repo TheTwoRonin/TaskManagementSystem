@@ -8,16 +8,11 @@ import java.util.List;
 
 public class TeamImpl implements Team {
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
-    private final int id;
     private String name;
     private final List<User> members;
     private final List<Board> boards;
 
-    TeamImpl(int id, String name) {
-        this.id = id;
-        //TODO Check if name unique, should be done in the Repository
-        //no need for id since name is unique?
-
+    public TeamImpl(String name) {
         setName(name);
         this.members = new ArrayList<>();
         this.boards = new ArrayList<>();
@@ -33,13 +28,8 @@ public class TeamImpl implements Team {
         this.members.add(user);
     }
 
-    private void addBoard(Board board) {
+    public void addBoard(Board board) {
         this.boards.add(board);
-    }
-
-    @Override
-    public int getId() {
-        return this.id;
     }
 
     @Override

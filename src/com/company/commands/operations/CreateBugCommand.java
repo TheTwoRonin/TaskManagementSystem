@@ -1,4 +1,4 @@
-package com.company.commands;
+package com.company.commands.operations;
 
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
@@ -42,6 +42,8 @@ public class CreateBugCommand implements Command {
 
         Bug createdBug = taskManagementSystemRepository.createBug(title, description, assignee, priority,
                 severity, steps);
+        // TODO: 19.11.2023 г. add task to user
+//        assignee.addTask(createdBug);
 
         return String.format(CommandConstants.TASK_CREATED_MESSAGE, BUG, createdBug.getId());
     }

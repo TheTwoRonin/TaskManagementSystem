@@ -1,4 +1,4 @@
-package com.company.commands;
+package com.company.commands.operations;
 
 import com.company.commands.contracts.Command;
 

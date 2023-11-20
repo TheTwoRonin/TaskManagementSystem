@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.company.utils.TaskBaseConstraints.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StoryTests {
 
@@ -18,8 +20,14 @@ public class StoryTests {
     }
 
     @Test
-    public void constructor_Should_InitializeTitle_When_ArgumentsAreValid() {
-        Assertions.assertEquals(VALID_TITLE, story.getTitle());
+    public void should_CreateBug_When_ArgumentsAreValid() {
+        assertAll(
+                () -> assertEquals(VALID_ID, story.getId()),
+                () -> assertEquals(VALID_TITLE, story.getTitle()),
+                () -> assertEquals(VALID_DESCRIPTION, story.getDescription()),
+                () -> assertEquals(VALID_ASSIGNEE, story.getAssignee()),
+                () -> assertEquals(VALID_PRIORITY, story.getPriority()),
+                () -> assertEquals(VALID_SIZE, story.getSize()));
     }
 
     @Test
