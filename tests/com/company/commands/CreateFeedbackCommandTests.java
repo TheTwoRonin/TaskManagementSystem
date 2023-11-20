@@ -1,7 +1,7 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.CreateFeedbackCommand;
+import com.company.commands.operations.creation.CreateFeedbackCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.utils.CommandConstraints;

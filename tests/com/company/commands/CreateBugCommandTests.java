@@ -1,7 +1,7 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.CreateBugCommand;
+import com.company.commands.operations.creation.CreateBugCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;
@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static com.company.utils.CommandConstraints.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CreateBugCommandTests {

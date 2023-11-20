@@ -1,24 +1,29 @@
-package com.company.commands.operations;
+package com.company.commands.operations.modification;
 
-import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.Board;
 import com.company.models.contracts.Team;
+import com.company.models.contracts.User;
 import com.company.utils.ValidationHelpers;
-import java.util.List;
-import static com.company.commands.constants.CommandConstants.BOARD;
 
-public class CreateBoardCommand implements Command {
+import java.util.List;
+
+import static com.company.commands.constants.CommandConstants.USER_ADDED_TO_TEAM_MESSAGE;
+
+public class AddUserToTeamCommand implements Command {
+
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 2;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
-    private String name;
+
+    private User user;
+
     private Team team;
 
-    public CreateBoardCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
+    public AddUserToTeamCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
     }
+
 
     @Override
     public String execute(List<String> parameters) {
@@ -26,16 +31,12 @@ public class CreateBoardCommand implements Command {
 
         parseParameters(parameters);
 
-        taskManagementSystemRepository.boardIsUniqueInTeam(name, team);
-
-        Board createdBoard = taskManagementSystemRepository.createBoard(name, team);
-
-        return String.format(CommandConstants.CREATED_W_NAME_MESSAGE, BOARD, createdBoard.getName());
+        team.addMember(user);
+        return USER_ADDED_TO_TEAM_MESSAGE.formatted(user.getName(), team.getName());
     }
 
     private void parseParameters(List<String> parameters) {
-        name = parameters.get(0);
+        user = taskManagementSystemRepository.findUserByName(parameters.get(0));
         team = taskManagementSystemRepository.findTeamByName(parameters.get(1));
     }
-
 }

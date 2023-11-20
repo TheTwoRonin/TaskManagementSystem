@@ -1,22 +1,20 @@
-package com.company.commands.operations;
+package com.company.commands.operations.creation;
 
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.User;
+import com.company.models.contracts.Team;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.CommandConstants.USER;
+import static com.company.commands.constants.CommandConstants.TEAM;
 
-public class CreateUserCommand implements Command {
-
+public class CreateTeamCommand implements Command {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
-
     private final TaskManagementSystemRepository taskManagementSystemRepository;
     private String name;
-    public CreateUserCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
+    public CreateTeamCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
     }
 
@@ -26,11 +24,11 @@ public class CreateUserCommand implements Command {
 
         parseParameters(parameters);
 
-        taskManagementSystemRepository.userIsUnique(name);
+        taskManagementSystemRepository.teamIsUnique(name);
 
-        User createdUser = taskManagementSystemRepository.createUser(name);
+        Team createdTeam = taskManagementSystemRepository.createTeam(name);
 
-        return String.format(CommandConstants.CREATED_W_NAME_MESSAGE, USER, createdUser.getName());
+        return String.format(CommandConstants.CREATED_W_NAME_MESSAGE, TEAM, createdTeam.getName());
     }
 
     private void parseParameters(List<String> parameters) {

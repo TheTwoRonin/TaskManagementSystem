@@ -1,7 +1,7 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.ChangePriorityCommand;
+import com.company.commands.operations.modification.ChangePriorityCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.IntermediateTask;

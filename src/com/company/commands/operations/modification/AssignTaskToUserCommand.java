@@ -1,8 +1,8 @@
-package com.company.commands.operations;
+package com.company.commands.operations.modification;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.Task;
+import com.company.models.contracts.IntermediateTask;
 import com.company.models.contracts.User;
 import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
@@ -17,7 +17,8 @@ public class AssignTaskToUserCommand implements Command {
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
-    private Task task;
+    //TODO should it be intermediate or Task?
+    private IntermediateTask task;
 
     private User user;
 
@@ -39,7 +40,7 @@ public class AssignTaskToUserCommand implements Command {
 
     private void parseParameters(List<String> parameters) {
         int taskId = ParsingHelpers.tryParseInt(parameters.get(0), INVALID_INPUT_MESSAGE);
-        task = taskManagementSystemRepository.findTaskById(taskId);
+        task = (IntermediateTask) taskManagementSystemRepository.findTaskById(taskId);
         user = taskManagementSystemRepository.findUserByName(parameters.get(1));
     }
 }

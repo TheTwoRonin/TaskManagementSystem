@@ -1,27 +1,26 @@
-package com.company.commands.operations;
+package com.company.commands.operations.modification;
 
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.IntermediateTask;
+import com.company.models.contracts.Bug;
 import com.company.models.contracts.Task;
-import com.company.models.enums.Priority;
+import com.company.models.enums.Severity;
 import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-
-public class ChangePriorityCommand implements Command {
+public class ChangeSeverityCommand implements Command {
 
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 2;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
     private int id;
-    private Priority priority;
+    private Severity severity;
 
-    public ChangePriorityCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
+    public ChangeSeverityCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
     }
 
@@ -32,14 +31,14 @@ public class ChangePriorityCommand implements Command {
         parseParameters(parameters);
 
         Task task = taskManagementSystemRepository.findTaskById(id);
-        if (!(task instanceof IntermediateTask))
+        if (!(task instanceof Bug))
             throw new IllegalArgumentException(String.format(CommandConstants.TASK_PRIORITY_ERR, id));
-        ((IntermediateTask) task).changePriority(priority);
-        return String.format(CommandConstants.ENUM_CHANGED_MESSAGE, CommandConstants.PRIORITY, id);
+        ((Bug) task).changeSeverity(severity);
+        return String.format(CommandConstants.ENUM_CHANGED_MESSAGE, CommandConstants.SEVERITY, id);
     }
 
     private void parseParameters(List<String> parameters) {
         id = ParsingHelpers.tryParseInt(parameters.get(0), CommandConstants.INVALID_INPUT_MESSAGE);
-        priority = ParsingHelpers.tryParseEnum(parameters.get(1), Priority.class);
+        severity = ParsingHelpers.tryParseEnum(parameters.get(1), Severity.class);
     }
 }

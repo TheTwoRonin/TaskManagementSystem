@@ -127,6 +127,8 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
                 throw new IllegalArgumentException("Board with this name has been already created.");
             }
     }
+
+    //TODO Rebuild to work for all
     @Override
     public Task findTaskById(int id) {
         return tasks.stream().filter(t -> t.getId() == id).findAny()

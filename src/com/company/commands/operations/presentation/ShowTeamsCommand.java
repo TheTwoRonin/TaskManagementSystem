@@ -1,4 +1,4 @@
-package com.company.commands.operations;
+package com.company.commands.operations.presentation;
 
 import com.company.commands.contracts.Command;
 

@@ -1,13 +1,11 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.ChangeSeverityCommand;
+import com.company.commands.operations.modification.ChangeSeverityCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.Bug;
-import com.company.models.contracts.IntermediateTask;
 import com.company.models.enums.Severity;
-import com.company.models.enums.Status;
 import com.company.utils.TaskBaseConstraints;
 import com.company.utils.TestUtilities;
 import org.junit.jupiter.api.BeforeEach;

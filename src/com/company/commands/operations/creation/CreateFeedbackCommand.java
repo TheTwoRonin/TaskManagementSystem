@@ -1,4 +1,4 @@
-package com.company.commands.operations;
+package com.company.commands.operations.creation;
 
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;

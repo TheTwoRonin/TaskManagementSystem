@@ -1,11 +1,11 @@
 package com.company.commands;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.AssignTaskToUserCommand;
+import com.company.commands.operations.modification.AssignTaskToUserCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;
-import com.company.models.contracts.Feedback;
+import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
 import com.company.utils.TestUtilities;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,25 +22,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class AssignTaskToUserCommandTests {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 2;
 
-
     private Command command;
     private TaskManagementSystemRepository repository;
-    private Feedback feedback;
-
-
+    private Story story;
+    private User user;
     @BeforeEach
     public void before() {
         this.repository = new TaskManagementSystemRepositoryImpl();
         this.command = new AssignTaskToUserCommand(repository);
-        this.feedback = this.repository.createFeedback(VALID_TITLE, VALID_DESCRIPTION, VALID_RATING);
-        User user = this.repository.createUser(VALID_NAME);
+        this.user = this.repository.createUser(VALID_NAME);
+        this.story = this.repository.createStory(VALID_TITLE, VALID_DESCRIPTION, user, VALID_PRIORITY, VALID_SIZE);
+
     }
 
     @Test
-    public void execute_Should_AddUserToTeam_When_ArgumentsAreValid() {
+    public void execute_Should_AssignTaskToUser_When_ArgumentsAreValid() {
         List<String> params = List.of(ID_1_STR, VALID_NAME);
         command.execute(params);
-        assertSame(feedback, repository.findUserByName(VALID_NAME).getTasks().get(0));
+        assertSame(story, repository.findUserByName(VALID_NAME).getTasks().get(0));
     }
 
     @Test
