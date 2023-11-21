@@ -77,9 +77,8 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
 
     @Override
     public String toString() {
-        String sb = getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "\n" +
-                getSeverity() + "\n" +
-                ParsingHelpers.tryParseList(getSteps());
+        String sb = getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "Severity: " + getSeverity() + "\n" +
+                ParsingHelpers.tryParseList(getSteps()) + "\n";
         return sb;
     }
 }

@@ -1,5 +1,22 @@
 package com.company.models.enums;
 
 public enum Priority {
-    HIGH, MEDIUM, LOW
+    HIGH,
+    MEDIUM,
+    LOW;
+
+    @Override
+    public String toString() {
+        switch (this) {
+            case HIGH:
+                return "High";
+            case MEDIUM:
+                return "Medium";
+            case LOW:
+                return "Low";
+            default:
+                throw new UnsupportedOperationException("Nz, ti si znaesh.");
+        }
+    }
+
 }

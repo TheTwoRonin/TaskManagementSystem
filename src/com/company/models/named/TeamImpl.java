@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TeamImpl implements Team {
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
-    private static final String TO_STRING = "Team name: %s%nMembers: %s%nBoards: %s%n";
+    private static final String TO_STRING = "Team name: %s%nMembers: %n%s%nBoards: %n%s%n";
     private String name;
     private final List<User> members;
     private final List<Board> boards;

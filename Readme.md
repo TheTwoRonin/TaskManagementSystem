@@ -17,13 +17,13 @@ createteam Otbor4eto
 3. Create BOARD:
 
 ```
-createboard D1ska
+createboard Duska
 ```
 
 4. Create FEEDBACK:
 
 ```
-createfeedback Obratnavruzka primerendescription 5
+createfeedback Obratnavruzka primerendescription 5 Duska
 ```
 
 4. Create STORY:
@@ -112,8 +112,38 @@ User Glucimir added to team Otbor4eto successfully.
 ```
 createuser Petar
 createteam Otbor
+addusertoteam Petar Otbor
 createboard Duska Otbor
 createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor 1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata Duska
-createstory {{Istoriya Slavyanobolgarskaya}} {{Story za ig}} high medium inprogress Petar Duska
+createstory {{Istoriya Slavyanobolgarskaya}} {{Story za ig}} Petar high medium Duska
+createfeedback Obratnavruzka primerendescription 5 Duska
 showteamboards Otbor
+showboardactivity Duska
+showteamactivity Otbor
+```
+
+```
+createboard Stena Otbor
+createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor 1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata Stena
+createstory {{Istoriya Slavyanobolgarskaya}} {{Story za ig}} Petar high medium Stena
+createfeedback Obratnavruzka primerendescription 5 Stena
+```
+
+# Show Team Members/Users/UserActivity command input:
+
+```
+createuser Petar
+createuser Talpata
+createuser Didakamf
+createuser {{Ongo Bongo}}
+createteam Otbor
+createteam Teamcheto
+addusertoteam Petar Otbor
+addusertoteam Talpata Otbor
+addusertoteam Didakamf Otbor
+addusertoteam {{Ongo Bongo}} Teamcheto
+showteammembers Otbor
+showteams
+showusers
+showuseractivity Petar
 ```

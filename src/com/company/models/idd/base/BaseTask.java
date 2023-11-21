@@ -95,7 +95,7 @@ public abstract class BaseTask implements Task {
     public String toString() {
         return String.format(""" 
                         #ID- %d
-                        Title: %s
+                        Title: "%s"
                         Description: "%s"
                         Status: %s
                         Comments:

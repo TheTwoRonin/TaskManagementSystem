@@ -63,4 +63,9 @@ public class StoryImpl extends BaseIntermediateTask implements Story {
         addActivity(new Activity(ITEM_WITH_ID_UNASSIGNED_FROM_USER
                 .formatted(STORY, getId(), assignee.getName())));
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "Size: " + getSize() + "\n";
+    }
 }

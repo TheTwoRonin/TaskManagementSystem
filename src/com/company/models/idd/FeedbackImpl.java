@@ -43,4 +43,9 @@ public class FeedbackImpl extends BaseTask implements Feedback {
         addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
                 .formatted(FEEDBACK, getId(), RATING, Integer.toString(old_rating), Integer.toString(getRating()))));
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "Rating: " + getRating() + "\n";
+    }
 }
