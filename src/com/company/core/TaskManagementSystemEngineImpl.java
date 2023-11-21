@@ -79,13 +79,13 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
      * @return A list of the parameters needed to execute the command
      */
     private List<String> extractCommandParameters(String inputLine) {
-        if (inputLine.contains(COMMENT_OPEN_SYMBOL)) {
-            return extractCommentParameters(inputLine);
-        }
-        String[] commandParts = inputLine.split(" ");
+//        if (inputLine.contains(COMMENT_OPEN_SYMBOL)) {
+//            return extractCommentParameters(inputLine);
+//        }
+        String[] commandParts = inputLine.split("\\s+(?![^\\{\\{]*\\}\\})");
         List<String> parameters = new ArrayList<>();
         for (int i = 1; i < commandParts.length; i++) {
-            parameters.add(commandParts[i]);
+            parameters.add(commandParts[i].replaceAll("[{}]", ""));
         }
         return parameters;
     }
@@ -111,7 +111,7 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
         }
         parameters.removeAll(Arrays.asList(" ", "", null));
         return parameters;
-    }
+    }// TODO: 21.11.2023 г. fix ugly method \s+(?![^\{\{]*\}\})
 
     private void print(String result) {
         System.out.println(result);
