@@ -8,7 +8,7 @@ import com.company.models.enums.Size;
 import com.company.models.enums.Status;
 import com.company.models.idd.base.BaseIntermediateTask;
 
-import static com.company.models.ActivityConstants.*;
+import static com.company.commands.constants.ActivityConstants.*;
 
 public class StoryImpl extends BaseIntermediateTask implements Story {
 
@@ -45,5 +45,22 @@ public class StoryImpl extends BaseIntermediateTask implements Story {
         this.size = size;
         addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
                 .formatted(STORY, getId(), SIZE, old_size, getSize())));
+    }
+
+    @Override
+    public void changePriority(Priority priority) {
+        Priority old_priority = getPriority();
+        super.changePriority(priority);
+        addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
+                .formatted(STORY, getId(), PRIORITY, old_priority, getPriority())));
+    }
+
+    @Override
+    public void unassignAssignee() {
+        User assignee = getAssignee();
+        super.unassignAssignee();
+        //TODO Implement in IntermediateTask
+        addActivity(new Activity(ITEM_WITH_ID_UNASSIGNED_FROM_USER
+                .formatted(STORY, getId(), assignee.getName())));
     }
 }

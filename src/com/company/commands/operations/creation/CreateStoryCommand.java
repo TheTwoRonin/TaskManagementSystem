@@ -3,6 +3,8 @@ package com.company.commands.operations.creation;
 import com.company.commands.constants.CommandConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
+import com.company.models.Activity;
+import com.company.models.contracts.Board;
 import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
@@ -12,11 +14,13 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
+import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
+import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ASSIGNED_TO_USER;
 import static com.company.commands.constants.CommandConstants.STORY;
 
 public class CreateStoryCommand implements Command {
 
-    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 5;
+    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 6;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
@@ -25,6 +29,7 @@ public class CreateStoryCommand implements Command {
     private User assignee;
     private Priority priority;
     private Size size;
+    private Board board;
 
     public CreateStoryCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
@@ -39,7 +44,14 @@ public class CreateStoryCommand implements Command {
         Story createdStory = taskManagementSystemRepository.createStory(title, description, assignee, priority, size);
 
         assignee.assignTask(createdStory);
-        // TODO: 20.11.2023 г. add task to board
+
+        assignee.addActivity(new Activity(ITEM_WITH_ID_ASSIGNED_TO_USER
+                .formatted(STORY, createdStory.getId(), assignee.getName())));
+
+        board.addTask(createdStory);
+
+        board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
+                .formatted(STORY, createdStory.getId(), board.getName())));
 
         return String.format(CommandConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());
     }
@@ -50,6 +62,7 @@ public class CreateStoryCommand implements Command {
         assignee = taskManagementSystemRepository.findUserByName(parameters.get(2));
         priority = ParsingHelpers.tryParseEnum(parameters.get(3), Priority.class);
         size = ParsingHelpers.tryParseEnum(parameters.get(4), Size.class);
+        board = taskManagementSystemRepository.findBoardByName(parameters.get(5));
     }
 
 }

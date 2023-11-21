@@ -16,9 +16,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
+import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ASSIGNED_TO_USER;
 import static com.company.commands.constants.CommandConstants.BUG;
-import static com.company.models.ActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
-import static com.company.models.ActivityConstants.ITEM_WITH_ID_ASSIGNED_TO_USER;
 
 public class CreateBugCommand implements Command {
 
@@ -49,9 +49,12 @@ public class CreateBugCommand implements Command {
                 severity, stepsList);
 
         assignee.assignTask(createdBug);
+
         assignee.addActivity(new Activity(ITEM_WITH_ID_ASSIGNED_TO_USER
                 .formatted(BUG, createdBug.getId(), assignee.getName())));
-//        board.addTask(createdBug);todo
+
+        board.addTask(createdBug);
+
         board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
                 .formatted(BUG, createdBug.getId(), board.getName())));
 
@@ -66,20 +69,6 @@ public class CreateBugCommand implements Command {
         severity = ParsingHelpers.tryParseEnum(parameters.get(4), Severity.class);
         stepsList = Arrays.stream(String.join(" ", parameters.subList(5, parameters.size() - 1))
                 .split("((?=\\d\\.))")).collect(Collectors.toList());
-
-//        if (parameters.size() == EXPECTED_NUMBER_OF_ARGUMENTS) {
-//            stepsList = new ArrayList<>(List.of(parameters.get(5)));
-//        } else {
-//            stepsList = new ArrayList<>();
-//            for (String step : parameters.subList(5, parameters.size() - 1)) {
-//                if (step.matches("\\d\\..*")) {
-//                    stepsList.add(step);
-//                } else {
-//                    stepsList.set(stepsList.size() - 1, (stepsList.get(stepsList.size() - 1) + " " + step));
-//                }
-//            }
-//
-//        }
         board = taskManagementSystemRepository.findBoardByName(parameters.get(parameters.size() - 1));
     }
 

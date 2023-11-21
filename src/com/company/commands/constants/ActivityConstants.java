@@ -1,4 +1,4 @@
-package com.company.models;
+package com.company.commands.constants;
 
 public class ActivityConstants {
     // Types - used in placeholder
@@ -30,6 +30,6 @@ public class ActivityConstants {
 
     //Assign - used in commands
     public static String ITEM_WITH_ID_ASSIGNED_TO_USER = "%s with ID #\033[3m%d\033[0m assigned to user \033[3m%s\033[0m";
-    public static String ITEM_WITH_ID_UNASSIGNED_FROM_USER = "%s with ID #\033[3m%d\033[0m unassigned to user \033[3m%s\033[0m";
+    public static String ITEM_WITH_ID_UNASSIGNED_FROM_USER = "%s with ID #\033[3m%d\033[0m unassigned from user \033[3m%s\033[0m";
     public static String ITEM_WITH_ID_ADDED_TO_BOARD = "%s with ID #\033[3m%d\033[0m added to board \033[3m%s\033[0m";
 }
