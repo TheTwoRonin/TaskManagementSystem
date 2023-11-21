@@ -3,6 +3,7 @@ package com.company.models.named;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Team;
 import com.company.models.contracts.User;
+import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class TeamImpl implements Team {
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
+    private static final String TO_STRING = "Team name: %s%nMembers: %s%nBoards: %s%n";
     private String name;
     private final List<User> members;
     private final List<Board> boards;
@@ -47,5 +49,12 @@ public class TeamImpl implements Team {
     @Override
     public List<Board> getBoards() {
         return new ArrayList<>(boards);
+    }
+
+    @Override
+    public String toString() {
+        return String.format(TO_STRING, name,
+                ParsingHelpers.tryParseList(members),
+                ParsingHelpers.tryParseList(boards));
     }
 }
