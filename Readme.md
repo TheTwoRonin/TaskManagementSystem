@@ -38,6 +38,36 @@ addusertoteam Glucimir Otbor4eto
 assigntasktouser 1 Glucimir
 ```
 
+7. Change PRIORITY of TASK:
+
+```
+changepriority 1 medium
+```
+
+8. Change STATUS of TASK:
+
+```
+changestatus 1 done
+```
+
+9. Change SIZE of TASK:
+
+```
+changesize 1 medium
+```
+
+10. Change SEVERITY of TASK:
+
+```
+changeseverity 1 major
+```
+
+11. Change RATING of TASK:
+
+```
+changerating 1 5
+```
+
 ## WOMBO COMBO 1-7:
 
 ### Example input:
