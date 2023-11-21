@@ -12,7 +12,7 @@ import java.util.List;
 public class BoardImpl implements Board {
     //TODO Generate activities
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 10};
-    private static final String TO_STRING = "Board name: %s%nTasks:%n%s";
+    private static final String TO_STRING = "%nBoard name: %s%nTasks:%n%s";
     private final List<Task> tasks;
     private String name;
     private final List<Log> activityHistory;

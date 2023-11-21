@@ -54,4 +54,13 @@ public abstract class BaseIntermediateTask extends BaseTask implements Intermedi
         if (assignee == null)
             throw new IllegalArgumentException(NO_ASSIGNEE_ASSIGNED_ERR);
     }
+
+    @Override
+    public String toString() {
+        String sb = super.toString() + """
+                Assignee: %s
+                Priority: %s
+                """.formatted(getAssignee().getName(), getPriority());
+        return sb;
+    }
 }

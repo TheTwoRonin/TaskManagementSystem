@@ -58,6 +58,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
         Bug bug = new BugImpl(++nextId, title, description, assignee, priority, severity, steps);
         this.tasks.add(bug);
         this.bugs.add(bug);
+
         return bug;
     }
 
@@ -66,6 +67,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
         Feedback feedback = new FeedbackImpl(++nextId, title, description, rating);
         this.tasks.add(feedback);
         this.feedbacks.add(feedback);
+
         return feedback;
     }
 
@@ -74,6 +76,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
         Story story = new StoryImpl(++nextId, title, description, assignee, priority, size);
         this.tasks.add(story);
         this.stories.add(story);
+
         return story;
     }
 
@@ -81,6 +84,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     public User createUser(String name) {
         User user = new UserImpl(name);
         this.users.add(user);
+
         return user;
     }
 
@@ -88,6 +92,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     public Team createTeam(String name) {
         Team team = new TeamImpl(name);
         this.teams.add(team);
+
         return team;
     }
 
@@ -96,6 +101,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
         Board board = new BoardImpl(name);
         team.addBoard(board);
         this.boards.add(board);
+
         return board;
     }
 

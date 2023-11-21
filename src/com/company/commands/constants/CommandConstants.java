@@ -2,7 +2,7 @@ package com.company.commands.constants;
 
 public class CommandConstants {
 
-    public static final String NEW_LINE = "%n";
+    public static final String NEW_LINE = "\n------\n";
     public static final String BUG = "Bug";
     public static final String FEEDBACK = "Feedback";
     public static final String STORY = "Story";

@@ -108,4 +108,5 @@ createuser Petar
 createteam Otbor
 createboard Duska Otbor
 createbug Bug4etoetegavoo Bugavoedostaa Petar low minor 1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata Duska
+showteamboards Otbor
 ```

@@ -4,6 +4,7 @@ import com.company.models.contracts.Comment;
 import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
 import com.company.models.enums.Status;
+import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -88,5 +89,18 @@ public abstract class BaseTask implements Task {
     @Override
     public List<Log> getActivityHistory() {
         return new ArrayList<>(activityHistory);
+    }
+
+    @Override
+    public String toString() {
+        return String.format(""" 
+                        #ID- %d
+                        Title: %s
+                        Description: "%s"
+                        Status: %s
+                        Comments:
+                        %s
+                        """
+                , getId(), getTitle(), getDescription(), getStatus(), ParsingHelpers.tryParseList(getComments()));
     }
 }

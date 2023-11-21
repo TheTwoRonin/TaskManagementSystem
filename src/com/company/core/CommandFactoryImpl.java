@@ -4,6 +4,7 @@ import com.company.commands.contracts.Command;
 import com.company.commands.enums.CommandType;
 import com.company.commands.operations.creation.*;
 import com.company.commands.operations.modification.*;
+import com.company.commands.operations.presentation.ShowTeamBoardsCommand;
 import com.company.core.contracts.CommandFactory;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.utils.ParsingHelpers;
@@ -29,7 +30,7 @@ public class CommandFactoryImpl implements CommandFactory {
             case CREATESTORY -> new CreateStoryCommand(taskManagementSystemRepository);
             case CREATETEAM -> new CreateTeamCommand(taskManagementSystemRepository);
 //            case SHOWUSERS -> new ShowUsersCommand(taskManagementSystemRepository);
-//            case SHOWTEAMBOARDS -> new ShowTeamBoardsCommand(taskManagementSystemRepository);
+            case SHOWTEAMBOARDS -> new ShowTeamBoardsCommand(taskManagementSystemRepository);
 //            case SHOWTEAMMEMBERS -> new ShowTeamMembersCommand(taskManagementSystemRepository);
 //            case SHOWTEAMS -> new ShowTeamsCommand(taskManagementSystemRepository);
 //            case SHOWBOARDACTIVITY -> new ShowBoardActivityCommand(taskManagementSystemRepository);

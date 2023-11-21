@@ -7,6 +7,7 @@ import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Status;
 import com.company.models.idd.base.BaseIntermediateTask;
+import com.company.utils.ParsingHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,14 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
         super.unassignAssignee();
         addActivity(new Activity(ITEM_WITH_ID_UNASSIGNED_FROM_USER
                 .formatted(this.getClass().getInterfaces()[0], getId(), assignee.getName())));
+    }
+
+    @Override
+    public String toString() {
+        String sb = getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "\n" +
+                getSeverity() + "\n" +
+                ParsingHelpers.tryParseList(getSteps());
+        return sb;
     }
 }
 // TODO: 20.11.2023 г. setters?

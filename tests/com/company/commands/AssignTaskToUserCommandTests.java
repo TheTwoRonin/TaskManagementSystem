@@ -38,7 +38,8 @@ public class AssignTaskToUserCommandTests {
     public void execute_Should_AssignTaskToUser_When_ArgumentsAreValid() {
         List<String> params = List.of(ID_1_STR, VALID_NAME);
         command.execute(params);
-        assertSame(story, repository.findUserByName(VALID_NAME).getTasks().get(0));
+
+        assertSame(story, this.repository.findUserByName(VALID_NAME).getTasks().get(0));
     }
 
     @Test
@@ -48,7 +49,7 @@ public class AssignTaskToUserCommandTests {
     }
 
     @Test
-    public void execute_Should_ThrowException_When_FeedbackDoesNotExist() {
+    public void execute_Should_ThrowException_When_StoryDoesNotExist() {
         List<String> params = List.of(ID_2_STR, VALID_NAME);
         assertThrows(ElementNotFoundException.class, () -> command.execute(params));
     }
