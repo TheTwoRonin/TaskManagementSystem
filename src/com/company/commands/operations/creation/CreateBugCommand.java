@@ -66,20 +66,6 @@ public class CreateBugCommand implements Command {
         severity = ParsingHelpers.tryParseEnum(parameters.get(4), Severity.class);
         stepsList = Arrays.stream(String.join(" ", parameters.subList(5, parameters.size() - 1))
                 .split("((?=\\d\\.))")).collect(Collectors.toList());
-
-//        if (parameters.size() == EXPECTED_NUMBER_OF_ARGUMENTS) {
-//            stepsList = new ArrayList<>(List.of(parameters.get(5)));
-//        } else {
-//            stepsList = new ArrayList<>();
-//            for (String step : parameters.subList(5, parameters.size() - 1)) {
-//                if (step.matches("\\d\\..*")) {
-//                    stepsList.add(step);
-//                } else {
-//                    stepsList.set(stepsList.size() - 1, (stepsList.get(stepsList.size() - 1) + " " + step));
-//                }
-//            }
-//
-//        }
         board = taskManagementSystemRepository.findBoardByName(parameters.get(parameters.size() - 1));
     }
 
