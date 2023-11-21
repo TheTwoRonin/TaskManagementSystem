@@ -3,10 +3,7 @@ package com.company.core;
 import com.company.commands.contracts.Command;
 import com.company.commands.enums.CommandType;
 import com.company.commands.operations.creation.*;
-import com.company.commands.operations.modification.AddCommentCommand;
-import com.company.commands.operations.modification.AddUserToTeamCommand;
-import com.company.commands.operations.modification.AssignTaskToUserCommand;
-import com.company.commands.operations.modification.ChangePriorityCommand;
+import com.company.commands.operations.modification.*;
 import com.company.core.contracts.CommandFactory;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.utils.ParsingHelpers;
@@ -38,7 +35,7 @@ public class CommandFactoryImpl implements CommandFactory {
 //            case SHOWBOARDACTIVITY -> new ShowBoardActivityCommand(taskManagementSystemRepository);
 //            case SHOWUSERACTIVITY -> new ShowUserActivityCommand(taskManagementSystemRepository);
 //            case SHOWTEAMACTIVITY -> new ShowTeamActivityCommand(taskManagementSystemRepository);
-//            case UNASSIGNTASKFROMUSER -> new UnassignTaskFromUserCommand(taskManagementSystemRepository);
+            case UNASSIGNTASKFROMUSER -> new UnassignTaskFromUserCommand(taskManagementSystemRepository);
             default -> throw new IllegalArgumentException("nqma takaa komanda");
         };
     }

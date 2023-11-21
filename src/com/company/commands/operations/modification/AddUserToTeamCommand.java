@@ -2,12 +2,14 @@ package com.company.commands.operations.modification;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
+import com.company.models.Activity;
 import com.company.models.contracts.Team;
 import com.company.models.contracts.User;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
+import static com.company.commands.constants.ActivityConstants.ITEM_USER_ADDED_TO_TEAM;
 import static com.company.commands.constants.CommandConstants.USER_ADDED_TO_TEAM_MESSAGE;
 
 public class AddUserToTeamCommand implements Command {
@@ -32,6 +34,10 @@ public class AddUserToTeamCommand implements Command {
         parseParameters(parameters);
 
         team.addMember(user);
+        String description = ITEM_USER_ADDED_TO_TEAM.formatted(user.getName(), team.getName());
+        user.addActivity(new Activity(description));
+
+
         return USER_ADDED_TO_TEAM_MESSAGE.formatted(user.getName(), team.getName());
     }
 

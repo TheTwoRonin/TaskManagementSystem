@@ -11,7 +11,7 @@ import com.company.models.idd.base.BaseIntermediateTask;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.company.models.ActivityConstants.*;
+import static com.company.commands.constants.ActivityConstants.*;
 
 public class BugImpl extends BaseIntermediateTask implements Bug {
 
@@ -25,6 +25,7 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
         super(id, title, description, Status.ACTIVE, assignee, priority);
         this.severity = severity;
         this.steps = new ArrayList<>(steps);
+        //TODO integrate in IntermediateTask
         addActivity(new Activity(ITEM_WITH_ID_CREATION
                 .formatted(BUG, getId())));
     }
@@ -55,6 +56,22 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
         this.severity = severity;
         addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
                 .formatted(BUG, getId(), SEVERITY, old_severity, getSeverity())));
+    }
+
+    @Override
+    public void changePriority(Priority priority) {
+        Priority old_priority = getPriority();
+        super.changePriority(priority);
+        addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
+                .formatted(BUG, getId(), PRIORITY, old_priority, getPriority())));
+    }
+
+    @Override
+    public void unassignAssignee() {
+        User assignee = getAssignee();
+        super.unassignAssignee();
+        addActivity(new Activity(ITEM_WITH_ID_UNASSIGNED_FROM_USER
+                .formatted(this.getClass().getInterfaces()[0], getId(), assignee.getName())));
     }
 }
 // TODO: 20.11.2023 г. setters?

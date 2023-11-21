@@ -5,7 +5,7 @@ import com.company.models.contracts.Feedback;
 import com.company.models.enums.Status;
 import com.company.models.idd.base.BaseTask;
 
-import static com.company.models.ActivityConstants.*;
+import static com.company.commands.constants.ActivityConstants.*;
 
 public class FeedbackImpl extends BaseTask implements Feedback {
 
