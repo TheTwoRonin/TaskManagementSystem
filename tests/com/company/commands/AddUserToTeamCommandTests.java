@@ -24,7 +24,6 @@ public class AddUserToTeamCommandTests {
 
     private Command command;
     private TaskManagementSystemRepository repository;
-
     private User user;
 
     @BeforeEach

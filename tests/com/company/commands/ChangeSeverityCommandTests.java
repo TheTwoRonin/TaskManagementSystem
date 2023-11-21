@@ -21,7 +21,6 @@ public class ChangeSeverityCommandTests {
 
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 3;
 
-
     private Command command;
     private TaskManagementSystemRepository repository;
 

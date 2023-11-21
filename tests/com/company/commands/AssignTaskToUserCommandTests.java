@@ -24,12 +24,12 @@ public class AssignTaskToUserCommandTests {
     private Command command;
     private TaskManagementSystemRepository repository;
     private Story story;
-    private User user;
+
     @BeforeEach
     public void before() {
         this.repository = new TaskManagementSystemRepositoryImpl();
         this.command = new AssignTaskToUserCommand(repository);
-        this.user = this.repository.createUser(VALID_NAME);
+        User user = this.repository.createUser(VALID_NAME);
         this.story = this.repository.createStory(VALID_TITLE, VALID_DESCRIPTION, user, VALID_PRIORITY, VALID_SIZE);
 
     }

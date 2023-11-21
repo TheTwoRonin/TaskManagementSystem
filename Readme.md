@@ -26,6 +26,12 @@ createboard D1ska
 createfeedback Obratnavruzka primerendescription 5
 ```
 
+4. Create STORY:
+
+```
+createstory {{Istoriya Slavyanobolgarskaya}} {{Story za ig}} Petar high medium Duska
+```
+
 5. Add USER to a TEAM:
 
 ```
@@ -107,6 +113,7 @@ User Glucimir added to team Otbor4eto successfully.
 createuser Petar
 createteam Otbor
 createboard Duska Otbor
-createbug Bug4etoetegavoo Bugavoedostaa Petar low minor 1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata Duska
+createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor 1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata Duska
+createstory {{Istoriya Slavyanobolgarskaya}} {{Story za ig}} high medium inprogress Petar Duska
 showteamboards Otbor
 ```

@@ -22,7 +22,6 @@ public class CreateBugCommandTests {
 
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 7;
 
-
     private Command command;
     private TaskManagementSystemRepository repository;
 

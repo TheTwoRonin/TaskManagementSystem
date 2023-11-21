@@ -14,7 +14,7 @@ import static com.company.commands.constants.CommandConstants.FEEDBACK;
 
 public class CreateFeedbackCommand implements Command {
 
-    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 5;
+    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 4;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 

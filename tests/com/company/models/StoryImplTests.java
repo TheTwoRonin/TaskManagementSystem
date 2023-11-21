@@ -11,7 +11,7 @@ import static com.company.utils.TaskBaseConstraints.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StoryTests {
+public class StoryImplTests {
 
     private Story story;
 
