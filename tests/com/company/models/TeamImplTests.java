@@ -61,17 +61,11 @@ public class TeamImplTests {
 
     @Test
     public void getMembers_Should_ReturnCopyOfTheCollection() {
-
-        team.getMembers();
-
         Assertions.assertNotSame(team.getMembers(),team.getMembers());
     }
 
     @Test
     public void getBoards_Should_ReturnCopyOfTheCollection() {
-
-        team.getBoards();
-
         Assertions.assertNotSame(team.getBoards(),team.getBoards());
     }
 

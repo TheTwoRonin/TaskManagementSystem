@@ -46,17 +46,11 @@ public class BoardImplTests {
 
     @Test
     public void getTasks_Should_ReturnCopyOfTheCollection() {
-
-        board.getTasks();
-
         Assertions.assertNotSame(board.getTasks(),board.getTasks());
     }
 
     @Test
     public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
-
-        board.getActivityHistory();
-
         Assertions.assertNotSame(board.getActivityHistory(),board.getActivityHistory());
     }
 

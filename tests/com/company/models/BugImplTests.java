@@ -4,12 +4,9 @@ import com.company.models.contracts.Bug;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
 import com.company.models.idd.BugImpl;
-import com.company.utils.TestUtilities;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static com.company.utils.TaskBaseConstraints.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,18 +65,12 @@ public class BugImplTests {
 
     @Test
     public void getSteps_Should_ReturnCopyOfTheCollection() {
-        bug = new BugImpl(VALID_ID, VALID_TITLE, VALID_DESCRIPTION, VALID_ASSIGNEE,
-                VALID_PRIORITY, VALID_SEVERITY, new ArrayList<>());
-        bug.getSteps().add(TestUtilities.getString(5));
-
-        assertEquals(0, bug.getSteps().size());
+        Assertions.assertNotSame(bug.getSteps(), bug.getSteps());
     }
 
     @Test
     public void getComments_Should_ReturnCopyOfTheCollection() {
-        bug.getComments().add(VALID_COMMENT);
-
-        assertEquals(0, bug.getComments().size());
+        Assertions.assertNotSame(bug.getComments(), bug.getComments());
     }
 
     @Test

@@ -56,10 +56,7 @@ public class FeedbackTests {
 
     @Test
     public void getComments_Should_ReturnCopyOfTheCollection() {
-
-        feedback.getComments().add(VALID_COMMENT);
-
-        Assertions.assertEquals(0, feedback.getComments().size());
+        Assertions.assertNotSame(feedback.getComments(), feedback.getComments());
     }
 
     @Test

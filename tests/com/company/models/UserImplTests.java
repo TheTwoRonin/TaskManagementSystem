@@ -47,17 +47,11 @@ public class UserImplTests {
 
     @Test
     public void getTasks_Should_ReturnCopyOfTheCollection() {
-
-        user.getTasks();
-
         Assertions.assertNotSame(user.getTasks(),user.getTasks());
     }
 
     @Test
     public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
-
-        user.getActivityHistory();
-
         Assertions.assertNotSame(user.getActivityHistory(),user.getActivityHistory());
     }
 
