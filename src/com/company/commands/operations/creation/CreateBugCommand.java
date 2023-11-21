@@ -12,8 +12,9 @@ import com.company.models.enums.Severity;
 import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.company.commands.constants.CommandConstants.BUG;
 import static com.company.models.ActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
@@ -50,7 +51,7 @@ public class CreateBugCommand implements Command {
         assignee.assignTask(createdBug);
         assignee.addActivity(new Activity(ITEM_WITH_ID_ASSIGNED_TO_USER
                 .formatted(BUG, createdBug.getId(), assignee.getName())));
-        board.addTask(createdBug);
+//        board.addTask(createdBug);todo
         board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
                 .formatted(BUG, createdBug.getId(), board.getName())));
 
@@ -63,19 +64,22 @@ public class CreateBugCommand implements Command {
         assignee = taskManagementSystemRepository.findUserByName(parameters.get(2));
         priority = ParsingHelpers.tryParseEnum(parameters.get(3), Priority.class);
         severity = ParsingHelpers.tryParseEnum(parameters.get(4), Severity.class);
-        if (parameters.size() == EXPECTED_NUMBER_OF_ARGUMENTS) {
-            stepsList = new ArrayList<>(List.of(parameters.get(5)));
-        } else {
-            stepsList = new ArrayList<>();
-            for (String step : parameters.subList(5, parameters.size() - 1)) {
-                if (step.matches("\\d\\..*")) {
-                    stepsList.add(step);
-                } else {
-                    stepsList.set(stepsList.size() - 1, (stepsList.get(stepsList.size() - 1) + " " + step));
-                }
-            }
+        stepsList = Arrays.stream(String.join(" ", parameters.subList(5, parameters.size() - 1))
+                .split("((?=\\d\\.))")).collect(Collectors.toList());
 
-        }
+//        if (parameters.size() == EXPECTED_NUMBER_OF_ARGUMENTS) {
+//            stepsList = new ArrayList<>(List.of(parameters.get(5)));
+//        } else {
+//            stepsList = new ArrayList<>();
+//            for (String step : parameters.subList(5, parameters.size() - 1)) {
+//                if (step.matches("\\d\\..*")) {
+//                    stepsList.add(step);
+//                } else {
+//                    stepsList.set(stepsList.size() - 1, (stepsList.get(stepsList.size() - 1) + " " + step));
+//                }
+//            }
+//
+//        }
         board = taskManagementSystemRepository.findBoardByName(parameters.get(parameters.size() - 1));
     }
 
