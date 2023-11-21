@@ -19,10 +19,10 @@ public class CommandFactoryImpl implements CommandFactory {
             case ADDUSERTOTEAM -> new AddUserToTeamCommand(taskManagementSystemRepository);
             case ASSIGNTASKTOUSER -> new AssignTaskToUserCommand(taskManagementSystemRepository);
             case CHANGEPRIORITY -> new ChangePriorityCommand(taskManagementSystemRepository);
-//            case CHANGERATING -> new ChangeRatingCommand(taskManagementSystemRepository);
-//            case CHANGESEVERITY -> new ChangeSeverityCommand(taskManagementSystemRepository);
-//            case CHANGESIZE -> new ChangeSizeCommand(taskManagementSystemRepository);
-//            case CHANGESTATUS -> new ChangeStatusCommand(taskManagementSystemRepository);
+            case CHANGERATING -> new ChangeRatingCommand(taskManagementSystemRepository);
+            case CHANGESEVERITY -> new ChangeSeverityCommand(taskManagementSystemRepository);
+            case CHANGESIZE -> new ChangeSizeCommand(taskManagementSystemRepository);
+            case CHANGESTATUS -> new ChangeStatusCommand(taskManagementSystemRepository);
             case CREATEBOARD -> new CreateBoardCommand(taskManagementSystemRepository);
             case CREATEBUG -> new CreateBugCommand(taskManagementSystemRepository);
             case CREATEFEEDBACK -> new CreateFeedbackCommand(taskManagementSystemRepository);
