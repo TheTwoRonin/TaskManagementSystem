@@ -1,7 +1,6 @@
-package com.company.commands;
+package com.company.commands.operations.creation;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.creation.CreateBoardCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.utils.TestUtilities;
@@ -14,8 +13,8 @@ import static com.company.utils.NamingConstraints.VALID_NAME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CreateBoardCommandTests {
-    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 2;
+public class CreateTeamCommandTests {
+    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
 
     private Command command;
     private TaskManagementSystemRepository repository;
@@ -23,17 +22,16 @@ public class CreateBoardCommandTests {
     @BeforeEach
     public void before() {
         this.repository = new TaskManagementSystemRepositoryImpl();
-        this.command = new CreateBoardCommand(repository);
-        repository.createTeam(VALID_NAME);
+        this.command = new CreateTeamCommand(repository);
     }
 
     @Test
-    public void execute_Should_CreateBoard_When_ArgumentsAreValid(){
-        List<String> params = List.of(VALID_NAME, VALID_NAME);
+    public void execute_Should_CreateTeam_When_ArgumentsAreValid(){
+        List<String> params = List.of(VALID_NAME);
 
         command.execute(params);
 
-        assertEquals(VALID_NAME, repository.findTeamByName(VALID_NAME).getBoards().get(0).getName());
+        assertEquals(VALID_NAME, repository.getTeams().get(0).getName());
     }
 
     @Test
@@ -43,8 +41,8 @@ public class CreateBoardCommandTests {
     }
 
     @Test
-    public void should_ThrowException_When_BoardIsUnique_is_false() {
-        List<String> params = List.of(VALID_NAME, VALID_NAME);
+    public void should_ThrowException_When_TeamIsUnique_is_false() {
+        List<String> params = List.of(VALID_NAME);
 
         command.execute(params);
 

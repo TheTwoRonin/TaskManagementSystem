@@ -1,10 +1,8 @@
-package com.company.commands;
+package com.company.commands.operations.modification;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.modification.ChangePriorityCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.IntermediateTask;
 import com.company.models.enums.Priority;
 import com.company.utils.TaskBaseConstraints;
 import com.company.utils.TestUtilities;
@@ -34,10 +32,10 @@ public class ChangePriorityCommandTests {
     }
 
     @Test
-    public void execute_Should_ChangeStatus_When_ArgumentsAreValid() {
+    public void execute_Should_ChangePriority_When_ArgumentsAreValid() {
         List<String> params = List.of(VALID_NUM_STR, VALID_PRIORITY_STR);
         command.execute(params);
-        assertEquals(Priority.LOW, ((IntermediateTask) repository.findTaskById(TaskBaseConstraints.VALID_ID)).getPriority());
+        assertEquals(Priority.LOW, repository.findIntermediateTaskById(TaskBaseConstraints.VALID_ID).getPriority());
     }
 
     @Test
@@ -47,7 +45,7 @@ public class ChangePriorityCommandTests {
     }
 
     @Test
-    public void should_ThrowException_When_StatusNotValid() {
+    public void should_ThrowException_When_PriorityNotValid() {
         List<String> params = List.of(VALID_NUM_STR, INVALID_ENUM);
         assertThrows(IllegalArgumentException.class, () -> command.execute(params));
     }

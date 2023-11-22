@@ -29,6 +29,7 @@ public class ShowTeamActivityCommand implements Command {
         for (User member : team.getMembers()) {
             sb.append(ParsingHelpers.tryParseList(member.getActivityHistory()));
         }
+
         return sb.toString();
     }
 
@@ -36,3 +37,6 @@ public class ShowTeamActivityCommand implements Command {
         team = taskManagementSystemRepository.findTeamByName(parameters.get(0));
     }
 }
+
+
+//        return team.getMembers().stream().map(User::getActivityHistory).map(ParsingHelpers::tryParseList).collect(Collectors.joining());

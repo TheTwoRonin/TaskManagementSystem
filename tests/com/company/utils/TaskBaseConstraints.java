@@ -16,7 +16,7 @@ public class TaskBaseConstraints {
     public static final int DESCRIPTION_LEN_MIN = 10;
     public static final int VALID_ID = 1;
     public static final User VALID_ASSIGNEE = UserImplTests.initializeTestUser();
-    public static final int VALID_RATING = 1;
+    public static final int VALID_RATING = 5;
     public static final String ID_1_STR = "1";
     public static final String ID_2_STR = "2";
     public static final String VALID_TITLE = TestUtilities.getString(TITLE_LEN_MIN + 1);

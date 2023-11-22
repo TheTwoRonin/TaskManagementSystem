@@ -1,7 +1,6 @@
-package com.company.commands;
+package com.company.commands.operations.creation;
 
 import com.company.commands.contracts.Command;
-import com.company.commands.operations.creation.CreateBugCommand;
 import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;

@@ -35,6 +35,7 @@ public class AssignTaskToUserCommand implements Command {
         parseParameters(parameters);
 
         user.assignTask(task);
+        task.assignAssignee(user);
         return TASK_ASSIGNED_TO_USER_MESSAGE.formatted(task.getId(), user.getName());
     }
 
