@@ -8,6 +8,7 @@ import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ShowTeamActivityCommand implements Command {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
@@ -25,18 +26,14 @@ public class ShowTeamActivityCommand implements Command {
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
 
         parseParameters(parameters);
-        StringBuilder sb = new StringBuilder();
-        for (User member : team.getMembers()) {
-            sb.append(ParsingHelpers.tryParseList(member.getActivityHistory()));
-        }
 
-        return sb.toString();
+        return team.getMembers().stream()
+                .map(User::getActivityHistory)
+                .map(ParsingHelpers::tryParseList)
+                .collect(Collectors.joining());
     }
 
     private void parseParameters(List<String> parameters) {
         team = taskManagementSystemRepository.findTeamByName(parameters.get(0));
     }
 }
-
-
-//        return team.getMembers().stream().map(User::getActivityHistory).map(ParsingHelpers::tryParseList).collect(Collectors.joining());

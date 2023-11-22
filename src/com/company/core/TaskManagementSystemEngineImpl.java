@@ -5,7 +5,7 @@ import com.company.core.contracts.CommandFactory;
 import com.company.core.contracts.TaskManagementSystemEngine;
 import com.company.core.contracts.TaskManagementSystemRepository;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -77,12 +77,11 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
      * @return A list of the parameters needed to execute the command
      */
     private List<String> extractCommandParameters(String inputLine) {
-        String[] commandParts = inputLine.split("\\s+(?![^\\{\\{]*\\}\\})");
-        List<String> parameters = new ArrayList<>();
-        for (int i = 1; i < commandParts.length; i++) {
-            parameters.add(commandParts[i].replaceAll("[{}]", ""));
-        }
-        return parameters;
+
+        return Arrays.stream(inputLine.split("\\s+(?![^{]*}})"))
+                .skip(1)
+                .map(e -> e.replaceAll("[{}]", ""))
+                .toList();
     }
 
     private void print(String result) {

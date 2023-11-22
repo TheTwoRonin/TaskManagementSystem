@@ -123,10 +123,15 @@ showteamactivity Otbor
 ```
 
 ```
+createteam Otbor
 createboard Stena Otbor
+createuser Petar
 createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor 1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata Stena
 createstory {{Istoriya Slavyanobolgarskaya}} {{Story za ig}} Petar high medium Stena
 createfeedback Obratnavruzka primerendescription 5 Stena
+addcomment 1 {{Super e}} Petar
+showteamboards Otbor
+listsortedtasks
 ```
 
 # Show Team Members/Users/UserActivity command input:
@@ -146,4 +151,17 @@ showteammembers Otbor
 showteams
 showusers
 showuseractivity Petar
+
+```
+
+```
+createteam Otbor
+createboard Stena Otbor
+createuser Petar
+createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata}} Stena
+createstory {{Aistoriya Slavyanobolgarskaya}} {{Story za ig}} Petar high medium Stena
+createfeedback Obratnavruzka primerendescription 5 Stena
+addcomment 1 {{Super e}} Petar
+listsortedtasks
+listfilteredtasks Obratnavruzka
 ```

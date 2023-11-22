@@ -19,4 +19,13 @@ public class CommentImpl implements Comment {
     public String getAuthor() {
         return author;
     }
+
+    @Override
+    public String toString() {
+        return "Content: \"%s\" \\\\ Author: %s"
+                .formatted(getContent(), getAuthor());
+
+
+    }
+
 }
