@@ -67,9 +67,8 @@ public class CreateBugCommand implements Command {
         assignee = taskManagementSystemRepository.findUserByName(parameters.get(2));
         priority = ParsingHelpers.tryParseEnum(parameters.get(3), Priority.class);
         severity = ParsingHelpers.tryParseEnum(parameters.get(4), Severity.class);
-        stepsList = Arrays.stream(String.join(" ", parameters.subList(5, parameters.size() - 1))
-                .split("((?=\\d\\.))")).collect(Collectors.toList());
-        board = taskManagementSystemRepository.findBoardByName(parameters.get(parameters.size() - 1));
+        stepsList = Arrays.stream(parameters.get(5).split("((?=\\d\\.))")).collect(Collectors.toList());
+        board = taskManagementSystemRepository.findBoardByName(parameters.get(6));
     }
 
 }

@@ -36,7 +36,7 @@ public class AddCommentCommand implements Command {
 
     private void parseParameters(List<String> parameters) {
         id = ParsingHelpers.tryParseInt(parameters.get(0), CommandConstants.INVALID_INPUT_MESSAGE);
-        content = String.join(" ", parameters.subList(1, parameters.size() - 1));
-        author = parameters.get(parameters.size() - 1);
+        content = parameters.get(1);
+        author = parameters.get(2);
     }
 }

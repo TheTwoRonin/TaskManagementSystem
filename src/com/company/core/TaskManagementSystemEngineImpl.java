@@ -6,10 +6,8 @@ import com.company.core.contracts.TaskManagementSystemEngine;
 import com.company.core.contracts.TaskManagementSystemRepository;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngine {
 
@@ -79,9 +77,6 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
      * @return A list of the parameters needed to execute the command
      */
     private List<String> extractCommandParameters(String inputLine) {
-//        if (inputLine.contains(COMMENT_OPEN_SYMBOL)) {
-//            return extractCommentParameters(inputLine);
-//        }
         String[] commandParts = inputLine.split("\\s+(?![^\\{\\{]*\\}\\})");
         List<String> parameters = new ArrayList<>();
         for (int i = 1; i < commandParts.length; i++) {
@@ -89,29 +84,6 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
         }
         return parameters;
     }
-
-    public List<String> extractCommentParameters(String fullCommand) {
-        int indexOfFirstSeparator = fullCommand.indexOf(MAIN_SPLIT_SYMBOL);
-        int indexOfOpenComment = fullCommand.indexOf(COMMENT_OPEN_SYMBOL);
-
-        List<String> parameters = Arrays.stream(fullCommand.substring(indexOfFirstSeparator + 1, indexOfOpenComment)
-                .split(" ")).collect(Collectors.toList());
-        fullCommand = fullCommand.substring(indexOfOpenComment);
-        while (fullCommand.contains(COMMENT_OPEN_SYMBOL)) {
-
-            indexOfOpenComment = fullCommand.indexOf(COMMENT_OPEN_SYMBOL);
-            int indexOfCloseComment = fullCommand.indexOf(COMMENT_CLOSE_SYMBOL);
-            if (indexOfOpenComment >= 0) {
-                parameters.add(fullCommand.substring(indexOfOpenComment + COMMENT_OPEN_SYMBOL.length(), indexOfCloseComment));
-                fullCommand = fullCommand.replaceFirst("\\{\\{.+?(?=}})}}", "");
-            }
-        }
-        if (!fullCommand.isEmpty()) {
-            parameters.addAll(Arrays.stream(fullCommand.split(" ")).collect(Collectors.toList()));
-        }
-        parameters.removeAll(Arrays.asList(" ", "", null));
-        return parameters;
-    }// TODO: 21.11.2023 г. fix ugly method \s+(?![^\{\{]*\}\})
 
     private void print(String result) {
         System.out.println(result);

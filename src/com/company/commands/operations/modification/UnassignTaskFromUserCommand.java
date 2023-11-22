@@ -34,6 +34,6 @@ public class UnassignTaskFromUserCommand implements Command {
 
     private void parseParameters(List<String> parameters) {
         int taskId = ParsingHelpers.tryParseInt(parameters.get(0), INVALID_INPUT_MESSAGE);
-        task = (IntermediateTask) taskManagementSystemRepository.findTaskById(taskId);
+        task = taskManagementSystemRepository.findIntermediateTaskById(taskId);
     }
 }
