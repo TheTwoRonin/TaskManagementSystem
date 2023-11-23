@@ -11,6 +11,12 @@ public interface TaskManagementSystemRepository {
 
     List<Task> getTasks();
 
+    List<Bug> getBugs();
+
+    List<Story> getStories();
+
+    List<Feedback> getFeedbacks();
+
     List<User> getUsers();
 
     List<Board> getBoards();

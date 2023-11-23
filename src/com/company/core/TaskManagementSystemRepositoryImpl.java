@@ -39,6 +39,21 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     }
 
     @Override
+    public List<Bug> getBugs() {
+        return bugs;
+    }
+
+    @Override
+    public List<Story> getStories() {
+        return stories;
+    }
+
+    @Override
+    public List<Feedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    @Override
     public List<User> getUsers() {
         return new ArrayList<>(users);
     }

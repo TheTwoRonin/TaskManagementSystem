@@ -8,6 +8,7 @@ import com.company.core.contracts.TaskManagementSystemRepository;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngine {
 
@@ -77,11 +78,10 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
      * @return A list of the parameters needed to execute the command
      */
     private List<String> extractCommandParameters(String inputLine) {
-
         return Arrays.stream(inputLine.split("\\s+(?![^{]*}})"))
                 .skip(1)
                 .map(e -> e.replaceAll("[{}]", ""))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private void print(String result) {
