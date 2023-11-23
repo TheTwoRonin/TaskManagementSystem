@@ -169,7 +169,8 @@ createbug {{Aug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otva
 createbug {{Dug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata}} Stena
 createbug {{Cug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata}} Stena
 
-listsortedbugs
+
+LISTSORTEDBUGSBYFIELD bug title
 ```
 
 ```

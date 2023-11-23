@@ -2,7 +2,7 @@ package com.company.models.contracts;
 
 import java.util.List;
 
-public interface User extends Nameable, Loggable {
+public interface User extends Nameable, Loggable, Comparable<User> {
 
     String getName();
 

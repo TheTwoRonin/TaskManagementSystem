@@ -5,7 +5,9 @@ import com.company.models.contracts.IntermediateTask;
 import com.company.models.contracts.Task;
 import com.company.models.enums.Status;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ListingHelpers {
@@ -31,10 +33,11 @@ public class ListingHelpers {
                 .collect(Collectors.joining("\n-------\n")).trim();
     }
 
-//    public static <T extends IntermediateTask> String listSortedTasks(List<T> list, Function<T, Comparable<?>> sortFunction) {
-//        return list.stream()
-//                .sorted(Comparator.comparing(sortFunction))
-//                .map(Object::toString)
-//                .collect(Collectors.joining("\n-------\n")).trim();
-//    }
+
+    public static <T, R extends Comparable<? super R>> String listSortedTasks(List<T> list, Function<T, R> sortFunction) {
+        return list.stream()
+                .sorted(Comparator.comparing(sortFunction))
+                .map(Object::toString)
+                .collect(Collectors.joining("\n-------\n")).trim();
+    }
 }

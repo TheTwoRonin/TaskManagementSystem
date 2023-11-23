@@ -4,6 +4,7 @@ import com.company.commands.contracts.Command;
 import com.company.commands.enums.CommandType;
 import com.company.commands.listing.ListFilteredBugsCommand;
 import com.company.commands.listing.ListFilteredTasksCommand;
+import com.company.commands.listing.ListSortedBugsByFieldCommand;
 import com.company.commands.listing.ListSortedTasksCommand;
 import com.company.commands.operations.creation.*;
 import com.company.commands.operations.modification.*;
@@ -42,7 +43,7 @@ public class CommandFactoryImpl implements CommandFactory {
             case UNASSIGNTASKFROMUSER -> new UnassignTaskFromUserCommand(taskManagementSystemRepository);
             case LISTSORTEDTASKS -> new ListSortedTasksCommand(taskManagementSystemRepository);
             case LISTFILTEREDTASKS -> new ListFilteredTasksCommand(taskManagementSystemRepository);
-//            case LISTSORTEDTASKTYPEBYFIELD -> new ListSortedTaskTypeByFieldCommand(taskManagementSystemRepository);
+            case LISTSORTEDBUGSBYFIELD -> new ListSortedBugsByFieldCommand(taskManagementSystemRepository);
             case LISTFILTEREDBUGS -> new ListFilteredBugsCommand(taskManagementSystemRepository);
             case LISTFILTEREDFEEDBACKS -> new ListFilteredBugsCommand(taskManagementSystemRepository);
             case LISTFILTEREDSTORIES -> new ListFilteredBugsCommand(taskManagementSystemRepository);
