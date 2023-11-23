@@ -1,6 +1,6 @@
 package com.company.commands.operations.creation;
 
-import com.company.commands.constants.CommandConstants;
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.Activity;
@@ -10,8 +10,8 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.ActivityConstants.ITEM_BOARD_CREATION;
-import static com.company.commands.constants.CommandConstants.BOARD;
+import static com.company.commands.constants.CommandAndActivityConstants.BOARD;
+import static com.company.commands.constants.CommandAndActivityConstants.ITEM_BOARD_CREATION;
 
 public class CreateBoardCommand implements Command {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 2;
@@ -36,7 +36,7 @@ public class CreateBoardCommand implements Command {
         createdBoard.addActivity(new Activity(ITEM_BOARD_CREATION
                 .formatted(createdBoard.getName(), team.getName())));
 
-        return String.format(CommandConstants.CREATED_W_NAME_MESSAGE, BOARD, createdBoard.getName());
+        return String.format(CommandAndActivityConstants.CREATED_W_NAME_MESSAGE, BOARD, createdBoard.getName());
     }
 
     private void parseParameters(List<String> parameters) {

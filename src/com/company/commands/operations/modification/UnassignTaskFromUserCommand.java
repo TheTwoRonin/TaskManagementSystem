@@ -8,8 +8,8 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.CommandConstants.INVALID_INPUT_MESSAGE;
-import static com.company.commands.constants.CommandConstants.TASK_UNASSIGNED_FROM_USER_MESSAGE;
+import static com.company.commands.constants.CommandAndActivityConstants.INVALID_INPUT_MESSAGE;
+import static com.company.commands.constants.CommandAndActivityConstants.TASK_UNASSIGNED_FROM_USER_MESSAGE;
 
 public class UnassignTaskFromUserCommand implements Command {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;

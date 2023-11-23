@@ -1,6 +1,6 @@
 package com.company.commands.operations.creation;
 
-import com.company.commands.constants.CommandConstants;
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.Activity;
@@ -11,8 +11,8 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
-import static com.company.commands.constants.CommandConstants.FEEDBACK;
+import static com.company.commands.constants.CommandAndActivityConstants.FEEDBACK;
+import static com.company.commands.constants.CommandAndActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
 
 public class CreateFeedbackCommand implements Command {
 
@@ -39,13 +39,13 @@ public class CreateFeedbackCommand implements Command {
         board.addTask(createdFeedback);
         board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
                 .formatted(FEEDBACK, createdFeedback.getId(), board.getName())));
-        return String.format(CommandConstants.TASK_CREATED_MESSAGE, FEEDBACK, createdFeedback.getId());
+        return String.format(CommandAndActivityConstants.TASK_CREATED_MESSAGE, FEEDBACK, createdFeedback.getId());
     }
 
     private void parseParameters(List<String> parameters) {
         title = parameters.get(0);
         description = parameters.get(1);
-        rating = ParsingHelpers.tryParseInt(parameters.get(2), CommandConstants.INVALID_INPUT_MESSAGE);
+        rating = ParsingHelpers.tryParseInt(parameters.get(2), CommandAndActivityConstants.INVALID_INPUT_MESSAGE);
         board = taskManagementSystemRepository.findBoardByName(parameters.get(3));
     }
 }

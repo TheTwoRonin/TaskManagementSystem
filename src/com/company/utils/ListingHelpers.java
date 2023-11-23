@@ -1,6 +1,6 @@
 package com.company.utils;
 
-import com.company.commands.constants.CommandConstants;
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.models.contracts.Task;
 import com.company.models.contracts.TaskAssignment;
 import com.company.models.enums.Status;
@@ -14,7 +14,7 @@ public class ListingHelpers {
     public static <T> String parseList(List<T> list) {
         if (list.isEmpty())
             return "No entries.";
-        return list.stream().map(T::toString).collect(Collectors.joining(CommandConstants.NEW_LINE));
+        return list.stream().map(T::toString).collect(Collectors.joining(CommandAndActivityConstants.NEW_LINE));
     }
 
 

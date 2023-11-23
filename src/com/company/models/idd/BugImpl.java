@@ -1,5 +1,6 @@
 package com.company.models.idd;
 
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.models.Activity;
 import com.company.models.contracts.Bug;
 import com.company.models.contracts.User;
@@ -12,7 +13,7 @@ import com.company.utils.ListingHelpers;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.company.commands.constants.ActivityConstants.*;
+import static com.company.commands.constants.CommandAndActivityConstants.*;
 
 public class BugImpl extends BaseTaskAssignment implements Bug {
 
@@ -27,7 +28,7 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
         this.severity = severity;
         this.steps = new ArrayList<>(steps);
         //TODO integrate in IntermediateTask
-        addActivity(new Activity(ITEM_WITH_ID_CREATION
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_CREATION
                 .formatted(BUG, getId())));
     }
 
@@ -47,7 +48,7 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
         if (!status.equals(Status.ACTIVE) && !status.equals(Status.DONE))
             throw new IllegalArgumentException(INVALID_STATUS_ERR);
         super.changeStatus(status);
-        addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
                 .formatted(BUG, getId(), STATUS, old_status, getStatus())));
     }
 
@@ -55,7 +56,7 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
     public void changeSeverity(Severity severity) {
         Severity old_severity = getSeverity();
         this.severity = severity;
-        addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
                 .formatted(BUG, getId(), SEVERITY, old_severity, getSeverity())));
     }
 
@@ -63,7 +64,7 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
     public void changePriority(Priority priority) {
         Priority old_priority = getPriority();
         super.changePriority(priority);
-        addActivity(new Activity(ITEM_WITH_ID_MODIFICATION
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
                 .formatted(BUG, getId(), PRIORITY, old_priority, getPriority())));
     }
 
@@ -71,7 +72,7 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
     public void unassignAssignee() {
         User assignee = getAssignee();
         super.unassignAssignee();
-        addActivity(new Activity(ITEM_WITH_ID_UNASSIGNED_FROM_USER
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_UNASSIGNED_FROM_USER
                 .formatted(this.getClass().getInterfaces()[0], getId(), assignee.getName())));
     }
 

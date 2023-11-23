@@ -10,11 +10,10 @@ import com.company.utils.ValidationHelpers;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.company.commands.constants.ActivityConstants.ITEM_WITH_NAME_CREATION;
-import static com.company.commands.constants.ActivityConstants.USER;
+import static com.company.commands.constants.CommandAndActivityConstants.ITEM_WITH_NAME_CREATION;
+import static com.company.commands.constants.CommandAndActivityConstants.USER;
 
 public class UserImpl implements User {
-    //TODO Generate activities
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
     private String name;
     private final List<Task> tasks;
@@ -27,7 +26,6 @@ public class UserImpl implements User {
         addActivity(new Activity(ITEM_WITH_NAME_CREATION
                 .formatted(USER, getName())));
     }
-
 
     private void setName(String name) {
         ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], "Name");

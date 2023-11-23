@@ -1,6 +1,6 @@
 package com.company.commands.operations.creation;
 
-import com.company.commands.constants.CommandConstants;
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.User;
@@ -8,7 +8,7 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.CommandConstants.USER;
+import static com.company.commands.constants.CommandAndActivityConstants.USER;
 
 public class CreateUserCommand implements Command {
 
@@ -30,7 +30,7 @@ public class CreateUserCommand implements Command {
 
         User createdUser = taskManagementSystemRepository.createUser(name);
 
-        return String.format(CommandConstants.CREATED_W_NAME_MESSAGE, USER, createdUser.getName());
+        return String.format(CommandAndActivityConstants.CREATED_W_NAME_MESSAGE, USER, createdUser.getName());
     }
 
     private void parseParameters(List<String> parameters) {

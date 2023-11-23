@@ -1,6 +1,6 @@
 package com.company.commands.operations.creation;
 
-import com.company.commands.constants.CommandConstants;
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.Activity;
@@ -14,9 +14,7 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
-import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ASSIGNED_TO_USER;
-import static com.company.commands.constants.CommandConstants.STORY;
+import static com.company.commands.constants.CommandAndActivityConstants.*;
 
 public class CreateStoryCommand implements Command {
 
@@ -53,7 +51,7 @@ public class CreateStoryCommand implements Command {
         board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
                 .formatted(STORY, createdStory.getId(), board.getName())));
 
-        return String.format(CommandConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());
+        return String.format(CommandAndActivityConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());
     }
 
     private void parseParameters(List<String> parameters) {

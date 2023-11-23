@@ -9,17 +9,19 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.CommandConstants.INVALID_INPUT_MESSAGE;
-import static com.company.commands.constants.CommandConstants.TASK_ASSIGNED_TO_USER_MESSAGE;
+import static com.company.commands.constants.CommandAndActivityConstants.INVALID_INPUT_MESSAGE;
+import static com.company.commands.constants.CommandAndActivityConstants.TASK_ASSIGNED_TO_USER_MESSAGE;
 
 public class AssignTaskToUserCommand implements Command {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 2;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
+    //TODO should it be intermediate or Task?
     private TaskAssignment task;
 
     private User user;
+
 
     public AssignTaskToUserCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
