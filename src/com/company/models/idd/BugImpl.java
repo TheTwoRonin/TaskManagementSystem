@@ -78,9 +78,9 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
 
     @Override
     public String toString() {
-        String sb = getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "Severity: " + getSeverity() + "\n" +
+        return getClass().getSimpleName().replaceAll("Impl", "") + " "
+                + super.toString()
+                + "Severity: " + getSeverity() + "\n" +
                 ListingHelpers.parseList(getSteps()) + "\n";
-        return sb;
     }
 }
-// TODO: 20.11.2023 г. setters?

@@ -17,7 +17,6 @@ public class AssignTaskToUserCommand implements Command {
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
-    //TODO should it be intermediate or Task?
     private TaskAssignment task;
 
     private User user;
