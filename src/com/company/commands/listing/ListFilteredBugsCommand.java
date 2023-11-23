@@ -29,13 +29,13 @@ public class ListFilteredBugsCommand implements Command {
 
         return parameters.size() == 2 ? taskManagementSystemRepository.getBugs().stream()
                 .filter(e -> e.getStatus().equals(statusFilter))
-                .filter(e -> e.getAssignee().getName().equals(assigneeFilter))
+                .filter(e -> e.getAssignee().getName().equalsIgnoreCase(assigneeFilter))
                 .map(Object::toString)
                 .collect(Collectors.joining("\n-------\n")) :
                 taskManagementSystemRepository.getTasks().stream()
                         .filter(e -> e.getStatus().equals(statusFilter))
                         .map(Object::toString)
-                        .collect(Collectors.joining("\n-------\n"));
+                        .collect(Collectors.joining("\n-------\n")).trim();
     }
 
     private void parseParameters(List<String> parameters) {
