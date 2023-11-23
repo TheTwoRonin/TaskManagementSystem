@@ -170,7 +170,7 @@ createbug {{Dug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otva
 createbug {{Cug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata}} Stena
 
 
-LISTSORTEDBUGSBYFIELD bug title
+LISTSORTEDBUGSBYFIELD title
 ```
 
 ```
@@ -186,4 +186,31 @@ createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otva
 createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata}} Stena
 listfilteredbugs done
 listfilteredbugs done getar
+```
+
+```
+createteam Otbor
+createboard Stena Otbor
+createuser Petar
+createbug {{Bug 4e to e t e gavoo}} {{Bugavo e dostaa}} Petar low minor {{1.Otvarqsh 2.Otlepqsh bisktivite 3.Oblizvash krema ako iskash i 3 puti, no vnimavash da neti iztrupne ezika 4.Zalepvash 5.Izqjdash biskvitkata}} Stena
+createstory {{Aistoriya Slavyanobolgarskaya}} {{Story za ig}} Petar high medium Stena
+createstory {{Cistoriya Slavyanobolgarskaya}} {{Astdfsfsd za ig}} Petar medium small Stena
+createstory {{Cistoriya Slavyanobolgarskaya}} {{Ast za dasfasdig}} Petar high large Stena
+
+LISTSORTEDSTORIESBYFIELD title
+```
+
+```
+createteam Otbor
+createboard Stena Otbor
+createuser Petar
+createfeedback BObratnavruzka primerendescription 3 Stena
+createfeedback AObratnavruzka primerendescription 8 Stena
+createfeedback CObratnavruzka primerendescription 2 Stena
+
+LISTSORTEDFEEDBACKBYFIELD
+
+LISTSORTEDTASKASSIGNMENTSBYTITLE
+
+LISTFILTEREDTASKASSIGNMENTS
 ```

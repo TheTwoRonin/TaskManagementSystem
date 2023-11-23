@@ -15,7 +15,7 @@ public interface TaskManagementSystemRepository {
 
     List<Story> getStories();
 
-    List<Feedback> getFeedbacks();
+    List<Feedback> getFeedback();
 
     List<User> getUsers();
 

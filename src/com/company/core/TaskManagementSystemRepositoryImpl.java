@@ -49,7 +49,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     }
 
     @Override
-    public List<Feedback> getFeedbacks() {
+    public List<Feedback> getFeedback() {
         return new ArrayList<>(feedbacks);
     }
 

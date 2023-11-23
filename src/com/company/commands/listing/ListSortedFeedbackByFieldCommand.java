@@ -2,20 +2,20 @@ package com.company.commands.listing;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.Bug;
+import com.company.models.contracts.Feedback;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
 import static com.company.utils.ListingHelpers.listSortedTasks;
 
-public class ListSortedBugsByFieldCommand implements Command {
+public class ListSortedFeedbackByFieldCommand implements Command {
 
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
     private final TaskManagementSystemRepository taskManagementSystemRepository;
     private String sortType;
 
-    public ListSortedBugsByFieldCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
+    public ListSortedFeedbackByFieldCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
     }
 
@@ -26,29 +26,26 @@ public class ListSortedBugsByFieldCommand implements Command {
 
         parseParameters(parameters);
 
-        return getSortField(taskManagementSystemRepository.getBugs(), sortType);
+        return getSortField(taskManagementSystemRepository.getFeedback(), sortType);
     }
 
     private void parseParameters(List<String> parameters) {
         sortType = parameters.get(0).toLowerCase();
     }
 
-    private String getSortField(List<Bug> list, String sortType) {
+    private String getSortField(List<Feedback> list, String sortType) {
         switch (sortType) {
             case "title":
-                return listSortedTasks(list, Bug::getTitle);
+                return listSortedTasks(list, Feedback::getTitle);
             case "description":
-                return listSortedTasks(list, Bug::getStatus);
-            case "assignee":
-                return listSortedTasks(list, Bug::getAssignee);
-            case "priority":
-                return listSortedTasks(list, Bug::getPriority);
-            case "severity":
-                return listSortedTasks(list, Bug::getSeverity);
+                return listSortedTasks(list, Feedback::getDescription);
+            case "rating":
+                return listSortedTasks(list, Feedback::getRating);
+            case "status":
+                return listSortedTasks(list, Feedback::getStatus);
             default:
                 throw new UnsupportedOperationException("Ne moesh da sortirash po tova, ludiq");
         }
     }
-
 
 }
