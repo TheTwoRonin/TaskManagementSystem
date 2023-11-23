@@ -9,7 +9,6 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static com.company.commands.constants.ActivityConstants.ITEM_WITH_NAME_CREATION;
 import static com.company.commands.constants.ActivityConstants.USER;
@@ -61,19 +60,6 @@ public class UserImpl implements User {
     @Override
     public String toString() {
         return String.format("User name: %s%n Tasks: %s", name, ListingHelpers.parseList(tasks));
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserImpl user = (UserImpl) o;
-        return Objects.equals(getName(), user.getName());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getName());
     }
 
     @Override

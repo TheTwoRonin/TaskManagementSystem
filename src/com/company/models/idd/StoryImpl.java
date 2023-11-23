@@ -6,11 +6,11 @@ import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Size;
 import com.company.models.enums.Status;
-import com.company.models.idd.base.BaseIntermediateTask;
+import com.company.models.idd.base.BaseTaskAssignment;
 
 import static com.company.commands.constants.ActivityConstants.*;
 
-public class StoryImpl extends BaseIntermediateTask implements Story {
+public class StoryImpl extends BaseTaskAssignment implements Story {
 
     private static final String INVALID_STATUS_ERR = "Invalid status, can be Not Done, InProgress, or Done";
 

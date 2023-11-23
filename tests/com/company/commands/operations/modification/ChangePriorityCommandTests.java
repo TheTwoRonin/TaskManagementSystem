@@ -35,7 +35,7 @@ public class ChangePriorityCommandTests {
     public void execute_Should_ChangePriority_When_ArgumentsAreValid() {
         List<String> params = List.of(VALID_NUM_STR, VALID_PRIORITY_STR);
         command.execute(params);
-        assertEquals(Priority.LOW, repository.findIntermediateTaskById(TaskBaseConstraints.VALID_ID).getPriority());
+        assertEquals(Priority.LOW, repository.findTaskAssignmentById(TaskBaseConstraints.VALID_ID).getPriority());
     }
 
     @Test

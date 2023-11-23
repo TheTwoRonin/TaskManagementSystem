@@ -183,10 +183,10 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     }
 
     @Override
-    public IntermediateTask findIntermediateTaskById(int id) {
-        List<IntermediateTask> intermediateList = new ArrayList<>(bugs);
-        intermediateList.addAll(stories);
-        return findTaskById(id, intermediateList);
+    public TaskAssignment findTaskAssignmentById(int id) {//
+        List<TaskAssignment> taskAssignmentList = new ArrayList<>(bugs);
+        taskAssignmentList.addAll(stories);
+        return findTaskById(id, taskAssignmentList);
     }
 
     private <T extends Task> T findTaskById(int id, List<T> tasks) {
