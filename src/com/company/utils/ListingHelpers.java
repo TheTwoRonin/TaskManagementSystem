@@ -30,4 +30,11 @@ public class ListingHelpers {
                 .map(Object::toString)
                 .collect(Collectors.joining("\n-------\n")).trim();
     }
+
+//    public static <T extends IntermediateTask> String listSortedTasks(List<T> list, Function<T, Comparable<?>> sortFunction) {
+//        return list.stream()
+//                .sorted(Comparator.comparing(sortFunction))
+//                .map(Object::toString)
+//                .collect(Collectors.joining("\n-------\n")).trim();
+//    }
 }
