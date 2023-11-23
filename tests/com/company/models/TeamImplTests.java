@@ -3,7 +3,8 @@ package com.company.models;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Team;
 import com.company.models.contracts.User;
-import com.company.utils.TestUtilities;
+import com.company.models.named.TeamImpl;
+import com.company.models.named.UserImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,17 +61,11 @@ public class TeamImplTests {
 
     @Test
     public void getMembers_Should_ReturnCopyOfTheCollection() {
-
-        team.getMembers();
-
         Assertions.assertNotSame(team.getMembers(),team.getMembers());
     }
 
     @Test
     public void getBoards_Should_ReturnCopyOfTheCollection() {
-
-        team.getBoards();
-
         Assertions.assertNotSame(team.getBoards(),team.getBoards());
     }
 

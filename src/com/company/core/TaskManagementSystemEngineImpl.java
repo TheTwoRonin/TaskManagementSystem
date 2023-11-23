@@ -5,7 +5,6 @@ import com.company.core.contracts.CommandFactory;
 import com.company.core.contracts.TaskManagementSystemEngine;
 import com.company.core.contracts.TaskManagementSystemRepository;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -78,31 +77,11 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
      * @return A list of the parameters needed to execute the command
      */
     private List<String> extractCommandParameters(String inputLine) {
-        if (inputLine.contains(COMMENT_OPEN_SYMBOL)) {
-            return extractCommentParameters(inputLine);
-        }
-        String[] commandParts = inputLine.split(" ");
-        List<String> parameters = new ArrayList<>();
-        for (int i = 1; i < commandParts.length; i++) {
-            parameters.add(commandParts[i]);
-        }
-        return parameters;
-    }
 
-    public List<String> extractCommentParameters(String fullCommand) {
-        int indexOfFirstSeparator = fullCommand.indexOf(MAIN_SPLIT_SYMBOL);
-        int indexOfOpenComment = fullCommand.indexOf(COMMENT_OPEN_SYMBOL);
-        int indexOfCloseComment = fullCommand.indexOf(COMMENT_CLOSE_SYMBOL);
-        List<String> parameters = new ArrayList<>();
-        if (indexOfOpenComment >= 0) {
-            parameters.add(fullCommand.substring(indexOfOpenComment + COMMENT_OPEN_SYMBOL.length(), indexOfCloseComment));
-            fullCommand = fullCommand.replaceAll("\\{\\{.+(?=}})}}", "");
-        }
-
-        List<String> result = new ArrayList<>(Arrays.asList(fullCommand.substring(indexOfFirstSeparator + 1).split(MAIN_SPLIT_SYMBOL)));
-        result.removeAll(Arrays.asList(" ", "", null));
-        parameters.addAll(result);
-        return parameters;
+        return Arrays.stream(inputLine.split("\\s+(?![^{]*}})"))
+                .skip(1)
+                .map(e -> e.replaceAll("[{}]", ""))
+                .toList();
     }
 
     private void print(String result) {

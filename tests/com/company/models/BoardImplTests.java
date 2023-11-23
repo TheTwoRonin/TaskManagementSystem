@@ -1,6 +1,7 @@
 package com.company.models;
 
 import com.company.models.contracts.Board;
+import com.company.models.named.BoardImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,17 +46,11 @@ public class BoardImplTests {
 
     @Test
     public void getTasks_Should_ReturnCopyOfTheCollection() {
-
-        board.getTasks();
-
         Assertions.assertNotSame(board.getTasks(),board.getTasks());
     }
 
     @Test
     public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
-
-        board.getActivityHistory();
-
         Assertions.assertNotSame(board.getActivityHistory(),board.getActivityHistory());
     }
 

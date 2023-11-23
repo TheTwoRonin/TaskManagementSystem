@@ -1,16 +1,14 @@
 package com.company.models;
 
-import com.company.models.contracts.Bug;
-import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
-import com.company.utils.TestUtilities;
+import com.company.models.named.UserImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static com.company.utils.TaskBaseConstraints.*;
 import static com.company.utils.NamingConstraints.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UserImplTests {
 
@@ -49,17 +47,11 @@ public class UserImplTests {
 
     @Test
     public void getTasks_Should_ReturnCopyOfTheCollection() {
-
-        user.getTasks();
-
         Assertions.assertNotSame(user.getTasks(),user.getTasks());
     }
 
     @Test
     public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
-
-        user.getActivityHistory();
-
         Assertions.assertNotSame(user.getActivityHistory(),user.getActivityHistory());
     }
 

@@ -3,11 +3,16 @@ package com.company.core;
 import com.company.commands.constants.CommandConstants;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.exceptions.ElementNotFoundException;
-import com.company.models.*;
 import com.company.models.contracts.*;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Size;
+import com.company.models.idd.BugImpl;
+import com.company.models.idd.FeedbackImpl;
+import com.company.models.idd.StoryImpl;
+import com.company.models.named.BoardImpl;
+import com.company.models.named.TeamImpl;
+import com.company.models.named.UserImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +20,11 @@ import java.util.List;
 public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemRepository {
 
     private int nextId;
-
+    // TODO: 20.11.2023 г. 3 lists for tasks // 4th list with all tasks // remove all casting
     private final List<Task> tasks = new ArrayList<>();
+    private final List<Bug> bugs = new ArrayList<>();
+    private final List<Story> stories = new ArrayList<>();
+    private final List<Feedback> feedbacks = new ArrayList<>();
     private final List<User> users = new ArrayList<>();
     private final List<Board> boards = new ArrayList<>();
     private final List<Team> teams = new ArrayList<>();
@@ -49,6 +57,8 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     public Bug createBug(String title, String description, User assignee, Priority priority, Severity severity, List<String> steps) {
         Bug bug = new BugImpl(++nextId, title, description, assignee, priority, severity, steps);
         this.tasks.add(bug);
+        this.bugs.add(bug);
+
         return bug;
     }
 
@@ -56,6 +66,8 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     public Feedback createFeedback(String title, String description, int rating) {
         Feedback feedback = new FeedbackImpl(++nextId, title, description, rating);
         this.tasks.add(feedback);
+        this.feedbacks.add(feedback);
+
         return feedback;
     }
 
@@ -63,6 +75,8 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     public Story createStory(String title, String description, User assignee, Priority priority, Size size) {
         Story story = new StoryImpl(++nextId, title, description, assignee, priority, size);
         this.tasks.add(story);
+        this.stories.add(story);
+
         return story;
     }
 
@@ -70,6 +84,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     public User createUser(String name) {
         User user = new UserImpl(name);
         this.users.add(user);
+
         return user;
     }
 
@@ -77,6 +92,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
     public Team createTeam(String name) {
         Team team = new TeamImpl(name);
         this.teams.add(team);
+
         return team;
     }
 
@@ -85,6 +101,7 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
         Board board = new BoardImpl(name);
         team.addBoard(board);
         this.boards.add(board);
+
         return board;
     }
 
@@ -116,19 +133,48 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
 
     @Override
     public void teamIsUnique(String name) {
-        if(teams.stream().anyMatch(t -> t.getName().equals(name))){
+        if (teams.stream().anyMatch(t -> t.getName().equals(name))) {
             throw new IllegalArgumentException("Team with this name has been already created.");
         }
     }
+
     @Override
-    public void boardIsUniqueInTeam(String name, Team team){
+    public void boardIsUniqueInTeam(String name, Team team) {
         List<Board> teamBoards = team.getBoards();
-            if(teamBoards.stream().anyMatch(b -> b.getName().equals(name))){
-                throw new IllegalArgumentException("Board with this name has been already created.");
-            }
+        if (teamBoards.stream().anyMatch(b -> b.getName().equals(name))) {
+            throw new IllegalArgumentException("Board with this name has been already created.");
+        }
     }
+
+    //TODO Rebuild to work for all
     @Override
     public Task findTaskById(int id) {
+        return findTaskById(id, tasks);
+    }
+
+    @Override
+    public Bug findBugById(int id) {
+        return findTaskById(id, bugs);
+    }
+
+    @Override
+    public Story findStoryById(int id) {
+        return findTaskById(id, stories);
+    }
+
+    @Override
+    public Feedback findFeedbackById(int id) {
+        return findTaskById(id, feedbacks);
+    }
+
+    @Override
+    public IntermediateTask findIntermediateTaskById(int id) {
+        List<IntermediateTask> intermediateList = new ArrayList<>(bugs);
+        intermediateList.addAll(stories);
+        return findTaskById(id, intermediateList);
+    }
+
+    private <T extends Task> T findTaskById(int id, List<T> tasks) {
         return tasks.stream().filter(t -> t.getId() == id).findAny()
                 .orElseThrow(() -> new ElementNotFoundException(String.format(CommandConstants.TASK_NOT_FOUND_ERR, id)));
     }

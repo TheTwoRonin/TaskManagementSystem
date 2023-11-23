@@ -2,6 +2,7 @@ package com.company.models;
 
 import com.company.models.contracts.Feedback;
 import com.company.models.enums.Status;
+import com.company.models.idd.FeedbackImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,17 +56,16 @@ public class FeedbackTests {
 
     @Test
     public void getComments_Should_ReturnCopyOfTheCollection() {
-
-        feedback.getComments().add(VALID_COMMENT);
-
-        Assertions.assertEquals(0, feedback.getComments().size());
+        Assertions.assertNotSame(feedback.getComments(), feedback.getComments());
     }
 
     @Test
-    public void getChanges_Should_ReturnCopyOfTheCollection() {
-        // TODO: 18.11.2023 г. add activity when implemented
-//        feedback.getChanges().add()
+    public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
+        Assertions.assertNotSame(feedback.getActivityHistory(), feedback.getActivityHistory());
+    }
 
-        Assertions.assertEquals(0, feedback.getChanges().size());
+    @Test
+    public void getActivityHistory_Should_Have_Item_After_Creation() {
+        Assertions.assertEquals(1, feedback.getActivityHistory().size());
     }
 }

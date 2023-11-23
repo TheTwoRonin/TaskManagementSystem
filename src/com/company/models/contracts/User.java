@@ -2,15 +2,15 @@ package com.company.models.contracts;
 
 import java.util.List;
 
-public interface User extends Nameable{
+public interface User extends Nameable, Loggable {
 
     String getName();
 
     void assignTask(Task task);
 
-    void addActivity(Activity activity);
+    void addActivity(Log activity);
 
     List<Task> getTasks();
 
-    List<Activity> getActivityHistory();
+    List<Log> getActivityHistory();
 }
