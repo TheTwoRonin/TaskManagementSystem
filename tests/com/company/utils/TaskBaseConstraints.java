@@ -1,12 +1,13 @@
 package com.company.utils;
 
-import com.company.models.UserImplTests;
+import com.company.models.CommentImpl;
 import com.company.models.contracts.Comment;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Size;
-import com.company.models.idd.CommentImpl;
+import com.company.models.named.UserImpl;
+import com.company.models.named.UserImplTests;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class TaskBaseConstraints {
     public static final int DESCRIPTION_LEN_MIN = 10;
     public static final int VALID_ID = 1;
     public static final User VALID_ASSIGNEE = UserImplTests.initializeTestUser();
+    public static final User VALID_ASSIGNEE_2 = new UserImpl(TestUtilities.getString(10));
     public static final int VALID_RATING = 5;
     public static final String ID_1_STR = "1";
     public static final String ID_2_STR = "2";

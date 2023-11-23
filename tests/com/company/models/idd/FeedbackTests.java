@@ -1,8 +1,7 @@
-package com.company.models;
+package com.company.models.idd;
 
 import com.company.models.contracts.Feedback;
 import com.company.models.enums.Status;
-import com.company.models.idd.FeedbackImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
