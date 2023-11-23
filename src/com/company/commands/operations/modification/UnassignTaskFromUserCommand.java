@@ -2,7 +2,7 @@ package com.company.commands.operations.modification;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.IntermediateTask;
+import com.company.models.contracts.TaskAssignment;
 import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
@@ -16,7 +16,7 @@ public class UnassignTaskFromUserCommand implements Command {
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
-    private IntermediateTask task;
+    private TaskAssignment task;
 
     public UnassignTaskFromUserCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
@@ -34,6 +34,6 @@ public class UnassignTaskFromUserCommand implements Command {
 
     private void parseParameters(List<String> parameters) {
         int taskId = ParsingHelpers.tryParseInt(parameters.get(0), INVALID_INPUT_MESSAGE);
-        task = taskManagementSystemRepository.findIntermediateTaskById(taskId);
+        task = taskManagementSystemRepository.findTaskAssignmentById(taskId);
     }
 }

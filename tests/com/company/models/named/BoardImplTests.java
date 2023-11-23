@@ -1,7 +1,6 @@
-package com.company.models;
+package com.company.models.named;
 
 import com.company.models.contracts.Board;
-import com.company.models.named.BoardImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

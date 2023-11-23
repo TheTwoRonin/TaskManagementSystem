@@ -2,7 +2,7 @@ package com.company.commands.listing;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.IntermediateTask;
+import com.company.models.contracts.TaskAssignment;
 import com.company.models.enums.Status;
 import com.company.utils.ListingHelpers;
 import com.company.utils.ParsingHelpers;
@@ -29,13 +29,13 @@ public class ListFilteredTaskAssignmentsCommand implements Command {
 
         parseParameters(parameters);
 
-        List<IntermediateTask> intermediateTaskList = new ArrayList<>(taskManagementSystemRepository.getBugs());
-        intermediateTaskList.addAll(taskManagementSystemRepository.getStories());
+        List<TaskAssignment> taskAssignmentList = new ArrayList<>(taskManagementSystemRepository.getBugs());
+        taskAssignmentList.addAll(taskManagementSystemRepository.getStories());
 
         return parameters.size() == 2 ?
-                ListingHelpers.listFilteredTasks(intermediateTaskList,
+                ListingHelpers.listFilteredTasks(taskAssignmentList,
                         statusFilter, assigneeFilter) :
-                ListingHelpers.listFilteredTasks(intermediateTaskList, statusFilter);
+                ListingHelpers.listFilteredTasks(taskAssignmentList, statusFilter);
     }
 
     private void parseParameters(List<String> parameters) {

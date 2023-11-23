@@ -1,8 +1,7 @@
-package com.company.models;
+package com.company.models.idd;
 
 import com.company.models.contracts.Story;
 import com.company.models.enums.Status;
-import com.company.models.idd.StoryImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -60,11 +59,37 @@ public class StoryImplTests {
     }
 
     @Test
+    public void assignAssignee_Should_AssignAssignee_When_ValidAssignee() {
+        story.assignAssignee(VALID_ASSIGNEE_2);
+        Assertions.assertEquals(VALID_ASSIGNEE_2, story.getAssignee());
+    }
+
+    @Test
+    public void assignAssignee_Should_ThrowException_When_SameAssignee() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> story.assignAssignee(VALID_ASSIGNEE));
+    }
+
+    @Test
+    public void unassignAssignee_Should_UnassignAssignee_When_AssigneeSigned() {
+        story.unassignAssignee();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> story.getAssignee());
+    }
+
+    @Test
+    public void unassignAssignee_Should_ThrowException_When_NoAssigneeSigned() {
+        story.unassignAssignee();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> story.unassignAssignee());
+    }
+
+    @Test
     public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
         Assertions.assertNotSame(story.getActivityHistory(), story.getActivityHistory());
     }
+
     @Test
     public void getActivityHistory_Should_Have_Item_After_Creation() {
         Assertions.assertEquals(1, story.getActivityHistory().size());
     }
+
+
 }

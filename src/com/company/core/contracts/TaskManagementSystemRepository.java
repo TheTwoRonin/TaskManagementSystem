@@ -59,5 +59,5 @@ public interface TaskManagementSystemRepository {
 
     Feedback findFeedbackById(int id);
 
-    IntermediateTask findIntermediateTaskById(int id);
+    TaskAssignment findTaskAssignmentById(int id);
 }

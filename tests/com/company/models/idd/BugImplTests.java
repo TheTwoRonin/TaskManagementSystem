@@ -1,9 +1,8 @@
-package com.company.models;
+package com.company.models.idd;
 
 import com.company.models.contracts.Bug;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
-import com.company.models.idd.BugImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

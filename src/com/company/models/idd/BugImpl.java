@@ -6,7 +6,7 @@ import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Status;
-import com.company.models.idd.base.BaseIntermediateTask;
+import com.company.models.idd.base.BaseTaskAssignment;
 import com.company.utils.ListingHelpers;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.company.commands.constants.ActivityConstants.*;
 
-public class BugImpl extends BaseIntermediateTask implements Bug {
+public class BugImpl extends BaseTaskAssignment implements Bug {
 
     private static final String INVALID_STATUS_ERR = "Invalid status, can be Active or Done";
 
