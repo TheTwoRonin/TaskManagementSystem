@@ -20,7 +20,6 @@ import java.util.List;
 public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemRepository {
 
     private int nextId;
-    // TODO: 20.11.2023 г. 3 lists for tasks // 4th list with all tasks // remove all casting
     private final List<Task> tasks = new ArrayList<>();
     private final List<Bug> bugs = new ArrayList<>();
     private final List<Story> stories = new ArrayList<>();
