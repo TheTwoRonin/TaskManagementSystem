@@ -4,7 +4,7 @@ import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.Team;
 import com.company.models.contracts.User;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class ShowTeamActivityCommand implements Command {
 
         return team.getMembers().stream()
                 .map(User::getActivityHistory)
-                .map(ParsingHelpers::tryParseList)
+                .map(ListingHelpers::parseList)
                 .collect(Collectors.joining());
     }
 

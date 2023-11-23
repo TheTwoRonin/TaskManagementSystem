@@ -4,7 +4,7 @@ import com.company.models.Activity;
 import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
 import com.company.models.contracts.User;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -59,6 +59,6 @@ public class UserImpl implements User {
 
     @Override
     public String toString() {
-        return String.format("User name: %s%n Tasks: %s", name, ParsingHelpers.tryParseList(tasks));
+        return String.format("User name: %s%n Tasks: %s", name, ListingHelpers.parseList(tasks));
     }
 }

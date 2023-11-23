@@ -7,7 +7,7 @@ import com.company.models.enums.Priority;
 import com.company.models.enums.Severity;
 import com.company.models.enums.Status;
 import com.company.models.idd.base.BaseIntermediateTask;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +78,7 @@ public class BugImpl extends BaseIntermediateTask implements Bug {
     @Override
     public String toString() {
         String sb = getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "Severity: " + getSeverity() + "\n" +
-                ParsingHelpers.tryParseList(getSteps()) + "\n";
+                ListingHelpers.parseList(getSteps()) + "\n";
         return sb;
     }
 }

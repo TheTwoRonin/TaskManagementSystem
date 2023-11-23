@@ -4,7 +4,7 @@ import com.company.models.contracts.Comment;
 import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
 import com.company.models.enums.Status;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -101,6 +101,6 @@ public abstract class BaseTask implements Task {
                         Comments:
                         %s
                         """
-                , getId(), getTitle(), getDescription(), getStatus(), ParsingHelpers.tryParseList(getComments()));
+                , getId(), getTitle(), getDescription(), getStatus(), ListingHelpers.parseList(getComments()));
     }
 }

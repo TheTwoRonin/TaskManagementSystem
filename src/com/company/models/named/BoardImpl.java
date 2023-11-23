@@ -3,7 +3,7 @@ package com.company.models.named;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class BoardImpl implements Board {
 
     @Override
     public String toString() {
-        return String.format(TO_STRING, name, ParsingHelpers.tryParseList(tasks));
+        return String.format(TO_STRING, name, ListingHelpers.parseList(tasks));
     }
 }
 

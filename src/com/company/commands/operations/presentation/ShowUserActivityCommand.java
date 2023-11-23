@@ -3,7 +3,7 @@ package com.company.commands.operations.presentation;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.User;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class ShowUserActivityCommand implements Command {
 
         parseParameters(parameters);
 
-        return ParsingHelpers.tryParseList(user.getActivityHistory());
+        return ListingHelpers.parseList(user.getActivityHistory());
     }
 
     private void parseParameters(List<String> parameters) {
