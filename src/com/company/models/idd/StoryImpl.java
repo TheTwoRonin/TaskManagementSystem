@@ -9,7 +9,8 @@ import com.company.models.enums.Size;
 import com.company.models.enums.Status;
 import com.company.models.idd.base.BaseTaskAssignment;
 
-import static com.company.commands.constants.CommandAndActivityConstants.*;
+import static com.company.commands.constants.CommandAndActivityConstants.SIZE;
+import static com.company.commands.constants.CommandAndActivityConstants.STORY;
 
 public class StoryImpl extends BaseTaskAssignment implements Story {
 
@@ -21,8 +22,6 @@ public class StoryImpl extends BaseTaskAssignment implements Story {
                      User assignee, Priority priority, Size size) {
         super(id, title, description, Status.NOT_DONE, assignee, priority);
         this.size = size;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_CREATION
-                .formatted(STORY, getId())));
     }
 
     @Override
@@ -32,12 +31,9 @@ public class StoryImpl extends BaseTaskAssignment implements Story {
 
     @Override
     public void changeStatus(Status status) {
-        Status old_status = getStatus();
         if (!status.equals(Status.NOT_DONE) && !status.equals(Status.IN_PROGRESS) && !status.equals(Status.DONE))
             throw new IllegalArgumentException(INVALID_STATUS_ERR);
         super.changeStatus(status);
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(STORY, getId(), STATUS, old_status, getStatus())));
     }
 
     @Override
@@ -50,19 +46,12 @@ public class StoryImpl extends BaseTaskAssignment implements Story {
 
     @Override
     public void changePriority(Priority priority) {
-        Priority old_priority = getPriority();
         super.changePriority(priority);
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(STORY, getId(), PRIORITY, old_priority, getPriority())));
     }
 
     @Override
     public void unassignAssignee() {
-        User assignee = getAssignee();
         super.unassignAssignee();
-        //TODO Implement in IntermediateTask
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_UNASSIGNED_FROM_USER
-                .formatted(STORY, getId(), assignee.getName())));
     }
 
     @Override

@@ -1,9 +1,14 @@
 package com.company.models.idd.base;
 
+import com.company.commands.constants.CommandAndActivityConstants;
+import com.company.models.Activity;
 import com.company.models.contracts.TaskAssignment;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
+
+import static com.company.commands.constants.CommandAndActivityConstants.PRIORITY;
+import static com.company.commands.constants.CommandAndActivityConstants.STORY;
 
 public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignment {
 
@@ -29,14 +34,22 @@ public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignm
     }
 
     public void unassignAssignee() {
-        checkifAssigneeAssigned();
+        checkIfAssigneeAssigned();
+        User old_assignee = getAssignee();
         assignee = null;
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_UNASSIGNED_FROM_USER
+                .formatted(STORY, getId(), old_assignee.getName())));
     }
 
     @Override
     public User getAssignee() {
-        checkifAssigneeAssigned();
+        checkIfAssigneeAssigned();
         return assignee;
+    }
+
+    private void checkIfAssigneeAssigned() {
+        if (assignee == null)
+            throw new IllegalArgumentException(NO_ASSIGNEE_ASSIGNED_ERR);
     }
 
     @Override
@@ -46,20 +59,21 @@ public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignm
 
     @Override
     public void changePriority(Priority priority) {
+        Priority old_priority = getPriority();
         this.priority = priority;
-    }
-
-    private void checkifAssigneeAssigned() {
-        if (assignee == null)
-            throw new IllegalArgumentException(NO_ASSIGNEE_ASSIGNED_ERR);
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClass().getSimpleName().replaceAll("Impl", ""),
+                        getId(),
+                        PRIORITY,
+                        old_priority,
+                        getPriority())));
     }
 
     @Override
     public String toString() {
-        String sb = super.toString() + """
+        return super.toString() + """
                 Assignee: %s
                 Priority: %s
                 """.formatted(getAssignee().getName(), getPriority());
-        return sb;
     }
 }

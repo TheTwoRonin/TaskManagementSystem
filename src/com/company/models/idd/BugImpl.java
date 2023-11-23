@@ -13,7 +13,8 @@ import com.company.utils.ListingHelpers;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.company.commands.constants.CommandAndActivityConstants.*;
+import static com.company.commands.constants.CommandAndActivityConstants.BUG;
+import static com.company.commands.constants.CommandAndActivityConstants.SEVERITY;
 
 public class BugImpl extends BaseTaskAssignment implements Bug {
 
@@ -27,9 +28,6 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
         super(id, title, description, Status.ACTIVE, assignee, priority);
         this.severity = severity;
         this.steps = new ArrayList<>(steps);
-        //TODO integrate in IntermediateTask
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_CREATION
-                .formatted(BUG, getId())));
     }
 
     @Override
@@ -44,12 +42,9 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
 
     @Override
     public void changeStatus(Status status) {
-        Status old_status = getStatus();
         if (!status.equals(Status.ACTIVE) && !status.equals(Status.DONE))
             throw new IllegalArgumentException(INVALID_STATUS_ERR);
         super.changeStatus(status);
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(BUG, getId(), STATUS, old_status, getStatus())));
     }
 
     @Override
@@ -62,18 +57,13 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
 
     @Override
     public void changePriority(Priority priority) {
-        Priority old_priority = getPriority();
         super.changePriority(priority);
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(BUG, getId(), PRIORITY, old_priority, getPriority())));
+
     }
 
     @Override
     public void unassignAssignee() {
-        User assignee = getAssignee();
         super.unassignAssignee();
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_UNASSIGNED_FROM_USER
-                .formatted(this.getClass().getInterfaces()[0], getId(), assignee.getName())));
     }
 
     @Override
