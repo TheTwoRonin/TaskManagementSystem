@@ -15,14 +15,13 @@ Currently, the engine supports the following commands:
 - **CreateUser** `[username] ` - registers a user. Username should be between 5 and 15 symbols.
 - **CreateTeam** `[name]` - registers a team. Username should be between 5 and 15 symbols.
 - **CreateBoard**  `[name]` `[teamName]` - creates a board, requires a team. Name should be between 5 and 10 symbols.
-- **CreateFeedback** `[title] [description] [rating]` `[boardName]` - creates a feedback, requires a board. name and
+- **CreateFeedback** `[title]` `[description]` `[rating]` `[boardName]` - creates a feedback, requires a board. name and
   description should be between 10 and 100/500 symbols. Use brackets like this to concatenate long titles and
   descriptions {{Long title example}}
-- **CreateBug** `[title] [description]` `[steps]` `[priority]`
-  `[teamName]` `[severity]` `[status]` `[userName]` `[boardName]` -
-  creates a bug, requires a user and a board, name and description should be between 10 and 100/500 symbols. {{Long
-  title example}} applicable.
-- **CreateStory** `[title] [description]` `[priority]` `[size]` `[status]` `[userName]` `[boardName]`  - creates a
+- **CreateBug** `[title]` `[description]` `[steps]` `[priority]`
+  `[teamName]` `[severity]` `[status]` `[userName]` `[boardName]` - creates a bug, requires a user and a board, name and
+  description should be between 10 and 100/500 symbols. {{Long title example}} applicable.
+- **CreateStory** `[title]` `[description]` `[priority]` `[size]` `[status]` `[userName]` `[boardName]`  - creates a
   story, requires a user and a board, name and description should be between 10 and 100/500 symbols. {{Long title
   example}} applicable.
 
