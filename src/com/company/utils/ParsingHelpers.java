@@ -1,10 +1,5 @@
 package com.company.utils;
 
-import com.company.commands.constants.CommandConstants;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class ParsingHelpers {
 
     public static final String NO_SUCH_ENUM = "There is no %s in %ss.";
@@ -33,9 +28,4 @@ public class ParsingHelpers {
         }
     }
 
-    public static <T> String tryParseList(List<T> list) {
-        if (list.isEmpty())
-            return "No entries.";
-        return list.stream().map(T::toString).collect(Collectors.joining(CommandConstants.NEW_LINE));
-    }
 }

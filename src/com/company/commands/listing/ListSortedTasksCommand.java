@@ -4,9 +4,9 @@ import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.Task;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static com.company.utils.ListingHelpers.listSortedTasks;
 
 public class ListSortedTasksCommand implements Command {
 
@@ -18,14 +18,7 @@ public class ListSortedTasksCommand implements Command {
 
     @Override
     public String execute(List<String> parameters) {
-
-
-        return taskManagementSystemRepository
-                .getTasks()
-                .stream()
-                .sorted(Comparator.comparing(Task::getTitle))
-                .map(Object::toString)
-                .collect(Collectors.joining("\n-------\n"));
+        return listSortedTasks(taskManagementSystemRepository.getTasks(), Task::getTitle);
     }
 
 }

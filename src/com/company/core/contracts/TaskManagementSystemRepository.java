@@ -11,6 +11,12 @@ public interface TaskManagementSystemRepository {
 
     List<Task> getTasks();
 
+    List<Bug> getBugs();
+
+    List<Story> getStories();
+
+    List<Feedback> getFeedback();
+
     List<User> getUsers();
 
     List<Board> getBoards();
@@ -35,16 +41,6 @@ public interface TaskManagementSystemRepository {
 
     Board findBoardByName(String name);
 
-    void userIsUnique(String name);
-
-    void teamIsUnique(String name);
-
-    //void boardIsUniqueInTeam(String name);
-    void boardIsUniqueInTeam(String name, Team team);
-    //TODO Implement generics
-    //<T> T findByName(String name);
-    // <T> void isUnique(List<T> elements, String name);
-
     Task findTaskById(int id);
 
     Bug findBugById(int id);
@@ -53,5 +49,11 @@ public interface TaskManagementSystemRepository {
 
     Feedback findFeedbackById(int id);
 
-    IntermediateTask findIntermediateTaskById(int id);
+    TaskAssignment findTaskAssignmentById(int id);
+
+    void userIsUnique(String name);
+
+    void teamIsUnique(String name);
+
+    void boardIsUniqueInTeam(String name, Team team);
 }

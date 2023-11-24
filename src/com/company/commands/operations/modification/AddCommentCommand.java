@@ -1,13 +1,18 @@
 package com.company.commands.operations.modification;
 
-import com.company.commands.constants.CommandConstants;
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.idd.CommentImpl;
+import com.company.models.Activity;
+import com.company.models.CommentImpl;
+import com.company.models.contracts.Task;
+import com.company.models.contracts.User;
 import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
+
+import static com.company.commands.constants.CommandAndActivityConstants.ITEM_WITH_ID_COMMENT_ADDED;
 
 public class AddCommentCommand implements Command {
 
@@ -29,13 +34,23 @@ public class AddCommentCommand implements Command {
 
         parseParameters(parameters);
 
-        taskManagementSystemRepository.findTaskById(id).addComment(new CommentImpl(content, author));
+        User authorUser = taskManagementSystemRepository.findUserByName(author);
+        Task task = taskManagementSystemRepository.findTaskById(id);
 
-        return String.format(CommandConstants.COMMENT_ADDED_MESSAGE, author);
+        task.addComment(new CommentImpl(content, author));
+        Activity log = new Activity(ITEM_WITH_ID_COMMENT_ADDED
+                .formatted(task.getClass().getSimpleName().replaceAll("Impl", ""),
+                        task.getId(),
+                        content,
+                        author));
+        authorUser.addActivity(log);
+        task.addActivity(log);
+
+        return String.format(CommandAndActivityConstants.COMMENT_ADDED_MESSAGE, author);
     }
 
     private void parseParameters(List<String> parameters) {
-        id = ParsingHelpers.tryParseInt(parameters.get(0), CommandConstants.INVALID_INPUT_MESSAGE);
+        id = ParsingHelpers.tryParseInt(parameters.get(0), CommandAndActivityConstants.INVALID_INPUT_MESSAGE);
         content = parameters.get(1);
         author = parameters.get(2);
     }

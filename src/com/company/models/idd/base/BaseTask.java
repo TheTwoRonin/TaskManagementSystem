@@ -1,14 +1,18 @@
 package com.company.models.idd.base;
 
+import com.company.commands.constants.CommandAndActivityConstants;
+import com.company.models.Activity;
 import com.company.models.contracts.Comment;
 import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
 import com.company.models.enums.Status;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.company.commands.constants.CommandAndActivityConstants.STATUS;
 
 public abstract class BaseTask implements Task {
 
@@ -32,6 +36,8 @@ public abstract class BaseTask implements Task {
         this.status = status;
         this.comments = new ArrayList<>();
         this.activityHistory = new ArrayList<>();
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_CREATION
+                .formatted(getClass().getSimpleName().replaceAll("Impl", ""), getId())));
     }
 
     private void setTitle(String title) {
@@ -78,7 +84,10 @@ public abstract class BaseTask implements Task {
 
     @Override
     public void changeStatus(Status status) {
+        Status old_status = getStatus();
         this.status = status;
+        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClass().getSimpleName().replaceAll("Impl", ""), getId(), STATUS, old_status, getStatus())));
     }
 
     @Override
@@ -101,6 +110,6 @@ public abstract class BaseTask implements Task {
                         Comments:
                         %s
                         """
-                , getId(), getTitle(), getDescription(), getStatus(), ParsingHelpers.tryParseList(getComments()));
+                , getId(), getTitle(), getDescription(), getStatus(), ListingHelpers.parseList(getComments()));
     }
 }

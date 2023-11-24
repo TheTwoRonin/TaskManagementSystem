@@ -1,7 +1,10 @@
-package com.company.models;
+package com.company.models.named;
 
+import com.company.models.Activity;
 import com.company.models.contracts.Board;
-import com.company.models.named.BoardImpl;
+import com.company.models.contracts.Story;
+import com.company.models.idd.StoryImplTests;
+import com.company.utils.TaskBaseConstraints;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BoardImplTests {
-    private Board board;
 
-    //TODO Test assignTask
-    //private Story story;
-    //TODO Test addActivity
+    private Board board;
+    private Story story;
+
 
     @BeforeEach
     public void setUp() {
         board = new BoardImpl(VALID_BOARD_NAME);
+        story = StoryImplTests.initializeTestStory();
+        board.addTask(story);
     }
 
     @Test
@@ -39,10 +43,14 @@ public class BoardImplTests {
 
     @Test
     public void should_assignTask_When_ArgumentsAreValid() {
+        assertEquals(1, board.getTasks().size());
     }
 
     @Test
-    public void should_addActivity_When_ArgumentsAreValid() {    }
+    public void should_addActivity_When_ArgumentsAreValid() {
+        board.addActivity(new Activity(TaskBaseConstraints.VALID_DESCRIPTION));
+        assertEquals(1, board.getActivityHistory().size());
+    }
 
     @Test
     public void getTasks_Should_ReturnCopyOfTheCollection() {

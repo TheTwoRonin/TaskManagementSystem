@@ -1,6 +1,6 @@
 package com.company.commands.operations.creation;
 
-import com.company.commands.constants.CommandConstants;
+import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.Activity;
@@ -16,9 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ADDED_TO_BOARD;
-import static com.company.commands.constants.ActivityConstants.ITEM_WITH_ID_ASSIGNED_TO_USER;
-import static com.company.commands.constants.CommandConstants.BUG;
+import static com.company.commands.constants.CommandAndActivityConstants.*;
 
 public class CreateBugCommand implements Command {
 
@@ -58,7 +56,7 @@ public class CreateBugCommand implements Command {
         board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
                 .formatted(BUG, createdBug.getId(), board.getName())));
 
-        return String.format(CommandConstants.TASK_CREATED_MESSAGE, BUG, createdBug.getId());
+        return String.format(CommandAndActivityConstants.TASK_CREATED_MESSAGE, BUG, createdBug.getId());
     }
 
     private void parseParameters(List<String> parameters) {

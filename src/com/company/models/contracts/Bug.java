@@ -4,7 +4,7 @@ import com.company.models.enums.Severity;
 
 import java.util.List;
 
-public interface Bug extends IntermediateTask {
+public interface Bug extends TaskAssignment {
 
     List<String> getSteps();
 

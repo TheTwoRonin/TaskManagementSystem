@@ -2,22 +2,23 @@ package com.company.commands.operations.presentation;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.Team;
-import com.company.models.contracts.User;
+import com.company.models.contracts.Task;
 import com.company.utils.ListingHelpers;
+import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class ShowTeamActivityCommand implements Command {
+import static com.company.commands.constants.CommandAndActivityConstants.INVALID_INPUT_MESSAGE;
+
+public class ShowTaskActivityCommand implements Command {
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 
-    private Team team;
+    private Task task;
 
-    public ShowTeamActivityCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
+    public ShowTaskActivityCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
     }
 
@@ -27,13 +28,10 @@ public class ShowTeamActivityCommand implements Command {
 
         parseParameters(parameters);
 
-        return team.getMembers().stream()
-                .map(User::getActivityHistory)
-                .map(ListingHelpers::parseList)
-                .collect(Collectors.joining());
+        return ListingHelpers.parseList(task.getActivityHistory());
     }
 
     private void parseParameters(List<String> parameters) {
-        team = taskManagementSystemRepository.findTeamByName(parameters.get(0));
+        task = taskManagementSystemRepository.findTaskById(ParsingHelpers.tryParseInt(parameters.get(0), INVALID_INPUT_MESSAGE));
     }
 }

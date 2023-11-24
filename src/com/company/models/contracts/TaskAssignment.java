@@ -2,7 +2,7 @@ package com.company.models.contracts;
 
 import com.company.models.enums.Priority;
 
-public interface IntermediateTask extends Task {
+public interface TaskAssignment extends Task {
 
     User getAssignee();
 

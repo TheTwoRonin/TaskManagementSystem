@@ -3,7 +3,7 @@ package com.company.models.named;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Team;
 import com.company.models.contracts.User;
-import com.company.utils.ParsingHelpers;
+import com.company.utils.ListingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class TeamImpl implements Team {
     @Override
     public String toString() {
         return String.format(TO_STRING, name,
-                ParsingHelpers.tryParseList(members),
-                ParsingHelpers.tryParseList(boards));
+                ListingHelpers.parseList(members),
+                ListingHelpers.parseList(boards));
     }
 }

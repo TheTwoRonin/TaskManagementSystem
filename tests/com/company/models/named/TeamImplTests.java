@@ -1,7 +1,8 @@
-package com.company.models;
+package com.company.models.named;
 
+import com.company.models.contracts.Board;
+import com.company.models.contracts.Team;
 import com.company.models.contracts.User;
-import com.company.models.named.UserImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,22 +11,24 @@ import static com.company.utils.NamingConstraints.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class UserImplTests {
+public class TeamImplTests {
+
+    private Team team;
 
     private User user;
 
-    //TODO Test assignTask
-    //private Story story;
-    //TODO Test addActivity
+    private Board board;
 
     @BeforeEach
     public void setUp() {
-        user = new UserImpl(VALID_NAME);
+        team = new TeamImpl(VALID_NAME);
+        user = UserImplTests.initializeTestUser();
+        board = BoardImplTests.initializeTestBoard();
     }
 
     @Test
     public void should_CreateUser_When_ArgumentsAreValid() {
-        assertEquals(VALID_NAME, user.getName());
+        assertEquals(VALID_NAME, team.getName());
     }
 
     @Test
@@ -39,23 +42,32 @@ public class UserImplTests {
     }
 
     @Test
-    public void should_assignTask_When_ArgumentsAreValid() {
+    public void should_addMember_When_ArgumentsAreValid() {
+
+        team.addMember(user);
+
+        assertEquals(1, team.getMembers().size());
     }
 
     @Test
-    public void should_addActivity_When_ArgumentsAreValid() {    }
+    public void should_addBoard_When_ArgumentsAreValid() {
 
-    @Test
-    public void getTasks_Should_ReturnCopyOfTheCollection() {
-        Assertions.assertNotSame(user.getTasks(),user.getTasks());
+        team.addBoard(board);
+
+        assertEquals(1, team.getBoards().size());
     }
 
     @Test
-    public void getActivityHistory_Should_ReturnCopyOfTheCollection() {
-        Assertions.assertNotSame(user.getActivityHistory(),user.getActivityHistory());
+    public void getMembers_Should_ReturnCopyOfTheCollection() {
+        Assertions.assertNotSame(team.getMembers(),team.getMembers());
     }
 
-    public static User initializeTestUser() {
+    @Test
+    public void getBoards_Should_ReturnCopyOfTheCollection() {
+        Assertions.assertNotSame(team.getBoards(),team.getBoards());
+    }
+
+    public static User initializeTestTeam() {
         return new UserImpl(VALID_NAME);
     }
 }

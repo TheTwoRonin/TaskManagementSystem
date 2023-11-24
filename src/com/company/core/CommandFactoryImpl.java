@@ -2,8 +2,7 @@ package com.company.core;
 
 import com.company.commands.contracts.Command;
 import com.company.commands.enums.CommandType;
-import com.company.commands.listing.ListFilteredTasksCommand;
-import com.company.commands.listing.ListSortedTasksCommand;
+import com.company.commands.listing.*;
 import com.company.commands.operations.creation.*;
 import com.company.commands.operations.modification.*;
 import com.company.commands.operations.presentation.*;
@@ -36,11 +35,21 @@ public class CommandFactoryImpl implements CommandFactory {
             case SHOWTEAMMEMBERS -> new ShowTeamMembersCommand(taskManagementSystemRepository);
             case SHOWTEAMS -> new ShowTeamsCommand(taskManagementSystemRepository);
             case SHOWBOARDACTIVITY -> new ShowBoardActivityCommand(taskManagementSystemRepository);
+            case SHOWTASKACTIVITY -> new ShowTaskActivityCommand(taskManagementSystemRepository);
             case SHOWUSERACTIVITY -> new ShowUserActivityCommand(taskManagementSystemRepository);
             case SHOWTEAMACTIVITY -> new ShowTeamActivityCommand(taskManagementSystemRepository);
             case UNASSIGNTASKFROMUSER -> new UnassignTaskFromUserCommand(taskManagementSystemRepository);
             case LISTSORTEDTASKS -> new ListSortedTasksCommand(taskManagementSystemRepository);
             case LISTFILTEREDTASKS -> new ListFilteredTasksCommand(taskManagementSystemRepository);
+            case LISTFILTEREDTASKASSIGNMENTS -> new ListFilteredTaskAssignmentsCommand(taskManagementSystemRepository);
+            case LISTSORTEDBUGSBYFIELD -> new ListSortedBugsByFieldCommand(taskManagementSystemRepository);
+            case LISTSORTEDSTORIESBYFIELD -> new ListSortedStoriesByFieldCommand(taskManagementSystemRepository);
+            case LISTSORTEDFEEDBACKBYFIELD -> new ListSortedFeedbackByFieldCommand(taskManagementSystemRepository);
+            case LISTSORTEDTASKASSIGNMENTSBYTITLE ->
+                    new ListSortedTaskAssignmentsByTitleCommand(taskManagementSystemRepository);
+            case LISTFILTEREDBUGS -> new ListFilteredBugsCommand(taskManagementSystemRepository);
+            case LISTFILTEREDFEEDBACKS -> new ListFilteredFeedbacksCommand(taskManagementSystemRepository);
+            case LISTFILTEREDSTORIES -> new ListFilteredStoriesCommand(taskManagementSystemRepository);
 
             default -> throw new IllegalArgumentException("nqma takaa komanda");
         };

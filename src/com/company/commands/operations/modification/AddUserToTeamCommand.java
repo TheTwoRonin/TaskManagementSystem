@@ -9,8 +9,8 @@ import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-import static com.company.commands.constants.ActivityConstants.ITEM_USER_ADDED_TO_TEAM;
-import static com.company.commands.constants.CommandConstants.USER_ADDED_TO_TEAM_MESSAGE;
+import static com.company.commands.constants.CommandAndActivityConstants.ITEM_USER_ADDED_TO_TEAM;
+import static com.company.commands.constants.CommandAndActivityConstants.USER_ADDED_TO_TEAM_MESSAGE;
 
 public class AddUserToTeamCommand implements Command {
 

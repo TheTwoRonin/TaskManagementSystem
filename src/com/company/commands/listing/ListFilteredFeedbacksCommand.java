@@ -1,34 +1,36 @@
-package com.company.commands.operations.presentation;
+package com.company.commands.listing;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.contracts.Team;
+import com.company.models.enums.Status;
 import com.company.utils.ListingHelpers;
+import com.company.utils.ParsingHelpers;
 import com.company.utils.ValidationHelpers;
 
 import java.util.List;
 
-public class ShowTeamBoardsCommand implements Command {
+public class ListFilteredFeedbacksCommand implements Command {
+
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
-
     private final TaskManagementSystemRepository taskManagementSystemRepository;
+    private Status statusFilter;
 
-    private Team team;
 
-    public ShowTeamBoardsCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
+    public ListFilteredFeedbacksCommand(TaskManagementSystemRepository taskManagementSystemRepository) {
         this.taskManagementSystemRepository = taskManagementSystemRepository;
     }
 
     @Override
     public String execute(List<String> parameters) {
+
         ValidationHelpers.validateArgumentsCount(parameters, EXPECTED_NUMBER_OF_ARGUMENTS);
 
         parseParameters(parameters);
 
-        return ListingHelpers.parseList(team.getBoards());
+        return ListingHelpers.listFilteredTasks(taskManagementSystemRepository.getBugs(), statusFilter);
     }
 
     private void parseParameters(List<String> parameters) {
-        team = taskManagementSystemRepository.findTeamByName(parameters.get(0));
+        statusFilter = ParsingHelpers.tryParseEnum(parameters.get(0), Status.class);
     }
 }
