@@ -20,7 +20,7 @@ Currently, the engine supports the following commands:
 - **
   CreateBug** `[title] [description]` `[steps]` `[priority]` `[teamName]` `[severity]` `[status]` `[userName]` `[boardName]`
   - creates a bug, requires a user and a board, name and description should be between 10 and 100/500 symbols. {{Long
-  title example}} applicable.
+    title example}} applicable.
 - **CreateStory** `[title] [description]` `[priority]` `[size]` `[status]` `[userName]` `[boardName]`  - creates a
   story, requires a user and a board, name and description should be between 10 and 100/500 symbols. {{Long title
   example}} applicable.
