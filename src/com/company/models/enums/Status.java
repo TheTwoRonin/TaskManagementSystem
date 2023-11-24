@@ -30,7 +30,7 @@ public enum Status {
             case DONE:
                 return "Done";
             default:
-                throw new UnsupportedOperationException("Nz, ti si znaesh.");
+                return null;
         }
     }
 

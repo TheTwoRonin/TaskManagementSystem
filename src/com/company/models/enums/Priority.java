@@ -15,7 +15,7 @@ public enum Priority {
             case LOW:
                 return "Low";
             default:
-                throw new UnsupportedOperationException("Nz, ti si znaesh.");
+                return null;
         }
     }
 

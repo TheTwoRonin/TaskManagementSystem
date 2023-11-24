@@ -23,6 +23,7 @@ public class AddCommentTests {
     private Command command;
     private TaskManagementSystemRepository repository;
 
+
     @BeforeEach
     public void before() {
         this.repository = new TaskManagementSystemRepositoryImpl();
@@ -33,6 +34,7 @@ public class AddCommentTests {
     public void execute_Should_AddComment_When_ArgumentsAreValid() {
         this.repository.createFeedback(TaskBaseConstraints.VALID_TITLE, TaskBaseConstraints.VALID_DESCRIPTION,
                 TaskBaseConstraints.VALID_RATING);
+        this.repository.createUser(VALID_AUTHOR);
         List<String> params = List.of(VALID_NUM_STR, VALID_CONTENT, VALID_AUTHOR);
         command.execute(params);
         assertEquals(1, repository.findTaskById(1).getComments().size());

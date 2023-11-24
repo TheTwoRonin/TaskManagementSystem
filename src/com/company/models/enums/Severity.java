@@ -15,7 +15,7 @@ public enum Severity {
             case MINOR:
                 return "Minor";
             default:
-                throw new UnsupportedOperationException("Nz, ti si znaesh.");
+                return null;
         }
     }
 

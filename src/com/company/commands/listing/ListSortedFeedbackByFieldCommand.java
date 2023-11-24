@@ -44,7 +44,7 @@ public class ListSortedFeedbackByFieldCommand implements Command {
             case "status":
                 return listSortedTasks(list, Feedback::getStatus);
             default:
-                throw new UnsupportedOperationException("Ne moesh da sortirash po tova, ludiq");
+                throw new IllegalArgumentException("Invalid sorter");
         }
     }
 
