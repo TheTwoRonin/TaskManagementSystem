@@ -25,8 +25,10 @@ public class TaskBaseConstraints {
     public static final String VALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_LEN_MIN + 1);
     public static final Priority VALID_PRIORITY = Priority.HIGH;
     public static final Severity VALID_SEVERITY = Severity.CRITICAL;
+    public static final String VALID_STATUS_STR = "ACTIVE";
     public static final Size VALID_SIZE = Size.LARGE;
     public static final List<String> VALID_STEPS = TestUtilities.getList(3);
+
     public static final Comment VALID_COMMENT = new CommentImpl(TestUtilities.getString(4), TestUtilities.getString(4));
     public static final String INVALID_TITLE = TestUtilities.getString(TITLE_LEN_MIN - 1);
     public static final String INVALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_LEN_MIN - 1);
