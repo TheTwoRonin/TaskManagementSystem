@@ -2,7 +2,8 @@
 
 ## Description
 
-This application is intended to be used by a small team of developers, who need to keep track of all the tasks,
+This application is intended to be used by a small team of console loving developers, who need to keep track of all the
+tasks,
 surrounding a software product they are building.
 
 ## Commands
