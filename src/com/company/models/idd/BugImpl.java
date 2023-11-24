@@ -1,7 +1,6 @@
 package com.company.models.idd;
 
 import com.company.commands.constants.CommandAndActivityConstants;
-import com.company.models.Activity;
 import com.company.models.contracts.Bug;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
@@ -51,13 +50,18 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
     public void changeSeverity(Severity severity) {
         Severity old_severity = getSeverity();
         this.severity = severity;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(BUG, getId(), SEVERITY, old_severity, getSeverity())));
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClassName(), getId(), SEVERITY, old_severity, getSeverity()));
+    }
+
+    @Override
+    protected String getClassName() {
+        return BUG;
     }
 
     @Override
     public String toString() {
-        return getClass().getSimpleName().replaceAll("Impl", "") + " "
+        return getClassName() + " "
                 + super.toString()
                 + "Severity: " + getSeverity() + "\n" +
                 ListingHelpers.parseList(getSteps()) + "\n";

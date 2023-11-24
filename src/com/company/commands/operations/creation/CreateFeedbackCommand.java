@@ -3,7 +3,6 @@ package com.company.commands.operations.creation;
 import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.Activity;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Feedback;
 import com.company.utils.ParsingHelpers;
@@ -37,8 +36,8 @@ public class CreateFeedbackCommand implements Command {
 
         Feedback createdFeedback = taskManagementSystemRepository.createFeedback(title, description, rating);
         board.addTask(createdFeedback);
-        board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
-                .formatted(FEEDBACK, createdFeedback.getId(), board.getName())));
+        board.addActivity(ITEM_WITH_ID_ADDED_TO_BOARD
+                .formatted(FEEDBACK, createdFeedback.getId(), board.getName()));
         return String.format(CommandAndActivityConstants.TASK_CREATED_MESSAGE, FEEDBACK, createdFeedback.getId());
     }
 

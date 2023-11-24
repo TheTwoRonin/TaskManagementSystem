@@ -1,7 +1,6 @@
 package com.company.models.idd;
 
 import com.company.commands.constants.CommandAndActivityConstants;
-import com.company.models.Activity;
 import com.company.models.contracts.Feedback;
 import com.company.models.enums.Status;
 import com.company.models.idd.base.BaseTask;
@@ -37,13 +36,18 @@ public class FeedbackImpl extends BaseTask implements Feedback {
     public void changeRating(int rating) {
         int old_rating = getRating();
         this.rating = rating;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(FEEDBACK, getId(), RATING, Integer.toString(old_rating), Integer.toString(getRating()))));
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClassName(), getId(), RATING, Integer.toString(old_rating), Integer.toString(getRating())));
+    }
+
+    @Override
+    protected String getClassName() {
+        return FEEDBACK;
     }
 
     @Override
     public String toString() {
-        return getClass().getSimpleName().replaceAll("Impl", "") + " "
+        return getClassName() + " "
                 + super.toString()
                 + "Rating: " + getRating() + "\n";
     }

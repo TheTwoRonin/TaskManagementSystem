@@ -3,7 +3,6 @@ package com.company.commands.operations.creation;
 import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.Activity;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
@@ -43,13 +42,13 @@ public class CreateStoryCommand implements Command {
 
         assignee.assignTask(createdStory);
 
-        assignee.addActivity(new Activity(ITEM_WITH_ID_ASSIGNED_TO_USER
-                .formatted(STORY, createdStory.getId(), assignee.getName())));
+        assignee.addActivity(ITEM_WITH_ID_ASSIGNED_TO_USER
+                .formatted(STORY, createdStory.getId(), assignee.getName()));
 
         board.addTask(createdStory);
 
-        board.addActivity(new Activity(ITEM_WITH_ID_ADDED_TO_BOARD
-                .formatted(STORY, createdStory.getId(), board.getName())));
+        board.addActivity(ITEM_WITH_ID_ADDED_TO_BOARD
+                .formatted(STORY, createdStory.getId(), board.getName()));
 
         return String.format(CommandAndActivityConstants.TASK_CREATED_MESSAGE, STORY, createdStory.getId());
     }

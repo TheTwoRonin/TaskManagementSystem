@@ -3,7 +3,6 @@ package com.company.commands.operations.modification;
 import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.Activity;
 import com.company.models.CommentImpl;
 import com.company.models.contracts.Task;
 import com.company.models.contracts.User;
@@ -38,11 +37,11 @@ public class AddCommentCommand implements Command {
         Task task = taskManagementSystemRepository.findTaskById(id);
 
         task.addComment(new CommentImpl(content, author));
-        Activity log = new Activity(ITEM_WITH_ID_COMMENT_ADDED
+        String log = ITEM_WITH_ID_COMMENT_ADDED
                 .formatted(task.getClass().getSimpleName().replaceAll("Impl", ""),
                         task.getId(),
                         content,
-                        author));
+                        author);
         authorUser.addActivity(log);
         task.addActivity(log);
 

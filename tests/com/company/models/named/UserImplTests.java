@@ -1,6 +1,5 @@
 package com.company.models.named;
 
-import com.company.models.Activity;
 import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
 import com.company.models.idd.StoryImplTests;
@@ -54,7 +53,7 @@ public class UserImplTests {
 
     @Test
     public void should_addActivity_When_ArgumentsAreValid() {
-        user.addActivity(new Activity(TaskBaseConstraints.VALID_DESCRIPTION));
+        user.addActivity(TaskBaseConstraints.VALID_DESCRIPTION);
         assertEquals(2, user.getActivityHistory().size());
     }
 

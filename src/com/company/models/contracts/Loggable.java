@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Loggable {
 
-    void addActivity(Log activity);
+    void addActivity(String message);
 
     List<Log> getActivityHistory();
 }

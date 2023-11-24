@@ -1,14 +1,12 @@
 package com.company.models.idd.base;
 
 import com.company.commands.constants.CommandAndActivityConstants;
-import com.company.models.Activity;
 import com.company.models.contracts.TaskAssignment;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
 import com.company.models.enums.Status;
 
 import static com.company.commands.constants.CommandAndActivityConstants.PRIORITY;
-import static com.company.commands.constants.CommandAndActivityConstants.STORY;
 
 public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignment {
 
@@ -37,8 +35,8 @@ public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignm
         checkIfAssigneeAssigned();
         User old_assignee = getAssignee();
         assignee = null;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_UNASSIGNED_FROM_USER
-                .formatted(STORY, getId(), old_assignee.getName())));
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_UNASSIGNED_FROM_USER
+                .formatted(getClassName(), getId(), old_assignee.getName()));
     }
 
     @Override
@@ -61,12 +59,12 @@ public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignm
     public void changePriority(Priority priority) {
         Priority old_priority = getPriority();
         this.priority = priority;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(getClass().getSimpleName().replaceAll("Impl", ""),
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClassName(),
                         getId(),
                         PRIORITY,
                         old_priority,
-                        getPriority())));
+                        getPriority()));
     }
 
     @Override

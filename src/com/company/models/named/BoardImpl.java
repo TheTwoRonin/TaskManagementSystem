@@ -1,5 +1,6 @@
 package com.company.models.named;
 
+import com.company.models.Activity;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
@@ -42,8 +43,8 @@ public class BoardImpl implements Board {
     }
 
     @Override
-    public void addActivity(Log activity) {
-        activityHistory.add(activity);
+    public void addActivity(String message) {
+        activityHistory.add(new Activity(message));
     }
 
     @Override

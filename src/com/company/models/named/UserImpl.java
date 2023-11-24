@@ -23,8 +23,8 @@ public class UserImpl implements User {
         setName(name);
         this.tasks = new ArrayList<>();
         this.activityHistory = new ArrayList<>();
-        addActivity(new Activity(ITEM_WITH_NAME_CREATION
-                .formatted(USER, getName())));
+        addActivity(ITEM_WITH_NAME_CREATION
+                .formatted(USER, getName()));
     }
 
     private void setName(String name) {
@@ -52,8 +52,8 @@ public class UserImpl implements User {
     }
 
     @Override
-    public void addActivity(Log activity) {
-        activityHistory.add(activity);
+    public void addActivity(String message) {
+        activityHistory.add(new Activity(message));
     }
 
     @Override

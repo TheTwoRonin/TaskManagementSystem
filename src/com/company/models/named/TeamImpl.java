@@ -22,7 +22,6 @@ public class TeamImpl implements Team {
         this.boards = new ArrayList<>();
     }
 
-
     private void setName(String name) {
         ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], "Name");
         this.name = name;

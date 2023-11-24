@@ -1,7 +1,6 @@
 package com.company.models.idd;
 
 import com.company.commands.constants.CommandAndActivityConstants;
-import com.company.models.Activity;
 import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
@@ -40,12 +39,17 @@ public class StoryImpl extends BaseTaskAssignment implements Story {
     public void changeSize(Size size) {
         Size old_size = getSize();
         this.size = size;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(STORY, getId(), SIZE, old_size, getSize())));
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClassName(), getId(), SIZE, old_size, getSize()));
+    }
+
+    @Override
+    protected String getClassName() {
+        return STORY;
     }
 
     @Override
     public String toString() {
-        return getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "Size: " + getSize() + "\n";
+        return getClassName() + " " + super.toString() + "Size: " + getSize() + "\n";
     }
 }

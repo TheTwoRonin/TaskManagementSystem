@@ -36,8 +36,8 @@ public abstract class BaseTask implements Task {
         this.status = status;
         this.comments = new ArrayList<>();
         this.activityHistory = new ArrayList<>();
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_CREATION
-                .formatted(getClass().getSimpleName().replaceAll("Impl", ""), getId())));
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_CREATION
+                .formatted(getClassName(), getId()));
     }
 
     private void setTitle(String title) {
@@ -86,14 +86,17 @@ public abstract class BaseTask implements Task {
     public void changeStatus(Status status) {
         Status old_status = getStatus();
         this.status = status;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(getClass().getSimpleName().replaceAll("Impl", ""), getId(), STATUS, old_status, getStatus())));
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClassName(), getId(), STATUS, old_status, getStatus()));
     }
 
+    protected abstract String getClassName();
+
     @Override
-    public void addActivity(Log activity) {
-        this.activityHistory.add(activity);
+    public void addActivity(String message) {
+        this.activityHistory.add(new Activity(message));
     }
+
 
     @Override
     public List<Log> getActivityHistory() {

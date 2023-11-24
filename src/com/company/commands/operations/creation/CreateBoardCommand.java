@@ -3,7 +3,6 @@ package com.company.commands.operations.creation;
 import com.company.commands.constants.CommandAndActivityConstants;
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.Activity;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Team;
 import com.company.utils.ValidationHelpers;
@@ -33,8 +32,8 @@ public class CreateBoardCommand implements Command {
         taskManagementSystemRepository.boardIsUniqueInTeam(name, team);
 
         Board createdBoard = taskManagementSystemRepository.createBoard(name, team);
-        createdBoard.addActivity(new Activity(ITEM_BOARD_CREATION
-                .formatted(createdBoard.getName(), team.getName())));
+        createdBoard.addActivity(ITEM_BOARD_CREATION
+                .formatted(createdBoard.getName(), team.getName()));
 
         return String.format(CommandAndActivityConstants.CREATED_W_NAME_MESSAGE, BOARD, createdBoard.getName());
     }
