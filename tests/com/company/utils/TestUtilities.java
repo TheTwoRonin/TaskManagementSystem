@@ -1,6 +1,5 @@
 package com.company.utils;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class TestUtilities {
@@ -10,7 +9,7 @@ public class TestUtilities {
     }
 
     public static List<String> getList(int size) {
-        return Arrays.asList(new String[size]);
+        return List.of(getString(size).repeat(size));
     }
 
 }
