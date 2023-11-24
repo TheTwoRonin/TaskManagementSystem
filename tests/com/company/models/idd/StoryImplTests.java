@@ -14,9 +14,8 @@ public class StoryImplTests {
 
     private Story story;
 
-    @BeforeEach
-    public void setUp() {
-        story = new StoryImpl(VALID_ID, VALID_TITLE, VALID_DESCRIPTION, VALID_ASSIGNEE, VALID_PRIORITY, VALID_SIZE);
+    public static Story initializeTestStory() {
+        return new StoryImpl(VALID_ID, VALID_TITLE, VALID_DESCRIPTION, VALID_ASSIGNEE, VALID_PRIORITY, VALID_SIZE);
     }
 
     @Test
@@ -91,5 +90,9 @@ public class StoryImplTests {
         Assertions.assertEquals(1, story.getActivityHistory().size());
     }
 
+    @BeforeEach
+    public void setUp() {
+        story = initializeTestStory();
+    }
 
 }

@@ -8,6 +8,8 @@ public interface User extends Nameable, Loggable, Comparable<User> {
 
     void assignTask(Task task);
 
+    void unassignTask(Task task);
+
     void addActivity(Log activity);
 
     List<Task> getTasks();

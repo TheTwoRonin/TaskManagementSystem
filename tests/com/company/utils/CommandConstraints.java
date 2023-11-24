@@ -14,4 +14,5 @@ public class CommandConstraints {
     public static final String INVALID_ENUM = TestUtilities.getString(5);
     public static final String VALID_CONTENT = TestUtilities.getString(5);
     public static final String VALID_AUTHOR = TestUtilities.getString(5);
+    public static final String INVALID_DESCRIPTION_STR = TestUtilities.getString(0);
 }

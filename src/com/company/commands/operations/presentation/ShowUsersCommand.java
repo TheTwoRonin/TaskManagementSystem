@@ -7,7 +7,6 @@ import com.company.utils.ListingHelpers;
 import java.util.List;
 
 public class ShowUsersCommand implements Command {
-    private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 0;
 
     private final TaskManagementSystemRepository taskManagementSystemRepository;
 

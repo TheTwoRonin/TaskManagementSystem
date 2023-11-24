@@ -56,17 +56,6 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
     }
 
     @Override
-    public void changePriority(Priority priority) {
-        super.changePriority(priority);
-
-    }
-
-    @Override
-    public void unassignAssignee() {
-        super.unassignAssignee();
-    }
-
-    @Override
     public String toString() {
         return getClass().getSimpleName().replaceAll("Impl", "") + " "
                 + super.toString()

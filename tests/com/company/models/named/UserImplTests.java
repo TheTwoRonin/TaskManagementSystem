@@ -1,6 +1,10 @@
 package com.company.models.named;
 
+import com.company.models.Activity;
+import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
+import com.company.models.idd.StoryImplTests;
+import com.company.utils.TaskBaseConstraints;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class UserImplTests {
 
     private User user;
+    private Story story;
 
-    //TODO Test assignTask
-    //private Story story;
-    //TODO Test addActivity
 
     @BeforeEach
     public void setUp() {
-        user = new UserImpl(VALID_NAME);
+        user = initializeTestUser();
+        story = StoryImplTests.initializeTestStory();
+        user.assignTask(story);
     }
 
     @Test
@@ -39,14 +43,24 @@ public class UserImplTests {
 
     @Test
     public void should_assignTask_When_ArgumentsAreValid() {
+        assertEquals(1, user.getTasks().size());
     }
 
     @Test
-    public void should_addActivity_When_ArgumentsAreValid() {    }
+    public void should_unassignTask_When_ArgumentsAreValid() {
+        user.unassignTask(story);
+        assertEquals(0, user.getTasks().size());
+    }
+
+    @Test
+    public void should_addActivity_When_ArgumentsAreValid() {
+        user.addActivity(new Activity(TaskBaseConstraints.VALID_DESCRIPTION));
+        assertEquals(2, user.getActivityHistory().size());
+    }
 
     @Test
     public void getTasks_Should_ReturnCopyOfTheCollection() {
-        Assertions.assertNotSame(user.getTasks(),user.getTasks());
+        Assertions.assertNotSame(user.getTasks(), user.getTasks());
     }
 
     @Test

@@ -45,16 +45,6 @@ public class StoryImpl extends BaseTaskAssignment implements Story {
     }
 
     @Override
-    public void changePriority(Priority priority) {
-        super.changePriority(priority);
-    }
-
-    @Override
-    public void unassignAssignee() {
-        super.unassignAssignee();
-    }
-
-    @Override
     public String toString() {
         return getClass().getSimpleName().replaceAll("Impl", "") + " " + super.toString() + "Size: " + getSize() + "\n";
     }

@@ -31,6 +31,7 @@ public class UserImpl implements User {
         ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], "Name");
         this.name = name;
     }
+
     @Override
     public String getName() {
         return this.name;
@@ -38,6 +39,11 @@ public class UserImpl implements User {
 
     public void assignTask(Task task) {
         tasks.add(task);
+    }
+
+    @Override
+    public void unassignTask(Task task) {
+        tasks.remove(task);
     }
 
     @Override
