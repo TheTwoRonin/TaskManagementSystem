@@ -22,7 +22,7 @@ public class ListingHelpers {
         return list.stream()
                 .filter(e -> e.getStatus().equals(status))
                 .map(Object::toString)
-                .collect(Collectors.joining("\n-------\n")).trim();
+                .collect(Collectors.joining(CommandAndActivityConstants.NEW_LINE)).trim();
     }
 
     public static <T extends TaskAssignment> String listFilteredTasks(List<T> list, Status status, String assignee) {
@@ -30,7 +30,7 @@ public class ListingHelpers {
                 .filter(e -> e.getStatus().equals(status))
                 .filter(e -> e.getAssignee().getName().equalsIgnoreCase(assignee))
                 .map(Object::toString)
-                .collect(Collectors.joining("\n-------\n")).trim();
+                .collect(Collectors.joining(CommandAndActivityConstants.NEW_LINE)).trim();
     }
 
 
@@ -38,6 +38,6 @@ public class ListingHelpers {
         return list.stream()
                 .sorted(Comparator.comparing(sortFunction))
                 .map(Object::toString)
-                .collect(Collectors.joining("\n-------\n")).trim();
+                .collect(Collectors.joining(CommandAndActivityConstants.NEW_LINE)).trim();
     }
 }
