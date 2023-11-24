@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is intended to be used by a small team of console loving developers, who need to keep track of all the
+This application is intended to be used by a small team of developers, who need to keep track of all the
 tasks,
 surrounding a software product they are building.
 
@@ -19,7 +19,7 @@ Currently, the engine supports the following commands:
   description should be between 10 and 100/500 symbols. Use brackets like this to concatenate long titles and
   descriptions {{Long title example}}
 - **CreateBug
-  ** `[title] [description]` `[steps]` `[priority]` `[teamName]` `[severity]` `[status]` `[userName]` `[boardName]`  -
+  ** `[title] [description]` `[steps]` `[priority]` `[teamName]` `[severity]` `[status]` `[userName]` `[boardName]` -
   creates a bug, requires a user and a board, name and description should be between 10 and 100/500 symbols. {{Long
   title example}} applicable.
 - **CreateStory** `[title] [description]` `[priority]` `[size]` `[status]` `[userName]` `[boardName]`  - creates a
