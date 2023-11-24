@@ -38,9 +38,11 @@ public class ListSortedBugsByFieldCommand implements Command {
             case "title":
                 return listSortedTasks(list, Bug::getTitle);
             case "description":
-                return listSortedTasks(list, Bug::getStatus);
+                return listSortedTasks(list, Bug::getDescription);
             case "assignee":
                 return listSortedTasks(list, Bug::getAssignee);
+            case "status":
+                return listSortedTasks(list, Bug::getStatus);
             case "priority":
                 return listSortedTasks(list, Bug::getPriority);
             case "severity":
