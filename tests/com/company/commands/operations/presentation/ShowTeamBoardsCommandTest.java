@@ -37,7 +37,7 @@ class ShowTeamBoardsCommandTest {
     @Test
     public void should_ThrowException_When_ArgumentCountDifferentThanExpected() {
         List<String> params = TestUtilities.getList(EXPECTED_NUMBER_OF_ARGUMENTS - 1);
-        assertThrows(IllegalArgumentException.class, () -> command.execute(params));
+        assertThrows(ElementNotFoundException.class, () -> command.execute(params));
     }
 
     @Test

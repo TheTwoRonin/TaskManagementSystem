@@ -19,13 +19,16 @@ public class TaskBaseConstraints {
     public static final User VALID_ASSIGNEE = UserImplTests.initializeTestUser();
     public static final User VALID_ASSIGNEE_2 = new UserImpl(TestUtilities.getString(10));
     public static final int VALID_RATING = 5;
+    public static final String VALID_RATING_STR = "5";
     public static final String ID_1_STR = "1";
     public static final String ID_2_STR = "2";
     public static final String VALID_TITLE = TestUtilities.getString(TITLE_LEN_MIN + 1);
     public static final String VALID_DESCRIPTION = TestUtilities.getString(DESCRIPTION_LEN_MIN + 1);
     public static final Priority VALID_PRIORITY = Priority.HIGH;
     public static final Severity VALID_SEVERITY = Severity.CRITICAL;
-    public static final String VALID_STATUS_STR = "ACTIVE";
+    public static final String VALID_BUG_STATUS_STR = "ACTIVE";
+    public static final String VALID_FEEDBACK_STATUS_STR = "NEW";
+    public static final String VALID_STORY_STATUS_STR = "NOT DONE";
     public static final Size VALID_SIZE = Size.LARGE;
     public static final List<String> VALID_STEPS = TestUtilities.getList(3);
 
