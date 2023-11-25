@@ -5,6 +5,7 @@ import com.company.core.TaskManagementSystemRepositoryImpl;
 import com.company.core.contracts.TaskManagementSystemRepository;
 import com.company.models.contracts.Story;
 import com.company.models.contracts.User;
+import com.company.utils.CommandConstraints;
 import com.company.utils.TestUtilities;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,13 +32,13 @@ class ListFilteredStoriesCommandTest {
 
     @Test
     public void execute_Should_ListFilteredStories_When_ArgumentIsValid() {
-        List<String> params = List.of(VALID_STORY_STATUS_STR);
+        List<String> params = List.of(CommandConstraints.VALID_STORY_STATUS_STR);
         assertSame(String.class, command.execute(params).getClass());
     }
 
     @Test
     public void execute_Should_ListFilteredStories_When_ArgumentsAreValid() {
-        List<String> params = List.of(VALID_STORY_STATUS_STR, VALID_NAME);
+        List<String> params = List.of(CommandConstraints.VALID_STORY_STATUS_STR, VALID_NAME);
         assertSame(String.class, command.execute(params).getClass());
     }
 
