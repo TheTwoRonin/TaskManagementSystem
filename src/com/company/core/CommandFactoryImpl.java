@@ -12,6 +12,8 @@ import com.company.utils.ParsingHelpers;
 
 public class CommandFactoryImpl implements CommandFactory {
 
+    private static final String INVALID_COMMAND_ERR = "Invalid command.";
+
     @Override
     public Command createCommandFromCommandName(String commandTypeAsString, TaskManagementSystemRepository taskManagementSystemRepository) {
         CommandType commandType = ParsingHelpers.tryParseEnum(commandTypeAsString, CommandType.class);
@@ -50,8 +52,7 @@ public class CommandFactoryImpl implements CommandFactory {
             case LISTFILTEREDBUGS -> new ListFilteredBugsCommand(taskManagementSystemRepository);
             case LISTFILTEREDFEEDBACKS -> new ListFilteredFeedbacksCommand(taskManagementSystemRepository);
             case LISTFILTEREDSTORIES -> new ListFilteredStoriesCommand(taskManagementSystemRepository);
-
-            default -> throw new IllegalArgumentException("nqma takaa komanda");
+            default -> throw new IllegalArgumentException(INVALID_COMMAND_ERR);
         };
     }
 }

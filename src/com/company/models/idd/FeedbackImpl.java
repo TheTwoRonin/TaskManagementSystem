@@ -11,6 +11,7 @@ import static com.company.commands.constants.CommandAndActivityConstants.RATING;
 public class FeedbackImpl extends BaseTask implements Feedback {
 
     private static final String INVALID_STATUS_ERR = "Invalid status, can be New, Unscheduled, Scheduled, or Done.";
+    private static final String TO_STRING = "%s %s%nRating: %s%n";
 
     private int rating;
 
@@ -47,8 +48,6 @@ public class FeedbackImpl extends BaseTask implements Feedback {
 
     @Override
     public String toString() {
-        return getClassName() + " "
-                + super.toString()
-                + "Rating: " + getRating() + "\n";
+        return String.format(TO_STRING, getClassName(), super.toString(), getRating());
     }
 }

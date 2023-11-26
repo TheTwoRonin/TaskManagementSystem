@@ -14,6 +14,7 @@ import static com.company.commands.constants.CommandAndActivityConstants.STORY;
 public class StoryImpl extends BaseTaskAssignment implements Story {
 
     private static final String INVALID_STATUS_ERR = "Invalid status, can be Not Done, InProgress, or Done";
+    private static final String TO_STRING = "%s %s%nSize: %s%n";
 
     private Size size;
 
@@ -50,6 +51,8 @@ public class StoryImpl extends BaseTaskAssignment implements Story {
 
     @Override
     public String toString() {
-        return getClassName() + " " + super.toString() + "Size: " + getSize() + "\n";
+        return String.format(TO_STRING, getClassName(), super.toString(), getSize());
+
+
     }
 }

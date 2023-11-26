@@ -18,6 +18,7 @@ import static com.company.commands.constants.CommandAndActivityConstants.SEVERIT
 public class BugImpl extends BaseTaskAssignment implements Bug {
 
     private static final String INVALID_STATUS_ERR = "Invalid status, can be Active or Done";
+    private static final String TO_STRING = "%s %s%nSeverity: %s%n%s";
 
     private Severity severity;
     private final List<String> steps;
@@ -61,9 +62,7 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
 
     @Override
     public String toString() {
-        return getClassName() + " "
-                + super.toString()
-                + "Severity: " + getSeverity() + "\n" +
-                ListingHelpers.parseList(getSteps()) + "\n";
+        return String.format(TO_STRING, getClassName(), super.toString(), getSeverity(),
+                ListingHelpers.parseList(getSteps()));
     }
 }

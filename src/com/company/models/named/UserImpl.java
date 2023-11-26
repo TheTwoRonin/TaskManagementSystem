@@ -15,6 +15,8 @@ import static com.company.commands.constants.CommandAndActivityConstants.USER;
 
 public class UserImpl implements User {
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
+    private static final String NAME = "Name";
+    private static final String TO_STRING = "User name: %s%n Tasks: %s";
     private String name;
     private final List<Task> tasks;
     private final List<Log> activityHistory;
@@ -28,7 +30,7 @@ public class UserImpl implements User {
     }
 
     private void setName(String name) {
-        ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], "Name");
+        ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], NAME);
         this.name = name;
     }
 
@@ -63,7 +65,7 @@ public class UserImpl implements User {
 
     @Override
     public String toString() {
-        return String.format("User name: %s%n Tasks: %s", name, ListingHelpers.parseList(tasks));
+        return String.format(TO_STRING, name, ListingHelpers.parseList(tasks));
     }
 
     @Override

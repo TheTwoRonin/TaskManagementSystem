@@ -20,6 +20,14 @@ public abstract class BaseTask implements Task {
     private static final String TITLE = "Title";
     private static final int[] DESCRIPTION_MIN_MAX_LENGTH = {10, 500};
     private static final String DESCRIPTION = "Description";
+    private static final String TO_STRING = """ 
+            #ID- %d
+            Title: "%s"
+            Description: "%s"
+            Status: %s
+            Comments:
+            %s
+            """;
 
     private final int id;
     private String title;
@@ -105,14 +113,7 @@ public abstract class BaseTask implements Task {
 
     @Override
     public String toString() {
-        return String.format(""" 
-                        #ID- %d
-                        Title: "%s"
-                        Description: "%s"
-                        Status: %s
-                        Comments:
-                        %s
-                        """
-                , getId(), getTitle(), getDescription(), getStatus(), ListingHelpers.parseList(getComments()));
+        return String.format(TO_STRING, getId(), getTitle(), getDescription(), getStatus(),
+                ListingHelpers.parseList(getComments()));
     }
 }

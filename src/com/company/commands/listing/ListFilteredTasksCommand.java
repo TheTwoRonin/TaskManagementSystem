@@ -7,6 +7,8 @@ import com.company.utils.ValidationHelpers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.company.commands.constants.CommandAndActivityConstants.NEW_LINE;
+
 public class ListFilteredTasksCommand implements Command {
 
     private static final int EXPECTED_NUMBER_OF_ARGUMENTS = 1;
@@ -29,7 +31,7 @@ public class ListFilteredTasksCommand implements Command {
                 .stream()
                 .filter(e -> e.getTitle().contains(filter))
                 .map(Object::toString)
-                .collect(Collectors.joining("\n-------\n"));
+                .collect(Collectors.joining(NEW_LINE));
     }
 
     private void parseParameters(List<String> parameters) {

@@ -11,9 +11,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class ListingHelpers {
+
+    private static final String NO_ENTRIES = "No entries.";
+
     public static <T> String parseList(List<T> list) {
         if (list.isEmpty())
-            return "No entries.";
+            return NO_ENTRIES;
         return list.stream().map(T::toString).collect(Collectors.joining(CommandAndActivityConstants.NEW_LINE));
     }
 

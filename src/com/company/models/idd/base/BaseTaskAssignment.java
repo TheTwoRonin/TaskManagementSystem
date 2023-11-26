@@ -12,6 +12,7 @@ public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignm
 
     private static final String ASSIGNEE_ASSIGNED_ERR = "%s already assigned to task.";
     private static final String NO_ASSIGNEE_ASSIGNED_ERR = "No assignee assigned!";
+    private static final String TO_STRING = "%s%nAssignee: %s%nPriority: %s";
 
     private User assignee;
     private Priority priority;
@@ -69,9 +70,6 @@ public abstract class BaseTaskAssignment extends BaseTask implements TaskAssignm
 
     @Override
     public String toString() {
-        return super.toString() + """
-                Assignee: %s
-                Priority: %s
-                """.formatted(getAssignee().getName(), getPriority());
+        return TO_STRING.formatted(super.toString(), getAssignee().getName(), getPriority());
     }
 }

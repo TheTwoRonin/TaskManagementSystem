@@ -146,21 +146,21 @@ public class TaskManagementSystemRepositoryImpl implements TaskManagementSystemR
 
     @Override
     public void userIsUnique(String name) {
-        IsUnique(getUsers(), USER, name);
+        isUnique(getUsers(), USER, name);
     }
 
     @Override
     public void teamIsUnique(String name) {
-        IsUnique(getTeams(), TEAM, name);
+        isUnique(getTeams(), TEAM, name);
     }
 
     @Override
     public void boardIsUniqueInTeam(String name, Team team) {
         List<Board> teamBoards = team.getBoards();
-        IsUnique(teamBoards, BOARD, name);
+        isUnique(teamBoards, BOARD, name);
     }
 
-    private <T extends Nameable> void IsUnique(List<T> list, String type, String name) {
+    private <T extends Nameable> void isUnique(List<T> list, String type, String name) {
         if (list.stream().anyMatch(u -> u.getName().equals(name))) {
             throw new IllegalArgumentException(DUPLICATE_FOUND_ERR.formatted(type));
         }
