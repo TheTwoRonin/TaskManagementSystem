@@ -1,7 +1,6 @@
 package com.company.models.idd;
 
 import com.company.commands.constants.CommandAndActivityConstants;
-import com.company.models.Activity;
 import com.company.models.contracts.Bug;
 import com.company.models.contracts.User;
 import com.company.models.enums.Priority;
@@ -19,6 +18,7 @@ import static com.company.commands.constants.CommandAndActivityConstants.SEVERIT
 public class BugImpl extends BaseTaskAssignment implements Bug {
 
     private static final String INVALID_STATUS_ERR = "Invalid status, can be Active or Done";
+    private static final String TO_STRING = "%s %s%nSeverity: %s%n%s";
 
     private Severity severity;
     private final List<String> steps;
@@ -51,15 +51,18 @@ public class BugImpl extends BaseTaskAssignment implements Bug {
     public void changeSeverity(Severity severity) {
         Severity old_severity = getSeverity();
         this.severity = severity;
-        addActivity(new Activity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
-                .formatted(BUG, getId(), SEVERITY, old_severity, getSeverity())));
+        addActivity(CommandAndActivityConstants.ITEM_WITH_ID_MODIFICATION
+                .formatted(getClassName(), getId(), SEVERITY, old_severity, getSeverity()));
+    }
+
+    @Override
+    protected String getClassName() {
+        return BUG;
     }
 
     @Override
     public String toString() {
-        return getClass().getSimpleName().replaceAll("Impl", "") + " "
-                + super.toString()
-                + "Severity: " + getSeverity() + "\n" +
-                ListingHelpers.parseList(getSteps()) + "\n";
+        return String.format(TO_STRING, getClassName(), super.toString(), getSeverity(),
+                ListingHelpers.parseList(getSteps()));
     }
 }

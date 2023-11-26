@@ -4,6 +4,7 @@ import com.company.models.contracts.Comment;
 
 public class CommentImpl implements Comment {
 
+    private static final String TO_STRING = "Content: \"%s\" \\\\ Author: %s";
     private final String content;
     private final String author;
 
@@ -22,8 +23,7 @@ public class CommentImpl implements Comment {
 
     @Override
     public String toString() {
-        return "Content: \"%s\" \\\\ Author: %s"
-                .formatted(getContent(), getAuthor());
+        return TO_STRING.formatted(getContent(), getAuthor());
 
 
     }

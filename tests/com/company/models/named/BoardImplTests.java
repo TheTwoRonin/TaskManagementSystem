@@ -1,6 +1,5 @@
 package com.company.models.named;
 
-import com.company.models.Activity;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Story;
 import com.company.models.idd.StoryImplTests;
@@ -48,7 +47,7 @@ public class BoardImplTests {
 
     @Test
     public void should_addActivity_When_ArgumentsAreValid() {
-        board.addActivity(new Activity(TaskBaseConstraints.VALID_DESCRIPTION));
+        board.addActivity(TaskBaseConstraints.VALID_DESCRIPTION);
         assertEquals(1, board.getActivityHistory().size());
     }
 

@@ -48,7 +48,7 @@ public class ListSortedBugsByFieldCommand implements Command {
             case "severity":
                 return listSortedTasks(list, Bug::getSeverity);
             default:
-                throw new UnsupportedOperationException("Ne moesh da sortirash po tova, ludiq");
+                throw new IllegalArgumentException("Invalid sorter");
         }
     }
 

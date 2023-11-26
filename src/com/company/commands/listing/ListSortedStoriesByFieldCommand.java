@@ -48,7 +48,7 @@ public class ListSortedStoriesByFieldCommand implements Command {
             case "size":
                 return listSortedTasks(list, Story::getSize);
             default:
-                throw new UnsupportedOperationException("Ne moesh da sortirash po tova, ludiq");
+                throw new IllegalArgumentException("Invalid sorter");
         }
     }
 

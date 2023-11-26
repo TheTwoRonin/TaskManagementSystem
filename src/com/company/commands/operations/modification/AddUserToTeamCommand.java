@@ -2,7 +2,6 @@ package com.company.commands.operations.modification;
 
 import com.company.commands.contracts.Command;
 import com.company.core.contracts.TaskManagementSystemRepository;
-import com.company.models.Activity;
 import com.company.models.contracts.Team;
 import com.company.models.contracts.User;
 import com.company.utils.ValidationHelpers;
@@ -35,7 +34,7 @@ public class AddUserToTeamCommand implements Command {
 
         team.addMember(user);
         String description = ITEM_USER_ADDED_TO_TEAM.formatted(user.getName(), team.getName());
-        user.addActivity(new Activity(description));
+        user.addActivity(description);
 
 
         return USER_ADDED_TO_TEAM_MESSAGE.formatted(user.getName(), team.getName());

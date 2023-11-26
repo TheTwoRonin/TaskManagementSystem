@@ -1,5 +1,6 @@
 package com.company.models.named;
 
+import com.company.models.Activity;
 import com.company.models.contracts.Board;
 import com.company.models.contracts.Log;
 import com.company.models.contracts.Task;
@@ -12,6 +13,7 @@ import java.util.List;
 public class BoardImpl implements Board {
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 10};
     private static final String TO_STRING = "%nBoard name: %s%nTasks:%n%s";
+    private static final String NAME = "Name";
     private final List<Task> tasks;
     private String name;
     private final List<Log> activityHistory;
@@ -32,7 +34,7 @@ public class BoardImpl implements Board {
     }
 
     private void setName(String name) {
-        ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], "Name");
+        ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], NAME);
         this.name = name;
     }
 
@@ -42,8 +44,8 @@ public class BoardImpl implements Board {
     }
 
     @Override
-    public void addActivity(Log activity) {
-        activityHistory.add(activity);
+    public void addActivity(String message) {
+        activityHistory.add(new Activity(message));
     }
 
     @Override

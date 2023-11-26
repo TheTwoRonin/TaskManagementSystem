@@ -12,6 +12,7 @@ import java.util.List;
 public class TeamImpl implements Team {
     private static final int[] NAME_MIN_MAX_LENGTH = {5, 15};
     private static final String TO_STRING = "Team name: %s%nMembers: %n%s%nBoards: %n%s%n";
+    private static final String NAME = "Name";
     private String name;
     private final List<User> members;
     private final List<Board> boards;
@@ -22,9 +23,8 @@ public class TeamImpl implements Team {
         this.boards = new ArrayList<>();
     }
 
-
     private void setName(String name) {
-        ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], "Name");
+        ValidationHelpers.validateStringLength(name, NAME_MIN_MAX_LENGTH[0], NAME_MIN_MAX_LENGTH[1], NAME);
         this.name = name;
     }
 

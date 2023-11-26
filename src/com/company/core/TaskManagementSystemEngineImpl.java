@@ -14,9 +14,6 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
 
     private static final String TERMINATION_COMMAND = "Exit";
     private static final String EMPTY_COMMAND_ERROR = "Command cannot be empty.";
-    private static final String MAIN_SPLIT_SYMBOL = " ";
-    private static final String COMMENT_OPEN_SYMBOL = "{{";
-    private static final String COMMENT_CLOSE_SYMBOL = "}}";
     private static final String REPORT_SEPARATOR = "####################";
 
     private final CommandFactory commandFactory;
@@ -58,25 +55,10 @@ public class TaskManagementSystemEngineImpl implements TaskManagementSystemEngin
         print(executionResult);
     }
 
-    /**
-     * Receives a full line and extracts the command to be executed from it.
-     * For example, if the input line is "FilterBy Assignee John", the method will return "FilterBy".
-     *
-     * @param inputLine A complete input line
-     * @return The name of the command to be executed
-     */
     private String extractCommandName(String inputLine) {
         return inputLine.split(" ")[0];
     }
 
-    /**
-     * Receives a full line and extracts the parameters that are needed for the command to execute.
-     * For example, if the input line is "FilterBy Assignee John",
-     * the method will return a list of ["Assignee", "John"].
-     *
-     * @param inputLine A complete input line
-     * @return A list of the parameters needed to execute the command
-     */
     private List<String> extractCommandParameters(String inputLine) {
         return Arrays.stream(inputLine.split("\\s+(?![^{]*}})"))
                 .skip(1)

@@ -15,7 +15,7 @@ public enum Size {
             case SMALL:
                 return "Small";
             default:
-                throw new UnsupportedOperationException("Nz, ti si znaesh.");
+                return null;
         }
     }
 
